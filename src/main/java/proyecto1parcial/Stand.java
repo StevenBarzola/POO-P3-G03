@@ -25,5 +25,12 @@ public class Stand {
         return fechaAsig;
     }
     
+    //Generar codigo
+    int i=1;
+    public String generaCodigoStand(){
+        String c= "#ST"+(String.valueOf(i));
+        i++;
+        return c;
+    }
     
 }
