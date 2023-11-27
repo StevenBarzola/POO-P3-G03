@@ -23,6 +23,10 @@ public class Stand {
         return fechaAsig;
     }
     
+    public void setcodigoSt(String co){
+        codigoSt=co;
+    }
+    
     public void setPersona(Persona p){
         persona=p;
     }

@@ -14,8 +14,8 @@ public class Feria {
     private SeccionStand[] seccionesStand;
     
     //Constructor
-    public Feria(String c, String n, String fi, String ff, String l, String d, String h){
-        codigo=c;
+    public Feria(String n, String fi, String ff, String l, String d, String h){
+        codigo=generarCodigoFeria();
         nombre=n;
         fechaI=fi;
         fechaF=ff;
@@ -69,10 +69,9 @@ public class Feria {
     }
     
     //Generar codigo
-    int i=1;
-    public String generaCodigoFeria(){
-        String c= "#F"+(String.valueOf(i));
-        i++;
+    public static String generarCodigoFeria(){
+        String c= "F"+String.valueOf(Admin.cont);
+        Admin.cont++;
         return c;
     }
     
@@ -95,7 +94,6 @@ public class Feria {
         +" / Seccion#4: "+seccionesStand[3].getCanStand()+" stand(s)]";
     }
     
-    
     //Mostrar informacion de la feria
     public void informacionFeria(String c){
         if(Admin.ferias!=null){
@@ -117,7 +115,22 @@ public class Feria {
         seccionesStand[1].crearStands(1);
         seccionesStand[2].crearStands(2);
         seccionesStand[3].crearStands(3);
-        
     }
+    
+    //Mostrar los stands
+    public void mostrarStands(){
+        System.out.println("---Distribucion de stands---");
+        for(int i=0;i<4;i++){
+            SeccionStand ss= seccionesStand[i];
+            System.out.println("Seccion#"+(i+1)+":");
+            for(int j=0;j<ss.getSeccion().size();j++){
+                Stand s= ss.getSeccion().get(j);
+                System.out.print("["+s.getCodigoSt()+"]");
+            }
+            System.out.println("");
+        }
+    }
+    
+    
 }   
    
