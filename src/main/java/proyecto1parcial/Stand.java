@@ -6,13 +6,11 @@ public class Stand {
     private String fechaAsig;
     
     //Constructor
-    public Stand(String cs, Persona p, String fa){
+    public Stand(String cs){
         codigoSt=cs;
-        persona=p;
-        fechaAsig= fa;
     }
     
-    //Getters 
+    //Getters y Setters
     public String getCodigoSt(){
         return codigoSt;
     }
@@ -25,12 +23,11 @@ public class Stand {
         return fechaAsig;
     }
     
-    //Generar codigo
-    int i=1;
-    public String generaCodigoStand(){
-        String c= "#ST"+(String.valueOf(i));
-        i++;
-        return c;
+    public void setPersona(Persona p){
+        persona=p;
     }
     
+    public void setFechaAsig(String f){
+        fechaAsig=f;
+    }
 }
