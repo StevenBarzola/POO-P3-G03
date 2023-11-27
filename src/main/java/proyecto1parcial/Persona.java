@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public abstract class Persona {
     protected String numId;
-    protected String nombrePer;
+    protected String nombre;
     protected String nombrePerRes;
     protected String telefono;
     protected String email;
@@ -12,9 +12,9 @@ public abstract class Persona {
     protected ArrayList<RedSocial> redesSociales;
     
     //Constructor 
-    public Persona(String ni, String np, String npr, String t, String e, String d, String sw){
+    public Persona(String ni, String n, String npr, String t, String e, String d, String sw){
         numId=ni;
-        nombrePer=np;
+        nombre=n;
         nombrePerRes=npr;
         telefono=t;
         email=e;
