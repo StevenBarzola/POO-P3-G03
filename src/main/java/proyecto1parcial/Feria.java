@@ -107,4 +107,17 @@ public class Feria {
         }else System.out.println("No hay ferias registradas para mostrar");    
     }
     
-}
+    //Asignar las 4 secciones de stands
+    public void AsignarSeccionesStand(int can1, int can2, int can3, int can4){
+        seccionesStand[0]= new SeccionStand(can1);
+        seccionesStand[1]= new SeccionStand(can2);
+        seccionesStand[2]= new SeccionStand(can3);
+        seccionesStand[3]= new SeccionStand(can4);
+        seccionesStand[0].crearStands(0);
+        seccionesStand[1].crearStands(1);
+        seccionesStand[2].crearStands(2);
+        seccionesStand[3].crearStands(3);
+        
+    }
+}   
+   
