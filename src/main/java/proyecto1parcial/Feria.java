@@ -28,5 +28,11 @@ public class Feria {
     }
     
     //Getters y Setters
+    public String getCodigo(){
+        return codigo;
+    }
+    public String getNombre(){
+        return nombre;
+    }
     
 }

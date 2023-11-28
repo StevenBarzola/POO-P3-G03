@@ -22,6 +22,10 @@ public abstract class Persona {
         sitioWeb=sw;
         redesSociales=new ArrayList<>();
     }
+    @Override
+    public String toString(){
+        return "Cedula: "+ numId+ "\n Nombre: " +nombrePer + "\n Telfono: "+ telefono + "\n Email: " + email + "\n Direccion: "+ sitioWeb + "\n Redes sociales"+ redesSociales;
+    }
     
     
 }
