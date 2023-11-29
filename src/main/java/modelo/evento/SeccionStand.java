@@ -1,4 +1,4 @@
-package proyecto1parcial;
+package modelo.evento;
 import java.util.ArrayList;
 
 public class SeccionStand {

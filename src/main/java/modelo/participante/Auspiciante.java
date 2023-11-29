@@ -1,4 +1,4 @@
-package proyecto1parcial;
+package modelo.participante;
 
 public class Auspiciante extends Persona{
     private SectorCubierto secCubierto;

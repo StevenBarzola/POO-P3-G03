@@ -1,4 +1,5 @@
-package proyecto1parcial;
+package modelo.evento;
+import modelo.participante.*;
 import java.util.ArrayList;
 
 public class Feria {
@@ -12,6 +13,8 @@ public class Feria {
     private ArrayList<AuspicianteEnFeria> auspiciantesEnFeria; 
     private ArrayList<Emprendedor> emprendedores;
     private SeccionStand[] seccionesStand;
+    public static int cont=1; //Contador para el metodo generarCodigoFeria
+    public static ArrayList<Feria> ferias=new ArrayList<>(); //Lista de todas las ferias
     
     //Constructor
     public Feria(String n, String fi, String ff, String l, String d, String h){
@@ -70,8 +73,8 @@ public class Feria {
     
     //Generar codigo
     public static String generarCodigoFeria(){
-        String c= "F"+String.valueOf(Admin.cont);
-        Admin.cont++;
+        String c= "F"+String.valueOf(cont);
+        cont++;
         return c;
     }
     
@@ -80,7 +83,7 @@ public class Feria {
     public String toString(){  
         String aus="["; //String para presentar los auspiciantes
         for(int j=0;j<auspiciantesEnFeria.size();j++){
-            String n= auspiciantesEnFeria.get(j).getAuspiciante().nombre;
+            String n= auspiciantesEnFeria.get(j).getAuspiciante().getNombre();
             aus+=n;
             if(j<(auspiciantesEnFeria.size()-1)) aus+="-";
         }
@@ -96,8 +99,8 @@ public class Feria {
     
     //Mostrar informacion de la feria
     public void informacionFeria(String c){
-        if(Admin.ferias!=null){
-            for(Feria f: Admin.ferias){
+        if(ferias!=null){
+            for(Feria f: ferias){
                 if(c.equals(f.codigo)){
                     System.out.println(f.toString());
                 } 

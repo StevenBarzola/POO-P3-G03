@@ -1,4 +1,5 @@
-package proyecto1parcial;
+package modelo.evento;
+import modelo.participante.*;
 
 public class Stand {
     private String codigoSt;
