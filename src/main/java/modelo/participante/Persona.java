@@ -1,4 +1,4 @@
-package proyecto1parcial;
+package modelo.participante;
 import java.util.ArrayList;
 
 public abstract class Persona {
@@ -23,5 +23,37 @@ public abstract class Persona {
         redesSociales=new ArrayList<>();
     }
     
+    //Getters
+    public String getNumId(){
+        return numId;
+    }
+    
+    public String getNombre(){
+        return nombre;
+    }
+    
+    public String getNombrePerRes(){
+        return nombrePerRes;
+    }
+    
+    public String getTelefono(){
+        return telefono;
+    }
+    
+    public String getEmail(){
+        return email;
+    }
+    
+    public String getDireccion(){
+        return direccion;
+    }
+    
+    public String getSitioWeb(){
+        return sitioWeb;
+    }
+    
+    public ArrayList<RedSocial> getRedesSociales(){
+        return redesSociales;
+    }
     
 }

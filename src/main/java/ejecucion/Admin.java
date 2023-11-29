@@ -1,10 +1,9 @@
-package proyecto1parcial;
+package ejecucion;
+import modelo.evento.*;
+import modelo.participante.*;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class Admin {
-    public static int cont=1; //Contador para el metodo generarCodigoFeria
-    public static ArrayList<Feria> ferias=new ArrayList<>(); //Lista de todas las ferias
     
     //Presentar menu principal
     public static void mostrarMenuPrincipal(){
