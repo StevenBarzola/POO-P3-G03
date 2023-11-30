@@ -1,4 +1,4 @@
-package proyecto1parcial;
+package modelo.evento;
 import java.util.ArrayList;
 
 public class SeccionStand {
@@ -20,5 +20,16 @@ public class SeccionStand {
         return seccion;
     }
     
+    //Crear stands
+    public void crearStands(int n){
+        int num=1;
+        String[] letra= {"A","B","C","D"};
+        while(num<=canStand){
+            String co= letra[n]+(String.valueOf(num));
+            seccion.add(new Stand(co));
+            num++;   
+        }
+    }
     
+  
 }

@@ -1,4 +1,5 @@
-package proyecto1parcial;
+package modelo.evento;
+import modelo.participante.*;
 
 public class Stand {
     private String codigoSt;
@@ -6,13 +7,11 @@ public class Stand {
     private String fechaAsig;
     
     //Constructor
-    public Stand(String cs, Persona p, String fa){
+    public Stand(String cs){
         codigoSt=cs;
-        persona=p;
-        fechaAsig= fa;
     }
     
-    //Getters 
+    //Getters y Setters
     public String getCodigoSt(){
         return codigoSt;
     }
@@ -25,5 +24,15 @@ public class Stand {
         return fechaAsig;
     }
     
+    public void setcodigoSt(String co){
+        codigoSt=co;
+    }
     
+    public void setPersona(Persona p){
+        persona=p;
+    }
+    
+    public void setFechaAsig(String f){
+        fechaAsig=f;
+    }
 }
