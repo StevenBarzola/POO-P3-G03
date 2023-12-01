@@ -43,6 +43,13 @@ public class Auspiciante extends Persona{
         }
         return auspiEditar;
     }
+    
+    // Mostrar nombres de los Auspiciante
+    public static void mostrarAuspiciante(){
+        for (Auspiciante auspi: auspiciantes ){
+            System.out.println(auspi.nombre);
+        }
+    }
     //3.2 Todos los metodos para editar el auspiciante
     @Override
     public String toString(){ // Para mostrar los campos actuales antes de editar
@@ -70,7 +77,7 @@ public class Auspiciante extends Persona{
          secCubierto=sc;
     }
     // 3.3 Asignar Auspiciante en la Feria
-    public static boolean asignarAuspicianteFeria(String c, String nc){
+    public static boolean verificarAuspicianteFeria(String c, String nc){
         boolean validar = false;
         boolean validar1 = false;
         for (Feria f: ferias){

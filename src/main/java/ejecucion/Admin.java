@@ -41,6 +41,7 @@ public class Admin {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         Scanner sc2 = new Scanner(System.in);
+        Scanner sc3 = new Scanner(System.in);
         int op=0;
         while(op!=5){
             mostrarMenuPrincipal();
@@ -70,6 +71,7 @@ public class Admin {
                     op3=sc.nextInt();
                     switch (op3) {
                         case 1 -> {
+                            Auspiciante.mostrarAuspiciante();
                             System.out.println("Número de cedula o RUC: ");
                             String cedula = sc2.nextLine();
                             boolean validar= Auspiciante.verificarCedula(cedula);
@@ -81,21 +83,21 @@ public class Admin {
                                 validar = Auspiciante.verificarCedula(cedula);
                             }
                             System.out.println("Nombre: ");
-                            String nombre = sc.nextLine();
+                            String nombre = sc2.nextLine();
                             System.out.println("Nombre persona responsable: ");
                             String nomper = sc2.nextLine();
                             System.out.println("Teléfono: ");
-                            String tele = sc.nextLine();
+                            String tele = sc2.nextLine();
                             System.out.println("Email: ");
                             String email = sc2.nextLine();
                             System.out.println("Dirección (opcional): ");
-                            String dir = sc.nextLine();
+                            String dir = sc2.nextLine();
                             System.out.println("Sitio web (opcional): ");
                             String sw = sc2.nextLine();
                             SectorCubierto sec = null;
                             while (sec == null){
                                 System.out.println("Sectores cubiertos: (ALIMENTACION, EDUCACION, SALUD, VESTIMENTA) ");
-                                String seCu = sc.nextLine();   
+                                String seCu = sc2.nextLine();   
                                 switch (seCu){
                                    case "ALIMENTACION" -> {
                                        sec = SectorCubierto.ALIMENTACION;
@@ -123,7 +125,7 @@ public class Admin {
                         }
                         case 2 -> { 
                             System.out.println("Digite número de cedula o RUC:");
-                            String cedula = sc.nextLine();
+                            String cedula = sc2.nextLine();
                             Auspiciante auspiEditar = Auspiciante.encontrarAuspiciante(cedula);
                             auspiEditar.toString();
                             int campoEditar = 0;
@@ -137,44 +139,44 @@ public class Admin {
                                 System.out.println("6. Sitio web");
                                 System.out.println("7. Sectores cubiertos");
                                 System.out.println("8. Salir");
-                                campoEditar = sc.nextInt();
+                                campoEditar = sc2.nextInt();
                                 if (campoEditar==8){
                                    campoEditar=8; 
                                 } else if (campoEditar>0 && campoEditar<8){
                                     switch(campoEditar){
                                         case 1 -> {
                                             System.out.println("Nombre: ");
-                                            String nombre = sc.nextLine();
+                                            String nombre = sc3.nextLine();
                                             auspiEditar.editarNom(nombre);
                                             break;
                                         }
                                         case 2 -> {
                                             System.out.println("Nombre persona responsable: ");
-                                            String nomper = sc.nextLine();
+                                            String nomper = sc3.nextLine();
                                             auspiEditar.editarNomResp(nomper);
                                             break;
                                         }
                                         case 3 -> {
                                             System.out.println("Teléfono: ");
-                                            String tele = sc.nextLine();
+                                            String tele = sc3.nextLine();
                                             auspiEditar.editarTelef(tele);
                                             break;
                                         }
                                         case 4 -> {
                                             System.out.println("Email: ");
-                                            String email = sc.nextLine();
+                                            String email = sc3.nextLine();
                                             auspiEditar.editarNom(email);
                                             break;
                                         }
                                         case 5 -> {
                                             System.out.println("Dirección: ");
-                                            String dir = sc.nextLine();
+                                            String dir = sc3.nextLine();
                                             auspiEditar.editarDireccion(dir);
                                             break;
                                         }
                                         case 6 -> {
                                             System.out.println("Sitio web: ");
-                                            String sw = sc.nextLine();
+                                            String sw = sc3.nextLine();
                                             auspiEditar.editarSitioWeb(sw);
                                             break;
                                         }
@@ -182,7 +184,7 @@ public class Admin {
                                             SectorCubierto sec = null;
                                             while (sec == null){
                                                 System.out.println("Sectores cubiertos: (ALIMENTACION, EDUCACION, SALUD, VESTIMENTA) ");
-                                                String seCu = sc.nextLine();
+                                                String seCu = sc3.nextLine();
                                                 switch (seCu){
                                                     case "ALIMENTACION" -> {
                                                         sec = SectorCubierto.ALIMENTACION;
@@ -219,16 +221,16 @@ public class Admin {
                             } 
                         case 3 -> {
                             System.out.println("Ingrese codigo de la feria: ");
-                            String codigo = sc.nextLine();
+                            String codigo = sc3.nextLine();
                             System.out.println("Ingrese número de cedula o RUC: ");
-                            String cedu = sc.nextLine();
-                            boolean val1 = Auspiciante.asignarAuspicianteFeria(codigo, cedu);
+                            String cedu = sc3.nextLine();
+                            boolean val1 = Auspiciante.verificarAuspicianteFeria(codigo, cedu);
                             if (val1){
                                 Auspiciante auspi = Auspiciante.encontrarAuspiciante(cedu);
                                 System.out.println("Descripción de lo que cubre el auspicio: ");
-                                String descri = sc.nextLine();
+                                String descri = sc3.nextLine();
                                 System.out.println("Incluye stand en la feria: (Si/No) ");
-                                String incluye = sc.nextLine();
+                                String incluye = sc3.nextLine();
                                 boolean incluirStand = "Si".equals(incluye);
                                 AuspicianteEnFeria af = new AuspicianteEnFeria(auspi, descri, incluirStand);
 
