@@ -11,10 +11,8 @@ public class Feria {
     private String descripcion;
     private String horario;
     private ArrayList<AuspicianteEnFeria> auspiciantesEnFeria; 
-    private ArrayList<Emprendedor> emprendedores;
     private SeccionStand[] seccionesStand;
-    public static int cont=1; //Contador para el metodo generarCodigoFeria
-    public static ArrayList<Feria> ferias=new ArrayList<>(); //Lista de todas las ferias
+
     
     //Constructor
     public Feria(String n, String fi, String ff, String l, String d, String h){
