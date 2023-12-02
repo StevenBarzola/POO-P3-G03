@@ -15,8 +15,8 @@ public class Feria {
 
     
     //Constructor
-    public Feria(String n, String fi, String ff, String l, String d, String h){
-        codigo=generarCodigoFeria();
+    public Feria(String c, String n, String fi, String ff, String l, String d, String h){
+        codigo=c;
         nombre=n;
         fechaI=fi;
         fechaF=ff;
@@ -24,56 +24,46 @@ public class Feria {
         descripcion=d;
         horario=h;
         auspiciantesEnFeria=new ArrayList<>();
-        emprendedores=new ArrayList<>();
         seccionesStand= new SeccionStand[4];
     }
     
-    //Getters 
-    public String getCodigo(){
-        return codigo;
-    }
+    //Getters y setters
+    public String getCodigo(){return codigo;}
     
-    public String getNombre(){
-        return nombre;
-    }
+    public String getNombre(){return nombre;}
     
-    public String getFechaI(){
-        return fechaI;
-    }
+    public String getFechaI(){return fechaI;}
     
-    public String getFechaF(){
-        return fechaF;
-    }
+    public String getFechaF(){return fechaF;}
     
-    public String getLugar(){
-        return lugar;
-    }
+    public String getLugar(){return lugar;}
     
-    public String getDescripcion(){
-        return descripcion;
-    }
+    public String getDescripcion(){return descripcion;}
     
-    public String getHorario(){
-        return horario;
-    }
+    public String getHorario(){return horario;}
     
     public ArrayList<AuspicianteEnFeria> getAuspiciantesEnFeria(){
         return auspiciantesEnFeria;
-    }
-    
-    public ArrayList<Emprendedor> getEmprendedores(){
-        return emprendedores;
     }
     
     public SeccionStand[] getSeccionesStand(){
         return seccionesStand;
     }
     
-    //Generar codigo
-    public static String generarCodigoFeria(){
-        String c= "F"+String.valueOf(cont);
-        cont++;
-        return c;
+    public void setNombre(String n){nombre=n;}
+    
+    public void setFechaI(String fi){fechaI=fi;}
+    
+    public void setFechaF(String ff){fechaF=ff;}
+    
+    public void setLugar(String l){lugar=l;}
+    
+    public void setDescripcion(String d){descripcion=d;}
+    
+    public void setHorario(String h){horario=h;}
+    
+    public void setSeccionesStand(int can1, int can2, int can3, int can4){
+        AsignarSeccionesStand(can1,can2,can3,can4);
     }
     
     //Metodo toString 
@@ -81,7 +71,7 @@ public class Feria {
     public String toString(){  
         String aus="["; //String para presentar los auspiciantes
         for(int j=0;j<auspiciantesEnFeria.size();j++){
-            String n= auspiciantesEnFeria.get(j).getAuspiciante().getNombre();
+            String n= auspiciantesEnFeria.get(j).getAuspiciante().getNomPerRes();
             aus+=n;
             if(j<(auspiciantesEnFeria.size()-1)) aus+="-";
         }
@@ -96,14 +86,8 @@ public class Feria {
     }
     
     //Mostrar informacion de la feria
-    public void informacionFeria(String c){
-        if(ferias!=null){
-            for(Feria f: ferias){
-                if(c.equals(f.codigo)){
-                    System.out.println(f.toString());
-                } 
-            }
-        }else System.out.println("No hay ferias registradas para mostrar");    
+    public void verInformacionFeria(){
+          System.out.println(this.toString());;
     }
     
     //Asignar las 4 secciones de stands
@@ -132,6 +116,95 @@ public class Feria {
         }
     }
     
+    //Consultar emprendedores en feria
+    public void consultarEmprendedores(){
+        System.out.print("{");
+        for(SeccionStand ss: seccionesStand){
+            for(Stand s: ss.getSeccion()){
+                if(s.getPersona()!=null && s.getPersona() instanceof Emprendedor){
+                    Emprendedor e=(Emprendedor)s.getPersona();
+                    String nomPerRes= e.getNomPerRes();
+                    String nombre= e.getNombre();
+                    String descrip= e.getDescripcionServicios();
+                    String sec= "#";
+                    char l=s.getCodigoSt().charAt(0);
+                    if(l=='A'){sec+="1";}
+                    if(l=='B'){sec+="2";}
+                    if(l=='C'){sec+="3";}
+                    if(l=='D'){sec+="4";}
+                    System.out.print("["+"Emprendedor: "+nomPerRes+", Nombre del emprendimiento: "
+                    +nombre+"Descripcion de servicios: "+descrip+", Seccion: "+sec
+                    +", Stand asignado: "+s.getCodigoSt()+"]");
+                }
+            }
+        }
+        System.out.print("}");
+        System.out.println("");
+    }
+    
+    //Buscar stand por codigo
+    public Stand encontrarStand(String cs){
+        for(SeccionStand ss: seccionesStand){
+            for(Stand s: ss.getSeccion()){
+                if(s.getCodigoSt().equals(cs))return s;
+            }
+        }
+        return null;
+    }
+    
+    //Verificar que la persona no sobrepase el limite de stands
+    public int limiteStand(String numId){
+        int cont=0;
+        for(SeccionStand ss: seccionesStand){
+            for(Stand s: ss.getSeccion()){
+                if(s.getPersona()!=null){
+                    if(s.getPersona().getNumId().equals(numId)) cont++;
+                }
+            }
+        }
+        return cont;
+    }
+    
+    //Buscar auspicianteEnFeria por auspiciante
+    public AuspicianteEnFeria encontrarAuspicianteEnFeria(Auspiciante a){
+        if(auspiciantesEnFeria.size()!=0){ 
+            for(AuspicianteEnFeria aef: auspiciantesEnFeria){
+                if(aef.getAuspiciante().getNumId().equals(a.getNumId())){
+                    return aef;
+                }
+            }
+        }    
+        return null;
+    }
+    
+    //Reservar stand a emprendedor o auspiciante
+    public void reservarStand(String cs, String cp, String fa){
+        Stand s= encontrarStand(cs);
+        if(s.estaDisponible()){
+            Persona p= Sistema.encontrarPersona(cp);
+            int cont=0;
+            if(p!=null && p instanceof Emprendedor){
+                Emprendedor e= (Emprendedor)p;
+                cont= limiteStand(e.getNumId());
+                if(cont==0){
+                    s.setPersona(e);
+                    s.setFechaAsig(fa);
+                    s.setcodigoSt(s.getCodigoSt()+"*");
+                    System.out.println("Stand asignado con exito");
+                }else System.out.println("Ya tiene un stand asignado");
+            }else if(p!=null && p instanceof Auspiciante){
+                Auspiciante a= (Auspiciante)p;
+                AuspicianteEnFeria anf= encontrarAuspicianteEnFeria(a);
+                cont= limiteStand(anf.getAuspiciante().getNumId());
+                if(cont<2 && anf.getTieneStand()==true){
+                    s.setPersona(a);
+                    s.setFechaAsig(fa);
+                    s.setcodigoSt(s.getCodigoSt()+"*");
+                }else System.out.println("El auspiciante ya tiene 2 stands asignado o no tiene autorizado tener stand");
+            }else System.out.println("Esa persona no ha sido registrado o no existe");
+        }else  System.out.println("El stand se encuentra ocupado");
+        
+    }
     
 }   
    
