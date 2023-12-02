@@ -1,5 +1,6 @@
 package modelo.participante;
 
+
 public class Emprendedor extends Persona {
 	private String descripcionServicios;
 
