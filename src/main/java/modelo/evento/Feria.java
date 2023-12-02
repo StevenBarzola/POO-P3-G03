@@ -87,7 +87,7 @@ public class Feria {
     
     //Mostrar informacion de la feria
     public void verInformacionFeria(){
-          this.toString();
+          System.out.println(this.toString());;
     }
     
     //Asignar las 4 secciones de stands
@@ -139,6 +139,7 @@ public class Feria {
             }
         }
         System.out.print("}");
+        System.out.println("");
     }
     
     //Buscar stand por codigo
@@ -182,7 +183,7 @@ public class Feria {
         if(s.estaDisponible()){
             Persona p= Sistema.encontrarPersona(cp);
             int cont=0;
-            if(p instanceof Emprendedor){
+            if(p!=null && p instanceof Emprendedor){
                 Emprendedor e= (Emprendedor)p;
                 cont= limiteStand(e.getNumId());
                 if(cont==0){
@@ -190,19 +191,19 @@ public class Feria {
                     s.setFechaAsig(fa);
                     s.setcodigoSt(s.getCodigoSt()+"*");
                     System.out.println("Stand asignado con exito");
-                }else System.out.println("Ya tiene un stand asignadoo");
-            }else if(p instanceof Auspiciante){
+                }else System.out.println("Ya tiene un stand asignado");
+            }else if(p!=null && p instanceof Auspiciante){
                 Auspiciante a= (Auspiciante)p;
                 AuspicianteEnFeria anf= encontrarAuspicianteEnFeria(a);
                 cont= limiteStand(anf.getAuspiciante().getNumId());
-                if(anf!=null && cont<2 && anf.getTieneStand()==true){
+                if(cont<2 && anf.getTieneStand()==true){
                     s.setPersona(a);
                     s.setFechaAsig(fa);
                     s.setcodigoSt(s.getCodigoSt()+"*");
-                }else System.out.println("El auspiciante ya tiene 2 stands asignado o no debe tener stand o no ha sido resgistrado a la feria");
-            }
-        } 
-        System.out.println("El stand se encuentra ocupado");
+                }else System.out.println("El auspiciante ya tiene 2 stands asignado o no tiene autorizado tener stand");
+            }else System.out.println("Esa persona no ha sido registrado o no existe");
+        }else  System.out.println("El stand se encuentra ocupado");
+        
     }
     
 }   
