@@ -1,23 +1,21 @@
 package modelo.participante;
 
-public class Emprendedor extends Persona{
-    private String desServicio;
-    
-    //Constructor
-    public Emprendedor(String ni, String n, String npr, String t, String e, String d, String sw, String ds){
-        super(ni,n,npr,t,e,d,sw);
-        desServicio=ds;
-    }
-    
-    //Getters y Setters
-    public String getDesServicio(){
-        return desServicio;
-    }
-    
-    public void setDesServicio(String ds){
-        desServicio=ds;
-    }
-    
-    
-    
+public class Emprendedor extends Persona {
+	private String descripcionServicios;
+
+            //Getters y Setters
+	public String getDescripcionServicios() {
+		return descripcionServicios;
+	}
+
+	public void setDescripcionServicios(String descripcionServicios) {
+		this.descripcionServicios = descripcionServicios;
+	}
+
+  public Emprendedor(String numld, String nombrePer, int telefono, String email) {
+    super(numld, nombrePer, telefono, email);
+    //Constructor con los atributos heredados de Persona.
+  }
+  
+  
 }
