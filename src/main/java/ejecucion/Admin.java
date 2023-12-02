@@ -39,8 +39,9 @@ public class Admin {
     
     //Presentar atributos de Feria
     public static void mostrarAtributosFeria(){
-        System.out.println("1. Nombre"+"\n2. Descripcion"+"\n3. Lugar"+"\n4. Fecha de inicio"
-        +"\n5. Fecha de fin"+"\n6. Horario"+"\n7. Cantidad de stand por seccion"+"\n8. Regresar");
+        System.out.println("---Edicion de Feria---"+"\n1. Nombre"+"\n2. Descripcion"+"\n3. Lugar"
+        +"\n4. Fecha de inicio"+"\n5. Fecha de fin"+"\n6. Horario"+"\n7. Cantidad de stand por seccion"
+        +"\n8. Regresar");
     }
 
     public static void main(String[] args) {
@@ -63,8 +64,8 @@ public class Admin {
                         System.out.println("Ingrese el codigo de una feria: ");
                         String cod1= sc.nextLine();
                         Feria feria1= Sistema.encontrarFeria(cod1);
-                        if(feria1!=null) {feria1.verInformacionFeria();
-                        }else System.out.println("Ese codigo de feria no existe o no hay ferias registradas");
+                        if(feria1!=null) feria1.verInformacionFeria();
+                        else System.out.println("Ese codigo de feria no existe o no hay ferias registradas");
                         break;
                         case 2: //Registrar feria
                         System.out.println("Ingrese nombre de la feria: ");
@@ -124,22 +125,22 @@ public class Admin {
                                     case 3: //Editar lugar de la feria
                                     System.out.println("Escriba un nuevo lugar: ");
                                     String l1= sc.nextLine();
-                                    feria3.setDescripcion(l1);
+                                    feria3.setLugar(l1);
                                     break;
                                     case 4: //Editar fecha de inicio
                                     System.out.println("Escriba una nueva fecha de inicio(Ej:09/12/23): ");
                                     String fi1= sc.nextLine();
-                                    feria3.setDescripcion(fi1);
+                                    feria3.setFechaI(fi1);
                                     break;
                                     case 5:
                                     System.out.println("Escriba una nueva fecha de fin(Ej:09/12/23): ");
                                     String ff1= sc.nextLine();
-                                    feria3.setDescripcion(ff1);    
+                                    feria3.setFechaF(ff1);    
                                     break;
                                     case 6:
                                     System.out.println("Escriba un nuevo horario: ");
                                     String h1= sc.nextLine();
-                                    feria3.setDescripcion(h1);    
+                                    feria3.setHorario(h1);    
                                     break;
                                     case 7:
                                     System.out.println("Escriba la cantidad de stand para cada seccion(Ej:2/4/3/7) respectivamente: ");
@@ -180,39 +181,50 @@ public class Admin {
                 }
                 break;
                 case 4: //Administracion Stand
+                sc.nextLine();
                 int op4=0;
                 while(op4!=3){
                     System.out.println("Ingrese el codigo de una feria: ");
                     String cod= sc.nextLine();
                     Feria feria= Sistema.encontrarFeria(cod);
-                    if(feria!=null){
-                    feria.mostrarStands();
-                    System.out.println("");
-                    mostrarMenuStand();
-                    System.out.println("Elija una opcion: ");
-                    op4=sc.nextInt();
-                    sc.nextLine();
-                    switch(op4){
-                        case 1: //Reservar stand
-                        System.out.println("Ingrese el codigo del stand(Ej:A2): "); 
-                        String cds= sc.nextLine();
-                        System.out.println("Ingrese numero de identifiacion del emprendedor o auspiciante: "); 
-                        String cp= sc.nextLine();
-                        System.out.println("Ingrese la fecha de hoy dia(Ej:Ej:09/12/23): ");
-                        String fah= sc.nextLine();
-                        if(feria.encontrarStand(cds)!=null) feria.reservarStand(cds, cp, fah);
-                        else System.out.println("El codigo de stand no existe");
-                        break;
-                        case 2: //Mostrar informacion del stand
-                        System.out.println("Ingrese el codigo del stand(Ej:A2): ");
-                        String cds1= sc.nextLine();
-                        Stand ss= feria.encontrarStand(cds1);
-                        if(ss!=null) ss.verInformacionStand();
-                        else System.out.println("El codigo de stand no existe");
-                        break;
+                    String pr="Continue";
+                    while(pr!="exit"){
+                        if(feria!=null){
+                        feria.mostrarStands();
+                        System.out.println("");
+                        mostrarMenuStand();
+                        System.out.println("Elija una opcion: ");
+                        op4=sc.nextInt();
+                        sc.nextLine();
+                        switch(op4){
+                            case 1: //Reservar stand
+                            System.out.println("Ingrese un codigo del stand(Ej:A2): "); 
+                            String cds= sc.nextLine();
+                            System.out.println("Ingrese numero de identifiacion del emprendedor o auspiciante: "); 
+                            String cp= sc.nextLine();
+                            System.out.println("Ingrese la fecha de hoy dia(Ej:Ej:09/12/23): ");
+                            String fah= sc.nextLine();
+                            if(feria.encontrarStand(cds)!=null) feria.reservarStand(cds, cp, fah);
+                            else System.out.println("El codigo de stand no existe");
+                            break;
+                            case 2: //Mostrar informacion del stand
+                            System.out.println("Ingrese el codigo del stand(Ej:A2): ");
+                            String cds1= sc.nextLine();
+                            Stand ss= feria.encontrarStand(cds1);
+                            if(ss!=null) ss.verInformacionStand();
+                            else System.out.println("El codigo de stand no existe");
+                            break;
+                            case 3: 
+                            pr="exit";
+                            break;
+                        }
+                        }else {System.out.println("El codigo de feria no existe"); pr="exit"; op4=3;}
+                        if(pr!="exit" && feria!=null){
+                            System.out.println("Deseas seguir haciendo acciones en la misma feria?(si/no): ");
+                            pr= sc.nextLine();
+                            if(pr.equals("no")) pr="exit"; 
+                        }
                     }
-                    
-                    }else System.out.println("Ese codigo de feria no existe");
                 }
                 break;
             }
