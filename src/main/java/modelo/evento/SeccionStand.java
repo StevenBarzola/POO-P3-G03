@@ -31,5 +31,5 @@ public class SeccionStand {
         }
     }
     
-  
+   
 }
