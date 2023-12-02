@@ -11,6 +11,38 @@ public class Persona {
     protected String sitioWeb;
     protected ArrayList<RedSocial> redesSociales;
 
+    public String getNumld() {
+        return numld;
+    }
+
+    public String getNombrePer() {
+        return nombrePer;
+    }
+
+    public String getNomPerRes() {
+        return nomPerRes;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public String getSitioWeb() {
+        return sitioWeb;
+    }
+
+    public ArrayList<RedSocial> getRedesSociales() {
+        return redesSociales;
+    }
+    
   public void setNomPerRes(String nomPerRes) {
     this.nomPerRes = nomPerRes;
   }
