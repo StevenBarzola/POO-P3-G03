@@ -11,12 +11,12 @@ public class Persona {
     protected String sitioWeb;
     protected ArrayList<RedSocial> redesSociales;
 
-    public String getNumld() {
-        return numld;
+    public String getNumId() {
+        return numId;
     }
 
-    public String getNombrePer() {
-        return nombrePer;
+    public String getNombrePerRes() {
+        return nomPerRes;
     }
 
     public String getNomPerRes() {
@@ -63,13 +63,6 @@ public class Persona {
       return nombre;
   }
   
-  public String getNomPerRes(){
-      return nomPerRes;
-  }
-  
-  public String getNumId(){
-      return numId;
-  }
   
   public Persona(String numId, String nombre, int telefono, String email) {
     //Se crea un constructor para la clase Persona con las variables que se consideran más importantes. 
