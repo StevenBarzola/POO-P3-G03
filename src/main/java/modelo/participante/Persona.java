@@ -1,59 +1,78 @@
 package modelo.participante;
 import java.util.ArrayList;
 
-public abstract class Persona {
-    protected String numId;
-    protected String nombre;
-    protected String nombrePerRes;
-    protected String telefono;
+public class Persona {
+    protected String numld;
+    protected String nombrePer;
+    protected String nomPerRes;
+    protected int telefono;
     protected String email;
     protected String direccion;
     protected String sitioWeb;
     protected ArrayList<RedSocial> redesSociales;
-    
-    //Constructor 
-    public Persona(String ni, String n, String npr, String t, String e, String d, String sw){
-        numId=ni;
-        nombre=n;
-        nombrePerRes=npr;
-        telefono=t;
-        email=e;
-        direccion=d;
-        sitioWeb=sw;
-        redesSociales=new ArrayList<>();
+
+    public String getNumld() {
+        return numld;
     }
-    
-    //Getters
-    public String getNumId(){
-        return numId;
+
+    public String getNombrePer() {
+        return nombrePer;
     }
-    
-    public String getNombre(){
-        return nombre;
+
+    public String getNomPerRes() {
+        return nomPerRes;
     }
-    
-    public String getNombrePerRes(){
-        return nombrePerRes;
-    }
-    
-    public String getTelefono(){
+
+    public int getTelefono() {
         return telefono;
     }
-    
-    public String getEmail(){
+
+    public String getEmail() {
         return email;
     }
-    
-    public String getDireccion(){
+
+    public String getDireccion() {
         return direccion;
     }
-    
-    public String getSitioWeb(){
+
+    public String getSitioWeb() {
         return sitioWeb;
     }
-    
-    public ArrayList<RedSocial> getRedesSociales(){
+
+    public ArrayList<RedSocial> getRedesSociales() {
         return redesSociales;
     }
     
+  public void setNomPerRes(String nomPerRes) {
+    this.nomPerRes = nomPerRes;
+  }
+
+  public void setDireccion(String direccion) {
+    this.direccion = direccion;
+  }
+
+  public void setSitioWeb(String sitioWeb) {
+    this.sitioWeb = sitioWeb;
+  }
+
+  public void setRedesSociales(ArrayList<RedSocial> redesSociales) {
+    this.redesSociales = redesSociales;
+  }
+  
+  public Persona(String numld, String nombrePer, int telefono, String email) {
+    //Se crea un constructor para la clase Persona con las variables que se consideran más importantes. 
+    this.numld=numld;
+    this.nombrePer=nombrePer;
+    this.telefono=telefono;
+    this.email=email;
+  }
+
+  public void setOtherParams(String nomPerRes, String direccion, String sitioWeb, ArrayList<RedSocial> redesSociales) {
+     //Se crea un método para la clase Persona con las variables que faltaban en el constructor anterior.
+    this.setNomPerRes(nomPerRes);
+    this.setDireccion(direccion);
+    this.setSitioWeb(sitioWeb);
+    this.setRedesSociales(redesSociales);
+    
+  }
 }
