@@ -125,7 +125,7 @@ public class Feria {
                     Emprendedor e=(Emprendedor)s.getPersona();
                     String nomPerRes= e.getNomPerRes();
                     String nombre= e.getNombre();
-                    String descrip= e.getDesServicio();
+                    String descrip= e.getDescripcionServicios();
                     String sec= "#";
                     char l=s.getCodigoSt().charAt(0);
                     if(l=='A'){sec+="1";}
