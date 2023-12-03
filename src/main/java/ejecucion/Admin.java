@@ -54,18 +54,14 @@ public class Admin {
     //Presentar atrivutos de Auspiciante
      public static void mostrarAtributosAuspiciante(){
         System.out.println("---Edicion de Aupiciante---"+"\n1. Nombre"+"\n2. Nombre persona responsable"+"\n3. Telefono"
-        +"\n4. Email"+"\n5. Direccion"+"\n6. Sitio web"+"\n7. Sectores cubiertos"
+        +"\n4. Email"+"\n5. Direccion"+"\n6. Sitio web"+"\n7. Sector cubierto"
         +"\n8. Redes Sociales"+"\n9. Regresar");
     }
     
 
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        Scanner sc2 = new Scanner(System.in);
-        Scanner sc3 = new Scanner(System.in);
-        Scanner sc4 = new Scanner(System.in);
-        Scanner sc5 = new Scanner(System.in);
-        Scanner sc6 = new Scanner(System.in);
+
         int op=0;
         while(op!=5){
             mostrarMenuPrincipal();
@@ -290,36 +286,37 @@ public class Admin {
                     mostrarMenuAuspiciante();
                     System.out.println("Elija una opcion: ");
                     op3=sc.nextInt();
+                    sc.nextLine();
                     switch (op3) {
                         case 1 -> { // 3.1 Registrar Auspiciante
                             Auspiciante.mostrarAuspiciante();
                             System.out.println("Número de cedula o RUC: ");
-                            String cedula = sc2.nextLine();
+                            String cedula = sc.nextLine();
                             boolean validar= Auspiciante.verificarCedula(cedula);
                             while(validar==true){
                                 validar = false;
                                 System.out.println("Ya existe esta cedula.");
                                 System.out.println("Número de cedula o RUC: ");
-                                cedula = sc2.nextLine();
+                                cedula = sc.nextLine();
                                 validar = Auspiciante.verificarCedula(cedula);
                             }
                             System.out.println("Nombre: ");
-                            String nombre = sc2.nextLine();
+                            String nombre = sc.nextLine();
                             System.out.println("Nombre persona responsable: ");
-                            String nomper = sc2.nextLine();
+                            String nomper = sc.nextLine();
                             System.out.println("Teléfono: ");
-                            int tele = sc2.nextInt();
+                            int tele = sc.nextInt();
                             System.out.println("Email: ");
                             sc.nextLine();
-                            String email = sc3.nextLine();
+                            String email = sc.nextLine();
                             System.out.println("Dirección (opcional): ");
-                            String dir = sc3.nextLine();
+                            String dir = sc.nextLine();
                             System.out.println("Sitio web (opcional): ");
-                            String sw = sc3.nextLine();
+                            String sw = sc.nextLine();
                             SectorCubierto sec = null;
                             while (sec == null){
-                                System.out.println("Sectores cubiertos: (ALIMENTACION, EDUCACION, SALUD, VESTIMENTA) ");
-                                String seCu = sc4.nextLine();   
+                                System.out.println("Sector cubierto(Escriba solo una): (ALIMENTACION,EDUCACION,SALUD,VESTIMENTA)");
+                                String seCu = sc.nextLine();   
                                 switch (seCu){
                                    case "ALIMENTACION" -> {
                                        sec = SectorCubierto.ALIMENTACION;
@@ -340,11 +337,12 @@ public class Admin {
                                 }
                             }
                             RedSocial.mostrarMenu();
-                            int elegir = sc4.nextInt();
+                            int elegir = sc.nextInt();
+                            sc.nextLine();
                             ArrayList<RedSocial> redSocial = new ArrayList<>();
                             while (elegir!=8){
                                 System.out.println("Digite su usuario: ");
-                                String usuario = sc5.nextLine();
+                                String usuario = sc.nextLine();
                                 switch(elegir){ 
                                     case 1 -> {
                                         RedSocial rs1 = new RedSocial(AppSocial.TWITTER, usuario);
@@ -386,164 +384,176 @@ public class Admin {
                                     }
                                 } 
                                 RedSocial.mostrarMenu();
-                                elegir = sc4.nextInt();
+                                elegir = sc.nextInt();
+                                sc.nextLine();
                             }
                             Auspiciante a = new Auspiciante(cedula, nombre, nomper, tele, email, dir, sw, redSocial, sec);
-                            System.out.println("Cuenta creada con éxito.");
+                            Sistema.auspiciantes.add(a);
+                            System.out.println("Cuenta creada y auspiciante registrado con éxito.");
                             break;
                         }
                         case 2 -> { // 3.2 Editar Auspiciante
                             System.out.println("Digite número de cedula o RUC:");
-                            String cedula = sc5.nextLine();
-                            Auspiciante auspiEditar = Auspiciante.encontrarAuspiciante(cedula);
-                            auspiEditar.toString();
-                            int campoEditar = 0;
-                            while (campoEditar!=9){
-                                mostrarAtributosAuspiciante();
-                                campoEditar = sc5.nextInt();
-                                if (campoEditar>0 && campoEditar<8){
-                                    switch(campoEditar){
-                                        case 1 -> {
-                                            System.out.println("Escriba un nuevo nombre: ");
-                                            String nombre = sc6.nextLine();
-                                            auspiEditar.editarNom(nombre);
-                                            break;
-                                        }
-                                        case 2 -> {
-                                            System.out.println("Escriba un nuevo nombre de persona responsable: ");
-                                            String nomper = sc6.nextLine();
-                                            auspiEditar.editarNomResp(nomper);
-                                            break;
-                                        }
-                                        case 3 -> {
-                                            System.out.println("Escriba un nuevo numero de telefono: ");
-                                            int tele = sc6.nextInt();
-                                            auspiEditar.editarTelef(tele);
-                                            break;
-                                        }
-                                        case 4 -> {
-                                            System.out.println("Escriba un nuevo email: ");
-                                            String email = sc6.nextLine();
-                                            auspiEditar.editarNom(email);
-                                            break;
-                                        }
-                                        case 5 -> {
-                                            System.out.println("Escriba una nueva direccion: ");
-                                            String dir = sc6.nextLine();
-                                            auspiEditar.editarDireccion(dir);
-                                            break;
-                                        }
-                                        case 6 -> {
-                                            System.out.println("Escriba un nuevo sitio web: ");
-                                            String sw = sc6.nextLine();
-                                            auspiEditar.editarSitioWeb(sw);
-                                            break;
-                                        }
-                                        case 7 -> {
-                                            SectorCubierto sec = null;
-                                            while (sec == null){
-                                                System.out.println("Sectores cubiertos: (ALIMENTACION, EDUCACION, SALUD, VESTIMENTA) ");
-                                                String seCu = sc6.nextLine();
-                                                switch (seCu){
-                                                    case "ALIMENTACION" -> {
-                                                        sec = SectorCubierto.ALIMENTACION;
-                                                        auspiEditar.editarSectorCubierto(sec);
-                                                        break;
-                                                    }    
-                                                    case "EDUCACION" -> {
-                                                        sec = SectorCubierto.EDUCACION;
-                                                        auspiEditar.editarSectorCubierto(sec);
-                                                        break;
-                                                    }
-                                                    case "SALUD" -> {
-                                                        sec = SectorCubierto.SALUD;
-                                                        auspiEditar.editarSectorCubierto(sec);
-                                                        break;
-                                                    }
-                                                    case "VESTIMENTA" -> {
-                                                        sec = SectorCubierto.VESTIMENTA;
-                                                        auspiEditar.editarSectorCubierto(sec);
-                                                        break;
-                                                    }
+                            String cedula = sc.nextLine();
+                            Persona perEdit = Sistema.encontrarPersona(cedula);
+                            if(perEdit!=null && perEdit instanceof Auspiciante){
+                                Auspiciante auspiEditar=(Auspiciante)perEdit;
+                                auspiEditar.toString();
+                                int campoEditar = 0;
+                                while (campoEditar!=9){
+                                    mostrarAtributosAuspiciante();
+                                    campoEditar = sc.nextInt();
+                                    sc.nextLine();
+                                    if (campoEditar>0 && campoEditar<8){
+                                        switch(campoEditar){
+                                            case 1 -> {
+                                                System.out.println("Escriba un nuevo nombre: ");
+                                                String nombre = sc.nextLine();
+                                                auspiEditar.editarNom(nombre);
+                                                break;
+                                            }
+                                            case 2 -> {
+                                                System.out.println("Escriba un nuevo nombre de persona responsable: ");
+                                                String nomper = sc.nextLine();
+                                                auspiEditar.editarNomResp(nomper);
+                                                break;
+                                            }
+                                            case 3 -> {
+                                                System.out.println("Escriba un nuevo numero de telefono: ");
+                                                int tele = sc.nextInt();
+                                                auspiEditar.editarTelef(tele);
+                                                sc.nextLine();
+                                                break;
+                                            }
+                                            case 4 -> {
+                                                System.out.println("Escriba un nuevo email: ");
+                                                String email = sc.nextLine();
+                                                auspiEditar.editarNom(email);
+                                                break;
+                                            }
+                                            case 5 -> {
+                                                System.out.println("Escriba una nueva direccion: ");
+                                                String dir = sc.nextLine();
+                                                auspiEditar.editarDireccion(dir);
+                                                break;
+                                            }
+                                            case 6 -> {
+                                                System.out.println("Escriba un nuevo sitio web: ");
+                                                String sw = sc.nextLine();
+                                                auspiEditar.editarSitioWeb(sw);
+                                                break;
+                                            }
+                                            case 7 -> {
+                                                SectorCubierto sec = null;
+                                                while (sec == null){
+                                                    System.out.println("Sector cubierto(Escriba solo una): (ALIMENTACION,EDUCACION,SALUD,VESTIMENTA)");
+                                                    String seCu = sc.nextLine();
+                                                    switch (seCu){
+                                                        case "ALIMENTACION" -> {
+                                                            sec = SectorCubierto.ALIMENTACION;
+                                                            auspiEditar.editarSectorCubierto(sec);
+                                                            break;
+                                                        }    
+                                                        case "EDUCACION" -> {
+                                                            sec = SectorCubierto.EDUCACION;
+                                                            auspiEditar.editarSectorCubierto(sec);
+                                                            break;
                                                         }
-                                                    {
-                                                        System.out.println("No está la opción");
+                                                        case "SALUD" -> {
+                                                            sec = SectorCubierto.SALUD;
+                                                            auspiEditar.editarSectorCubierto(sec);
+                                                            break;
+                                                        }
+                                                        case "VESTIMENTA" -> {
+                                                            sec = SectorCubierto.VESTIMENTA;
+                                                            auspiEditar.editarSectorCubierto(sec);
+                                                            break;
+                                                        }
+                                                    }
+                                                        {
+                                                            System.out.println("No está la opción");
 
-                                                    }
-                                            }
-                                        }
-                                        case 8 -> {
-                                            RedSocial.mostrarMenu();
-                                            int elegir = sc6.nextInt();
-                                            ArrayList<RedSocial> redSocial = auspiEditar.getRedesSociales();
-                                            while (elegir!=8){
-                                                System.out.println("Digite su usuario: ");
-                                                String usuario = sc6.nextLine();
-                                                switch(elegir){ 
-                                                    case 1 -> {
-                                                        RedSocial rs1 = new RedSocial(AppSocial.TWITTER, usuario);
-                                                        redSocial.add(rs1);
-                                                        break;
-                                                    }
-                                                    case 2 -> {
-                                                        RedSocial rs2 = new RedSocial(AppSocial.FACEBOOK, usuario);
-                                                        redSocial.add(rs2);
-                                                        break;
-                                                    }
-                                                    case 3 -> {
-                                                        RedSocial rs3 = new RedSocial(AppSocial.INSTAGRAM, usuario);
-                                                        redSocial.add(rs3);
-                                                        break;
-                                                    }
-                                                    case 4 -> {
-                                                        RedSocial rs4 = new RedSocial(AppSocial.YOUTUBE, usuario);
-                                                        redSocial.add(rs4);
-                                                        break;
-                                                    }
-                                                    case 5 -> {
-                                                        RedSocial rs5 = new RedSocial(AppSocial.TIKTOK, usuario);
-                                                        redSocial.add(rs5);
-                                                        break;
-                                                    }
-                                                    case 6 -> {
-                                                        RedSocial rs6 = new RedSocial(AppSocial.LINKEDIN, usuario);
-                                                        redSocial.add(rs6);
-                                                        break;
-                                                    }
-                                                    case 7 -> {
-                                                        RedSocial rs7 = new RedSocial(AppSocial.PINTEREST, usuario);
-                                                        redSocial.add(rs7);
-                                                        break;
-                                                    }
-                                                    case 8 -> {
-                                                        break;
-                                                    }
-                                                }  
-                                                RedSocial.mostrarMenu();
-                                                elegir = sc6.nextInt();
-                                            }
                                                         }
-                                                    }   
-                                                } else{
-                                                    System.out.println("Número invalido: ");
-                                                    }    
+                                                }
+                                            }
+                                            case 8 -> {
+                                                RedSocial.mostrarMenu();
+                                                int elegir = sc.nextInt();
+                                                sc.nextLine();
+                                                ArrayList<RedSocial> redSocial = auspiEditar.getRedesSociales();
+                                                while (elegir!=8){
+                                                    System.out.println("Digite su usuario: ");
+                                                    String usuario = sc.nextLine();
+                                                    switch(elegir){ 
+                                                        case 1 -> {
+                                                            RedSocial rs1 = new RedSocial(AppSocial.TWITTER, usuario);
+                                                            redSocial.add(rs1);
+                                                            break;
+                                                        }
+                                                        case 2 -> {
+                                                            RedSocial rs2 = new RedSocial(AppSocial.FACEBOOK, usuario);
+                                                            redSocial.add(rs2);
+                                                            break;
+                                                        }
+                                                        case 3 -> {
+                                                            RedSocial rs3 = new RedSocial(AppSocial.INSTAGRAM, usuario);
+                                                            redSocial.add(rs3);
+                                                            break;
+                                                        }
+                                                        case 4 -> {
+                                                            RedSocial rs4 = new RedSocial(AppSocial.YOUTUBE, usuario);
+                                                            redSocial.add(rs4);
+                                                            break;
+                                                        }
+                                                        case 5 -> {
+                                                            RedSocial rs5 = new RedSocial(AppSocial.TIKTOK, usuario);
+                                                            redSocial.add(rs5);
+                                                            break;
+                                                        }
+                                                        case 6 -> {
+                                                            RedSocial rs6 = new RedSocial(AppSocial.LINKEDIN, usuario);
+                                                            redSocial.add(rs6);
+                                                            break;
+                                                        }
+                                                        case 7 -> {
+                                                            RedSocial rs7 = new RedSocial(AppSocial.PINTEREST, usuario);
+                                                            redSocial.add(rs7);
+                                                            break;
+                                                        }
+                                                        case 8 -> {
+                                                            break;
+                                                        }
+                                                    }  
+                                                    RedSocial.mostrarMenu();
+                                                    elegir = sc.nextInt();
+                                                    sc.nextLine();
+                                                    }
+                                                            }
+                                                        }   
+                                                    } else{
+                                                        System.out.println("");
+                                                        }    
                                                } 
+                                            }else System.out.println("Numero invalido");
                                             break; 
                                             } 
                         case 3 -> { // 3.3 Asignar Auspiciante en Feria
                             System.out.println("Ingrese codigo de la feria: ");
-                            String codigo = sc3.nextLine();
+                            String codigo = sc.nextLine();
                             System.out.println("Ingrese número de cedula o RUC: ");
-                            String cedu = sc3.nextLine();
+                            String cedu = sc.nextLine();
+                            Feria feria= Sistema.encontrarFeria(codigo);
+                            Persona perss = Sistema.encontrarPersona(cedu);
                             boolean val1 = AuspicianteEnFeria.verificarAuspicianteFeria(codigo, cedu);
-                            if (val1){
-                                Auspiciante auspi = Auspiciante.encontrarAuspiciante(cedu);
+                            if (val1 && perss instanceof Auspiciante){
+                                Auspiciante auspi=(Auspiciante)perss;
                                 System.out.println("Descripción de lo que cubre el auspicio: ");
-                                String descri = sc3.nextLine();
+                                String descri = sc.nextLine();
                                 System.out.println("Incluye stand en la feria: (Si/No) ");
-                                String incluye = sc3.nextLine();
+                                String incluye = sc.nextLine();
                                 boolean incluirStand = "Si".equals(incluye);
                                 AuspicianteEnFeria af = new AuspicianteEnFeria(auspi, descri, incluirStand);
+                                feria.getAuspiciantesEnFeria().add(af);
                                 System.out.println("Auspiciante agregado a la feria.");
                             } else {
                                 System.out.println("Datos invalidos. ");

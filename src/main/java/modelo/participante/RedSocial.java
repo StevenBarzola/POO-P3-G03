@@ -26,9 +26,7 @@ public class RedSocial {
     public void setCuenta(String c){
         cuenta=c;
     } 
-    public ArrayList<RedSocial> getRedSocial(){
-        return redSocial;
-    }
+   
     
      //mostar menu de redes sociales
     public static void mostrarMenu(){

@@ -3,7 +3,7 @@ import modelo.participante.*;
 import java.util.ArrayList;
 
 public class Sistema{
-  public static ArrayList<Feria> ferias=new ArrayList<>();
+  public static ArrayList<Feria> ferias =new ArrayList<>();
   public static ArrayList<Auspiciante> auspiciantes= new ArrayList<>();
   public static ArrayList<Emprendedor> emprendedores= new ArrayList<>();
   
@@ -30,14 +30,17 @@ public class Sistema{
   
   //Buscar persona por numero de identificacion
   public static Persona encontrarPersona(String c){
-      if(emprendedores.size()!=0 && auspiciantes.size()!=0){
+      if(emprendedores.size()!=0){
           for(Emprendedor e: emprendedores){
               if(e.getNumId().equals(c)) return e;
           }
+      }
+      if(auspiciantes.size()!=0){
           for(Auspiciante a: auspiciantes){
               if(a.getNumId().equals(c)) return a;
           }
-      } return null;
+      }
+      return null;
   }
   
   //Registra un emprendedor si no se encuentra allí.
@@ -51,7 +54,6 @@ public class Sistema{
     
      emp.setDescripcionServicios(descripcionServicios);
      emprendedores.add(emp);
-       
      }
  
   
