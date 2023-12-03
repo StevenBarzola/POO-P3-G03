@@ -43,16 +43,18 @@ public class Sistema{
   //Registra un emprendedor si no se encuentra allí.
   public static void registrarEmp(Persona p, String descripcionServicios) {
     Emprendedor emp=(Emprendedor)p;
-    for (Emprendedor e : Sistema.emprendedores) {
-      if ((e!=null) & (e.getNumId().equals(emp.getNumId()))) { 
-        System.out.println("El Emprendedor ya se encuentra registrado");
+    for (int e=0; e<Sistema.emprendedores.size(); e++) {
+      if (emprendedores.get(e).getNumId().equals(emp.getNumId())) { 
+        System.out.println("El Emprendedor ya se encontraba registrado");
+        e=emprendedores.size();
         }
-      }
-    
-     emp.setDescripcionServicios(descripcionServicios);
-     emprendedores.add(emp);
-       
+      else { 
+        emp.setDescripcionServicios(descripcionServicios);
+        emprendedores.add(emp);
+        }
+      
      }
+    }
  
   
   

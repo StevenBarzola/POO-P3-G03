@@ -51,6 +51,12 @@ public class Admin {
         +"\n8. Nombres en cada red social que maneja"+"\n9. Regresar");
     }
     
+    //Presentar redes sociales.
+    public static void mostrarRedesSociales(){
+        System.out.println("---Redes Sociales que se pueden registrar---"+"\n1. Twitter"+"\n2. Facebook"+"\n3. Instagram"
+        +"\n4. YouTube"+"\n5. TikTok"+"\n6. LinkedIn"+"\n7. Pinterest");
+    }
+    
 
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
@@ -200,9 +206,59 @@ public class Admin {
                         String nomPerRes= sc.nextLine();
                         System.out.println("Ingrese la descripción de los servicios que ofrece: ");
                         String descripcionServicios= sc.nextLine();
+                        
+                        -----------------------------------------------
+                        mostrarRedesSociales();
                         System.out.println("Ingrese los nombres en cada red social que maneja (separados por coma y sin espacios): ");
                         String rs= sc.nextLine();
                         String[] redesSociales=rs.split(",");   //REV ------------------------
+                        int op13=0;
+                            while(op13!=8){
+                                mostrarAtributosFeria();
+                                System.out.println("Elija una opcion a editar");
+                                op13= sc.nextInt();
+                                sc.nextLine();
+                                switch(op13){
+                                    case 1: //Editar nombre de la feria
+                                    System.out.println("Escriba un nuevo nombre: ");
+                                    String n1= sc.nextLine();
+                                    feria3.setNombre(n1);
+                                    break;
+                                    case 2: //Editar descripcion de la feria
+                                    System.out.println("Escriba una nueva descripcion: ");
+                                    String d1= sc.nextLine();
+                                    feria3.setDescripcion(d1);
+                                    break;
+                                    case 3: //Editar lugar de la feria
+                                    System.out.println("Escriba un nuevo lugar: ");
+                                    String l1= sc.nextLine();
+                                    feria3.setLugar(l1);
+                                    break;
+                                    case 4: //Editar fecha de inicio
+                                    System.out.println("Escriba una nueva fecha de inicio(Ej:09/12/23): ");
+                                    String fi1= sc.nextLine();
+                                    feria3.setFechaI(fi1);
+                                    break;
+                                    case 5:
+                                    System.out.println("Escriba una nueva fecha de fin(Ej:09/12/23): ");
+                                    String ff1= sc.nextLine();
+                                    feria3.setFechaF(ff1);    
+                                    break;
+                                    case 6:
+                                    System.out.println("Escriba un nuevo horario: ");
+                                    String h1= sc.nextLine();
+                                    feria3.setHorario(h1);    
+                                    break;
+                                    case 7:
+                                    System.out.println("Escriba la cantidad de stand para cada seccion(Ej:2/4/3/7) respectivamente: ");
+                                    String cs1= sc.nextLine();
+                                    String[] css= cs1.split("/");
+                                    feria3.AsignarSeccionesStand(Integer.parseInt(css[0]),Integer.parseInt(css[1]), 
+                                    Integer.parseInt(css[2]),Integer.parseInt(css[3]));
+                                    break;
+                                }
+                            }
+                        -------------------------------------------------
                         //Se crea un objeto Persona.
                         Persona p=new Persona(numId, nombrePer, telefono, email);
                         Sistema.registrarEmp(p, descripcionServicios);
