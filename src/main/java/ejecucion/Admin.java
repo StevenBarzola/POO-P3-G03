@@ -69,7 +69,16 @@ public class Admin {
 
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-
+        
+        //Datos cargados
+        //1 Feria
+        Sistema.registrarFeria("Feria local","10/10/23","15/10/23","Guayaquil","Se vende productos de todo tipo","8am a 6 pm",4,6,5,7);
+        //ArrayList<RedSocial> rsc= new ArrayList<>();
+        //Emprendedor emp1=new Emprendedor("098123456","Local Albita",09123567,"albi@gmail.com","Alba","29 y Portete","www.Emprendo.com",rsc,"Las mejores empanadas")
+        //Sistema.registrarEmp(emp1);
+        //1 Auspiciante
+        //Sistema.auspiciantes.add(new Auspiciante("097126345","Pepsi","Miguel",091234566,"pepsi@gmail.com","Entrada de la 8","www.pepsi.com",rsc,SectorCubierto.ALIMENTACION));
+        
         int op=0;
         while(op!=5){
             mostrarMenuPrincipal();
