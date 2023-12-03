@@ -224,40 +224,52 @@ public class Admin {
 
                             while (elegir1!=8){
                                 
-                                System.out.println("Digite su usuario: ");
-                                String usuario1 = sc.nextLine();
                                 switch(elegir1){ 
                                     case 1 -> {
+                                        System.out.println("Digite su usuario: ");
+                                        String usuario1 = sc.nextLine();
                                         RedSocial rs11 = new RedSocial(AppSocial.TWITTER, usuario1);
                                         redesSociales.add(rs11);
                                         break;
                                     }
                                     case 2 -> {
+                                        System.out.println("Digite su usuario: ");
+                                        String usuario1 = sc.nextLine();
                                         RedSocial rs21 = new RedSocial(AppSocial.FACEBOOK, usuario1);
                                         redesSociales.add(rs21);
                                         break;
                                     }
                                     case 3 -> {
+                                        System.out.println("Digite su usuario: ");
+                                        String usuario1 = sc.nextLine();
                                         RedSocial rs31 = new RedSocial(AppSocial.INSTAGRAM, usuario1);
                                         redesSociales.add(rs31);
                                         break;
                                     }
                                     case 4 -> {
+                                        System.out.println("Digite su usuario: ");
+                                        String usuario1 = sc.nextLine();
                                         RedSocial rs41 = new RedSocial(AppSocial.YOUTUBE, usuario1);
                                         redesSociales.add(rs41);
                                         break;
                                     }
                                     case 5 -> {
+                                        System.out.println("Digite su usuario: ");
+                                        String usuario1 = sc.nextLine();
                                         RedSocial rs51 = new RedSocial(AppSocial.TIKTOK, usuario1);
                                         redesSociales.add(rs51);
                                         break;
                                     }
                                     case 6 -> {
+                                        System.out.println("Digite su usuario: ");
+                                        String usuario1 = sc.nextLine();
                                         RedSocial rs61 = new RedSocial(AppSocial.LINKEDIN, usuario1);
                                         redesSociales.add(rs61);
                                         break;
                                     }
                                     case 7 -> {
+                                        System.out.println("Digite su usuario: ");
+                                        String usuario1 = sc.nextLine();
                                         RedSocial rs71 = new RedSocial(AppSocial.PINTEREST, usuario1);
                                         redesSociales.add(rs71);
                                         break;
@@ -330,42 +342,55 @@ public class Admin {
                                     RedSocial.mostrarMenu();
                                             int elegir2 = sc.nextInt();
                                             sc.nextLine();
-                                            ArrayList<RedSocial> redSocial2 = p1.getRedesSociales();
+                                            ArrayList<RedSocial> redSocial2 = e1.getRedesSociales();
                                             while (elegir2!=8){
-                                                System.out.println("Digite su usuario: ");
-                                                String usuario2 = sc.nextLine();
+                                                
                                                 switch(elegir2){ 
                                                     case 1 -> {
+                                                        System.out.println("Digite su usuario: ");
+                                                        String usuario2 = sc.nextLine();
                                                         RedSocial rs12 = new RedSocial(AppSocial.TWITTER, usuario2);
                                                         redSocial2.add(rs12);
                                                         break;
                                                     }
                                                     case 2 -> {
+                                                        System.out.println("Digite su usuario: ");
+                                                        String usuario2 = sc.nextLine();
                                                         RedSocial rs22 = new RedSocial(AppSocial.FACEBOOK, usuario2);
                                                         redSocial2.add(rs22);
                                                         break;
                                                     }
                                                     case 3 -> {
+                                                        System.out.println("Digite su usuario: ");
+                                                        String usuario2 = sc.nextLine();
                                                         RedSocial rs32 = new RedSocial(AppSocial.INSTAGRAM, usuario2);
                                                         redSocial2.add(rs32);
                                                         break;
                                                     }
                                                     case 4 -> {
+                                                        System.out.println("Digite su usuario: ");
+                                                        String usuario2 = sc.nextLine();
                                                         RedSocial rs42 = new RedSocial(AppSocial.YOUTUBE, usuario2);
                                                         redSocial2.add(rs42);
                                                         break;
                                                     }
                                                     case 5 -> {
+                                                        System.out.println("Digite su usuario: ");
+                                                        String usuario2 = sc.nextLine();
                                                         RedSocial rs52 = new RedSocial(AppSocial.TIKTOK, usuario2);
                                                         redSocial2.add(rs52);
                                                         break;
                                                     }
                                                     case 6 -> {
+                                                        System.out.println("Digite su usuario: ");
+                                                        String usuario2 = sc.nextLine();
                                                         RedSocial rs62 = new RedSocial(AppSocial.LINKEDIN, usuario2);
                                                         redSocial2.add(rs62);
                                                         break;
                                                     }
                                                     case 7 -> {
+                                                        System.out.println("Digite su usuario: ");
+                                                        String usuario2 = sc.nextLine();
                                                         RedSocial rs72 = new RedSocial(AppSocial.PINTEREST, usuario2);
                                                         redSocial2.add(rs72);
                                                         break;
