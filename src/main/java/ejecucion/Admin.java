@@ -219,8 +219,9 @@ public class Admin {
          
                     
                          RedSocial.mostrarMenu();
-                            int elegir1 = sc.nextInt();
-                            ArrayList<RedSocial> redesSociales = new ArrayList<>();
+                         int elegir1 = sc.nextInt();
+                         sc.nextLine();
+                         ArrayList<RedSocial> redesSociales = new ArrayList<>();
 
                             while (elegir1!=8){
                                 
@@ -278,12 +279,12 @@ public class Admin {
                                 } 
                                 RedSocial.mostrarMenu();
                                 elegir1 = sc.nextInt();
+                                sc.nextLine();
                             }
                             
                             //Se crea un objeto Persona.
                         Persona p=new Emprendedor(numId, nombrePer, telefono, email, nomPerRes, direccion, sitioWeb, redesSociales, descripcionServicios);
                         Sistema.registrarEmp(p);
-                        sc.nextLine();
                         break;
                             
                          case 2: //Editar emprendedor
