@@ -1,7 +1,7 @@
 package ejecucion;
 import modelo.evento.*;
 import modelo.participante.*;
-import java.util.Scanner;
+import java.util.*;
 
 public class Admin {
     
@@ -34,7 +34,7 @@ public class Admin {
     //Presentar menu stand
     public static void mostrarMenuStand(){
         System.out.println("---Administracion de Stands---"+"\n1. Reservar un stand"
-        +"\n2. Mostrar informacion del stand"+"\n3. Regresar");
+        +"\n2. Mostrar informacion del stand"+"\n3. Elegir otra feria"+"\n4. Regresar");
     }
     
     //Presentar atributos de Feria
@@ -51,15 +51,29 @@ public class Admin {
         +"\n8. Nombres en cada red social que maneja"+"\n9. Regresar");
     }
     
+
     //Presentar redes sociales.
     public static void mostrarRedesSociales(){
         System.out.println("---Redes Sociales que se pueden registrar---"+"\n1. Twitter"+"\n2. Facebook"+"\n3. Instagram"
         +"\n4. YouTube"+"\n5. TikTok"+"\n6. LinkedIn"+"\n7. Pinterest");
+}
+  
+    //Presentar atributos de Auspiciante.
+     public static void mostrarAtributosAuspiciante(){
+        System.out.println("---Edicion de Aupiciante---"+"\n1. Nombre"+"\n2. Nombre persona responsable"+"\n3. Telefono"
+        +"\n4. Email"+"\n5. Direccion"+"\n6. Sitio web"+"\n7. Sectores cubiertos"
+        +"\n8. Redes Sociales"+"\n9. Regresar");
+
     }
     
 
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
+        Scanner sc2 = new Scanner(System.in);
+        Scanner sc3 = new Scanner(System.in);
+        Scanner sc4 = new Scanner(System.in);
+        Scanner sc5 = new Scanner(System.in);
+        Scanner sc6 = new Scanner(System.in);
         int op=0;
         while(op!=5){
             mostrarMenuPrincipal();
@@ -113,12 +127,13 @@ public class Admin {
                         Feria feria3= Sistema.encontrarFeria(cod3);
                         String[] hor= fh.split("/");
                         String[] horf= feria3.getFechaI().split("/");
-                        if(feria3!=null && ((Integer.parseInt(hor[2])<Integer.parseInt(horf[2]))
-                        || (Integer.parseInt(hor[2])==Integer.parseInt(horf[2]) 
-                        && Integer.parseInt(hor[1])<Integer.parseInt(horf[1]))||
-                        (Integer.parseInt(hor[2])==Integer.parseInt(horf[2]) &&
-                        Integer.parseInt(hor[1])==Integer.parseInt(horf[1])&&
-                        Integer.parseInt(hor[0])<Integer.parseInt(horf[0])))){ 
+                        if(feria3!=null){
+                            if(((Integer.parseInt(hor[2])<Integer.parseInt(horf[2]))
+                            || (Integer.parseInt(hor[2])==Integer.parseInt(horf[2]) 
+                            && Integer.parseInt(hor[1])<Integer.parseInt(horf[1]))||
+                            (Integer.parseInt(hor[2])==Integer.parseInt(horf[2]) &&
+                            Integer.parseInt(hor[1])==Integer.parseInt(horf[1])&&
+                            Integer.parseInt(hor[0])<Integer.parseInt(horf[0])))){
                             int op13=0;
                             while(op13!=8){
                                 mostrarAtributosFeria();
@@ -165,7 +180,8 @@ public class Admin {
                                     break;
                                 }
                             }
-                        }else System.out.println("Ese codigo de feria no existe o ya es muy tarde para poder editarlo");
+                            }else System.out.println("Ya es muy tarde para poder editarlo");
+                        }else System.out.println("Ese codigo de feria no existe");
                         break;
                         case 4: //Consultar emprendedores en feria
                         System.out.println("Ingrese el codigo de una feria: ");
@@ -185,8 +201,6 @@ public class Admin {
                     System.out.println("Elija una opcion: ");
                     op2=sc.nextInt();  
                     sc.nextLine();
-                    
-                    
                     switch(op2){
                         case 1: //Registrar emprendedor
                         System.out.println("Ingrese el número de cédula o RUC: ");
@@ -285,7 +299,7 @@ public class Admin {
                                     e1.setNomPerRes(nombre1);
                                     break;
                                     case 2: //Editar telefono
-                                    System.out.println("Escriba un nuevo telefono: ");
+                                    System.out.println("Escriba un nuevo numero de telefono: ");
                                     int telefono1=sc.nextInt(); 
                                     sc.nextLine();
                                     e1.setTelefono(telefono1);
@@ -319,7 +333,7 @@ public class Admin {
                                     System.out.println("Escriba los nuevos nombres en cada red social que maneja: ");
                                     String rs1= sc.nextLine();
                                     String[] redesSociales1=rs1.split(",");   //REV ------------------------
-                                    e1.setRedesSociales(redesSociales1);
+                                    //e1.setRedesSociales(redesSociales1);
                                     break;
                                 }
                             }
@@ -333,13 +347,274 @@ public class Admin {
                 while(op3!=4){
                     mostrarMenuAuspiciante();
                     System.out.println("Elija una opcion: ");
-                    op3=sc.nextInt(); 
+                    op3=sc.nextInt();
+                    switch (op3) {
+                        case 1 -> { // 3.1 Registrar Auspiciante
+                            Auspiciante.mostrarAuspiciante();
+                            System.out.println("Número de cedula o RUC: ");
+                            String cedula = sc2.nextLine();
+                            boolean validar= Auspiciante.verificarCedula(cedula);
+                            while(validar==true){
+                                validar = false;
+                                System.out.println("Ya existe esta cedula.");
+                                System.out.println("Número de cedula o RUC: ");
+                                cedula = sc2.nextLine();
+                                validar = Auspiciante.verificarCedula(cedula);
+                            }
+                            System.out.println("Nombre: ");
+                            String nombre = sc2.nextLine();
+                            System.out.println("Nombre persona responsable: ");
+                            String nomper = sc2.nextLine();
+                            System.out.println("Teléfono: ");
+                            int tele = sc2.nextInt();
+                            System.out.println("Email: ");
+                            sc.nextLine();
+                            String email = sc3.nextLine();
+                            System.out.println("Dirección (opcional): ");
+                            String dir = sc3.nextLine();
+                            System.out.println("Sitio web (opcional): ");
+                            String sw = sc3.nextLine();
+                            SectorCubierto sec = null;
+                            while (sec == null){
+                                System.out.println("Sectores cubiertos: (ALIMENTACION, EDUCACION, SALUD, VESTIMENTA) ");
+                                String seCu = sc4.nextLine();   
+                                switch (seCu){
+                                   case "ALIMENTACION" -> {
+                                       sec = SectorCubierto.ALIMENTACION;
+                                       break;
+                                   }    
+                                   case "EDUCACION" -> {
+                                       sec = SectorCubierto.EDUCACION;
+                                       break;
+                                   }
+                                   case "SALUD" -> {
+                                       sec = SectorCubierto.SALUD;
+                                       break;
+                                   }
+                                   case "VESTIMENTA" -> {
+                                       sec = SectorCubierto.VESTIMENTA;
+                                       break;
+                                   }
+                                }
+                            }
+                            RedSocial.mostrarMenu();
+                            int elegir = sc4.nextInt();
+                            ArrayList<RedSocial> redSocial = new ArrayList<>();
+                            while (elegir!=8){
+                                System.out.println("Digite su usuario: ");
+                                String usuario = sc5.nextLine();
+                                switch(elegir){ 
+                                    case 1 -> {
+                                        RedSocial rs1 = new RedSocial(AppSocial.TWITTER, usuario);
+                                        redSocial.add(rs1);
+                                        break;
+                                    }
+                                    case 2 -> {
+                                        RedSocial rs2 = new RedSocial(AppSocial.FACEBOOK, usuario);
+                                        redSocial.add(rs2);
+                                        break;
+                                    }
+                                    case 3 -> {
+                                        RedSocial rs3 = new RedSocial(AppSocial.INSTAGRAM, usuario);
+                                        redSocial.add(rs3);
+                                        break;
+                                    }
+                                    case 4 -> {
+                                        RedSocial rs4 = new RedSocial(AppSocial.YOUTUBE, usuario);
+                                        redSocial.add(rs4);
+                                        break;
+                                    }
+                                    case 5 -> {
+                                        RedSocial rs5 = new RedSocial(AppSocial.TIKTOK, usuario);
+                                        redSocial.add(rs5);
+                                        break;
+                                    }
+                                    case 6 -> {
+                                        RedSocial rs6 = new RedSocial(AppSocial.LINKEDIN, usuario);
+                                        redSocial.add(rs6);
+                                        break;
+                                    }
+                                    case 7 -> {
+                                        RedSocial rs7 = new RedSocial(AppSocial.PINTEREST, usuario);
+                                        redSocial.add(rs7);
+                                        break;
+                                    }
+                                    case 8 -> {
+                                        break;
+                                    }
+                                } 
+                                RedSocial.mostrarMenu();
+                                elegir = sc4.nextInt();
+                            }
+                            Auspiciante a = new Auspiciante(cedula, nombre, nomper, tele, email, dir, sw, redSocial, sec);
+                            System.out.println("Cuenta creada con éxito.");
+                            break;
+                        }
+                        case 2 -> { // 3.2 Editar Auspiciante
+                            System.out.println("Digite número de cedula o RUC:");
+                            String cedula = sc5.nextLine();
+                            Auspiciante auspiEditar = Auspiciante.encontrarAuspiciante(cedula);
+                            auspiEditar.toString();
+                            int campoEditar = 0;
+                            while (campoEditar!=9){
+                                mostrarAtributosAuspiciante();
+                                campoEditar = sc5.nextInt();
+                                if (campoEditar>0 && campoEditar<8){
+                                    switch(campoEditar){
+                                        case 1 -> {
+                                            System.out.println("Escriba un nuevo nombre: ");
+                                            String nombre = sc6.nextLine();
+                                            auspiEditar.editarNom(nombre);
+                                            break;
+                                        }
+                                        case 2 -> {
+                                            System.out.println("Escriba un nuevo nombre de persona responsable: ");
+                                            String nomper = sc6.nextLine();
+                                            auspiEditar.editarNomResp(nomper);
+                                            break;
+                                        }
+                                        case 3 -> {
+                                            System.out.println("Escriba un nuevo numero de telefono: ");
+                                            int tele = sc6.nextInt();
+                                            auspiEditar.editarTelef(tele);
+                                            break;
+                                        }
+                                        case 4 -> {
+                                            System.out.println("Escriba un nuevo email: ");
+                                            String email = sc6.nextLine();
+                                            auspiEditar.editarNom(email);
+                                            break;
+                                        }
+                                        case 5 -> {
+                                            System.out.println("Escriba una nueva direccion: ");
+                                            String dir = sc6.nextLine();
+                                            auspiEditar.editarDireccion(dir);
+                                            break;
+                                        }
+                                        case 6 -> {
+                                            System.out.println("Escriba un nuevo sitio web: ");
+                                            String sw = sc6.nextLine();
+                                            auspiEditar.editarSitioWeb(sw);
+                                            break;
+                                        }
+                                        case 7 -> {
+                                            SectorCubierto sec = null;
+                                            while (sec == null){
+                                                System.out.println("Sectores cubiertos: (ALIMENTACION, EDUCACION, SALUD, VESTIMENTA) ");
+                                                String seCu = sc6.nextLine();
+                                                switch (seCu){
+                                                    case "ALIMENTACION" -> {
+                                                        sec = SectorCubierto.ALIMENTACION;
+                                                        auspiEditar.editarSectorCubierto(sec);
+                                                        break;
+                                                    }    
+                                                    case "EDUCACION" -> {
+                                                        sec = SectorCubierto.EDUCACION;
+                                                        auspiEditar.editarSectorCubierto(sec);
+                                                        break;
+                                                    }
+                                                    case "SALUD" -> {
+                                                        sec = SectorCubierto.SALUD;
+                                                        auspiEditar.editarSectorCubierto(sec);
+                                                        break;
+                                                    }
+                                                    case "VESTIMENTA" -> {
+                                                        sec = SectorCubierto.VESTIMENTA;
+                                                        auspiEditar.editarSectorCubierto(sec);
+                                                        break;
+                                                    }
+                                                        }
+                                                    {
+                                                        System.out.println("No está la opción");
+
+                                                    }
+                                            }
+                                        }
+                                        case 8 -> {
+                                            RedSocial.mostrarMenu();
+                                            int elegir = sc6.nextInt();
+                                            ArrayList<RedSocial> redSocial = auspiEditar.getRedesSociales();
+                                            while (elegir!=8){
+                                                System.out.println("Digite su usuario: ");
+                                                String usuario = sc6.nextLine();
+                                                switch(elegir){ 
+                                                    case 1 -> {
+                                                        RedSocial rs1 = new RedSocial(AppSocial.TWITTER, usuario);
+                                                        redSocial.add(rs1);
+                                                        break;
+                                                    }
+                                                    case 2 -> {
+                                                        RedSocial rs2 = new RedSocial(AppSocial.FACEBOOK, usuario);
+                                                        redSocial.add(rs2);
+                                                        break;
+                                                    }
+                                                    case 3 -> {
+                                                        RedSocial rs3 = new RedSocial(AppSocial.INSTAGRAM, usuario);
+                                                        redSocial.add(rs3);
+                                                        break;
+                                                    }
+                                                    case 4 -> {
+                                                        RedSocial rs4 = new RedSocial(AppSocial.YOUTUBE, usuario);
+                                                        redSocial.add(rs4);
+                                                        break;
+                                                    }
+                                                    case 5 -> {
+                                                        RedSocial rs5 = new RedSocial(AppSocial.TIKTOK, usuario);
+                                                        redSocial.add(rs5);
+                                                        break;
+                                                    }
+                                                    case 6 -> {
+                                                        RedSocial rs6 = new RedSocial(AppSocial.LINKEDIN, usuario);
+                                                        redSocial.add(rs6);
+                                                        break;
+                                                    }
+                                                    case 7 -> {
+                                                        RedSocial rs7 = new RedSocial(AppSocial.PINTEREST, usuario);
+                                                        redSocial.add(rs7);
+                                                        break;
+                                                    }
+                                                    case 8 -> {
+                                                        break;
+                                                    }
+                                                }  
+                                                RedSocial.mostrarMenu();
+                                                elegir = sc6.nextInt();
+                                            }
+                                                        }
+                                                    }   
+                                                } else{
+                                                    System.out.println("Número invalido: ");
+                                                    }    
+                                               } 
+                                            break; 
+                                            } 
+                        case 3 -> { // 3.3 Asignar Auspiciante en Feria
+                            System.out.println("Ingrese codigo de la feria: ");
+                            String codigo = sc3.nextLine();
+                            System.out.println("Ingrese número de cedula o RUC: ");
+                            String cedu = sc3.nextLine();
+                            boolean val1 = AuspicianteEnFeria.verificarAuspicianteFeria(codigo, cedu);
+                            if (val1){
+                                Auspiciante auspi = Auspiciante.encontrarAuspiciante(cedu);
+                                System.out.println("Descripción de lo que cubre el auspicio: ");
+                                String descri = sc3.nextLine();
+                                System.out.println("Incluye stand en la feria: (Si/No) ");
+                                String incluye = sc3.nextLine();
+                                boolean incluirStand = "Si".equals(incluye);
+                                AuspicianteEnFeria af = new AuspicianteEnFeria(auspi, descri, incluirStand);
+                                System.out.println("Auspiciante agregado a la feria.");
+                            } else {
+                                System.out.println("Datos invalidos. ");
+                            }
+                        break;
+                        }
+                    }   
                 }
-                break;
-                case 4: //Administracion Stand
+                break; 
+                case 4:
+                int op4=0; 
                 sc.nextLine();
-                int op4=0;
-                while(op4!=3){
+                while(op4!=4){
                     System.out.println("Ingrese el codigo de una feria: ");
                     String cod= sc.nextLine();
                     Feria feria= Sistema.encontrarFeria(cod);
@@ -370,24 +645,25 @@ public class Admin {
                             if(ss!=null) ss.verInformacionStand();
                             else System.out.println("El codigo de stand no existe");
                             break;
-                            case 3: 
+                            case 3: //Elegir otra feria
+                            pr="exit";
+                            break;
+                            case 4:
                             pr="exit";
                             break;
                         }
                         }else {System.out.println("El codigo de feria no existe"); pr="exit"; op4=3;}
-                        if(pr!="exit" && feria!=null){
-                            System.out.println("Deseas seguir haciendo acciones en la misma feria?(si/no): ");
-                            pr= sc.nextLine();
-                            if(pr.equals("no")) pr="exit"; 
-                        }
                     }
                 }
                 break;
-            }
-        }
-        System.out.println("Gracias por usar nuestros servicios :)");
+                }
 
+            }
+            System.out.println("Gracias por usar nuestros servicios :)");
+        }
+    }
+    
        
         
-    }
-}
+    
+
