@@ -191,16 +191,18 @@ public class Feria {
                     s.setFechaAsig(fa);
                     s.setcodigoSt(s.getCodigoSt()+"*");
                     System.out.println("Stand asignado con exito");
-                }else System.out.println("Ya tiene un stand asignado");
+                }else System.out.println("Ya tiene un stand asignado, solo puede tener un stand");
             }else if(p!=null && p instanceof Auspiciante){
                 Auspiciante a= (Auspiciante)p;
                 AuspicianteEnFeria anf= encontrarAuspicianteEnFeria(a);
                 cont= limiteStand(anf.getAuspiciante().getNumId());
-                if(cont<2 && anf.getTieneStand()==true){
-                    s.setPersona(a);
-                    s.setFechaAsig(fa);
-                    s.setcodigoSt(s.getCodigoSt()+"*");
-                }else System.out.println("El auspiciante ya tiene 2 stands asignado o no tiene autorizado tener stand");
+                if(cont<2){
+                    if(anf.getTieneStand()==true){
+                        s.setPersona(a);
+                        s.setFechaAsig(fa);
+                        s.setcodigoSt(s.getCodigoSt()+"*");
+                    }else System.out.println("El auspiciante no debe tener stand, así él/ella lo decidió");
+                }else System.out.println("El auspiciante ya tiene 2 stands asignado, solo puede tener max 2 stands");
             }else System.out.println("Esa persona no ha sido registrado o no existe");
         }else  System.out.println("El stand se encuentra ocupado");
         

@@ -34,7 +34,7 @@ public class Admin {
     //Presentar menu stand
     public static void mostrarMenuStand(){
         System.out.println("---Administracion de Stands---"+"\n1. Reservar un stand"
-        +"\n2. Mostrar informacion del stand"+"\n3. Regresar");
+        +"\n2. Mostrar informacion del stand"+"\n3. Elegir otra feria"+"\n4. Regresar");
     }
     
     //Presentar atributos de Feria
@@ -49,6 +49,13 @@ public class Admin {
         System.out.println("---Edicion de Emprendedor---"+"\n1. Nombre"+"\n2. Telefono"+"\n3. Email"
         +"\n4. Direccion"+"\n5. Sitio web"+"\n6. Nombre persona responsable"+"\n7. Descripcion de los servicios que ofrece"
         +"\n8. Nombres en cada red social que maneja"+"\n9. Regresar");
+    }
+    
+    //Presentar atrivutos de Auspiciante
+     public static void mostrarAtributosAuspiciante(){
+        System.out.println("---Edicion de Aupiciante---"+"\n1. Nombre"+"\n2. Nombre persona responsable"+"\n3. Telefono"
+        +"\n4. Email"+"\n5. Direccion"+"\n6. Sitio web"+"\n7. Sectores cubiertos"
+        +"\n8. Redes Sociales"+"\n9. Regresar");
     }
     
 
@@ -112,12 +119,13 @@ public class Admin {
                         Feria feria3= Sistema.encontrarFeria(cod3);
                         String[] hor= fh.split("/");
                         String[] horf= feria3.getFechaI().split("/");
-                        if(feria3!=null && ((Integer.parseInt(hor[2])<Integer.parseInt(horf[2]))
-                        || (Integer.parseInt(hor[2])==Integer.parseInt(horf[2]) 
-                        && Integer.parseInt(hor[1])<Integer.parseInt(horf[1]))||
-                        (Integer.parseInt(hor[2])==Integer.parseInt(horf[2]) &&
-                        Integer.parseInt(hor[1])==Integer.parseInt(horf[1])&&
-                        Integer.parseInt(hor[0])<Integer.parseInt(horf[0])))){ 
+                        if(feria3!=null){
+                            if(((Integer.parseInt(hor[2])<Integer.parseInt(horf[2]))
+                            || (Integer.parseInt(hor[2])==Integer.parseInt(horf[2]) 
+                            && Integer.parseInt(hor[1])<Integer.parseInt(horf[1]))||
+                            (Integer.parseInt(hor[2])==Integer.parseInt(horf[2]) &&
+                            Integer.parseInt(hor[1])==Integer.parseInt(horf[1])&&
+                            Integer.parseInt(hor[0])<Integer.parseInt(horf[0])))){
                             int op13=0;
                             while(op13!=8){
                                 mostrarAtributosFeria();
@@ -164,7 +172,8 @@ public class Admin {
                                     break;
                                 }
                             }
-                        }else System.out.println("Ese codigo de feria no existe o ya es muy tarde para poder editarlo");
+                            }else System.out.println("Ya es muy tarde para poder editarlo");
+                        }else System.out.println("Ese codigo de feria no existe");
                         break;
                         case 4: //Consultar emprendedores en feria
                         System.out.println("Ingrese el codigo de una feria: ");
@@ -184,8 +193,6 @@ public class Admin {
                     System.out.println("Elija una opcion: ");
                     op2=sc.nextInt();  
                     sc.nextLine();
-                    
-                    
                     switch(op2){
                         case 1: //Registrar emprendedor
                         System.out.println("Ingrese el número de cédula o RUC: ");
@@ -234,7 +241,7 @@ public class Admin {
                                     e1.setNomPerRes(nombre1);
                                     break;
                                     case 2: //Editar telefono
-                                    System.out.println("Escriba un nuevo telefono: ");
+                                    System.out.println("Escriba un nuevo numero de telefono: ");
                                     int telefono1=sc.nextInt(); 
                                     sc.nextLine();
                                     e1.setTelefono(telefono1);
@@ -268,7 +275,7 @@ public class Admin {
                                     System.out.println("Escriba los nuevos nombres en cada red social que maneja: ");
                                     String rs1= sc.nextLine();
                                     String[] redesSociales1=rs1.split(",");   //REV ------------------------
-                                    e1.setRedesSociales(redesSociales1);
+                                    //e1.setRedesSociales(redesSociales1);
                                     break;
                                 }
                             }
@@ -392,51 +399,42 @@ public class Admin {
                             auspiEditar.toString();
                             int campoEditar = 0;
                             while (campoEditar!=9){
-                                System.out.println("Elija el campo que quiera editar: ");
-                                System.out.println("1. Nombre");
-                                System.out.println("2. Nombre persona responsable");
-                                System.out.println("3. Teléfono ");
-                                System.out.println("4. Email ");
-                                System.out.println("5. Dirección");
-                                System.out.println("6. Sitio web");
-                                System.out.println("7. Sectores cubiertos");
-                                System.out.println("8. Redes Sociales");
-                                System.out.println("9. Salir");
+                                mostrarAtributosAuspiciante();
                                 campoEditar = sc5.nextInt();
                                 if (campoEditar>0 && campoEditar<8){
                                     switch(campoEditar){
                                         case 1 -> {
-                                            System.out.println("Nombre: ");
+                                            System.out.println("Escriba un nuevo nombre: ");
                                             String nombre = sc6.nextLine();
                                             auspiEditar.editarNom(nombre);
                                             break;
                                         }
                                         case 2 -> {
-                                            System.out.println("Nombre persona responsable: ");
+                                            System.out.println("Escriba un nuevo nombre de persona responsable: ");
                                             String nomper = sc6.nextLine();
                                             auspiEditar.editarNomResp(nomper);
                                             break;
                                         }
                                         case 3 -> {
-                                            System.out.println("Teléfono: ");
+                                            System.out.println("Escriba un nuevo numero de telefono: ");
                                             int tele = sc6.nextInt();
                                             auspiEditar.editarTelef(tele);
                                             break;
                                         }
                                         case 4 -> {
-                                            System.out.println("Email: ");
+                                            System.out.println("Escriba un nuevo email: ");
                                             String email = sc6.nextLine();
                                             auspiEditar.editarNom(email);
                                             break;
                                         }
                                         case 5 -> {
-                                            System.out.println("Dirección: ");
+                                            System.out.println("Escriba una nueva direccion: ");
                                             String dir = sc6.nextLine();
                                             auspiEditar.editarDireccion(dir);
                                             break;
                                         }
                                         case 6 -> {
-                                            System.out.println("Sitio web: ");
+                                            System.out.println("Escriba un nuevo sitio web: ");
                                             String sw = sc6.nextLine();
                                             auspiEditar.editarSitioWeb(sw);
                                             break;
@@ -529,7 +527,8 @@ public class Admin {
                                                 } else{
                                                     System.out.println("Número invalido: ");
                                                     }    
-                                               } break; 
+                                               } 
+                                            break; 
                                             } 
                         case 3 -> { // 3.3 Asignar Auspiciante en Feria
                             System.out.println("Ingrese codigo de la feria: ");
@@ -549,14 +548,15 @@ public class Admin {
                             } else {
                                 System.out.println("Datos invalidos. ");
                             }
-                        break;}
-                        }   
-                            }
-                        break;} 
-            if(op==4){
-                int op4=sc.nextInt(); 
+                        break;
+                        }
+                    }   
+                }
+                break; 
+                case 4:
+                int op4=0; 
                 sc.nextLine();
-                while(op4!=3){
+                while(op4!=4){
                     System.out.println("Ingrese el codigo de una feria: ");
                     String cod= sc.nextLine();
                     Feria feria= Sistema.encontrarFeria(cod);
@@ -587,24 +587,25 @@ public class Admin {
                             if(ss!=null) ss.verInformacionStand();
                             else System.out.println("El codigo de stand no existe");
                             break;
-                            case 3: 
+                            case 3: //Elegir otra feria
+                            pr="exit";
+                            break;
+                            case 4:
                             pr="exit";
                             break;
                         }
                         }else {System.out.println("El codigo de feria no existe"); pr="exit"; op4=3;}
-                        if(pr!="exit" && feria!=null){
-                            System.out.println("Deseas seguir haciendo acciones en la misma feria?(si/no): ");
-                            pr= sc.nextLine();
-                            if(pr.equals("no")) pr="exit"; 
-                        }
                     }
                 }
                 break;
-            }
-        }
-        System.out.println("Gracias por usar nuestros servicios :)");
+                }
 
+            }
+            System.out.println("Gracias por usar nuestros servicios :)");
+        }
+    }
+    
        
         
-    }
-}
+    
+

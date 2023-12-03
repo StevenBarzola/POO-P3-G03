@@ -14,7 +14,7 @@ public class Sistema{
       Feria feria= new Feria(c,n,fi,ff,l,d,h);
       ferias.add(feria);
       feria.AsignarSeccionesStand(can1, can2, can3, can4);
-      System.out.println("Feria registrada con exito");
+      System.out.println("Feria registrada con exito!");
       System.out.println("El codigo de la feria es "+c);
   }
   
