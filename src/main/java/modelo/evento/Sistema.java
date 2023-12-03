@@ -3,7 +3,7 @@ import modelo.participante.*;
 import java.util.ArrayList;
 
 public class Sistema{
-  public static ArrayList<Feria> ferias=new ArrayList<>();
+  public static ArrayList<Feria> ferias =new ArrayList<>();
   public static ArrayList<Auspiciante> auspiciantes= new ArrayList<>();
   public static ArrayList<Emprendedor> emprendedores= new ArrayList<>();
   
@@ -30,31 +30,38 @@ public class Sistema{
   
   //Buscar persona por numero de identificacion
   public static Persona encontrarPersona(String c){
-      if(emprendedores.size()!=0 && auspiciantes.size()!=0){
+      if(emprendedores.size()!=0){
           for(Emprendedor e: emprendedores){
               if(e.getNumId().equals(c)) return e;
           }
+      }
+      if(auspiciantes.size()!=0){
           for(Auspiciante a: auspiciantes){
               if(a.getNumId().equals(c)) return a;
           }
-      } return null;
+      }
+      return null;
   }
   
   //Registra un emprendedor si no se encuentra allí.
-  public static void registrarEmp(Persona p, String descripcionServicios) {
+  public static void registrarEmp(Persona p) {
     Emprendedor emp=(Emprendedor)p;
-    for (int e=0; e<Sistema.emprendedores.size(); e++) {
-      if (emprendedores.get(e).getNumId().equals(emp.getNumId())) { 
-        System.out.println("El Emprendedor ya se encontraba registrado");
-        e=emprendedores.size();
+    if(Sistema.emprendedores.size()!=0){
+        for (int e=0; e<Sistema.emprendedores.size(); e++) {
+          if (emprendedores.get(e).getNumId().equals(emp.getNumId())) { 
+            System.out.println("El Emprendedor ya se encuentra registrado");
+            e=emprendedores.size();
+            }
+          else { 
+            emprendedores.add(emp);
+            System.out.println("Emprendedor registrado con exito");
+            }
         }
-      else { 
-        emp.setDescripcionServicios(descripcionServicios);
+    }else {
         emprendedores.add(emp);
-        }
-      
-     }
+        System.out.println("Emprendedor registrado con exito");
     }
+  }
  
   
   
