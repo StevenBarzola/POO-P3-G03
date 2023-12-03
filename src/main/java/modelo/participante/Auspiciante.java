@@ -5,8 +5,6 @@ import modelo.evento.*;
 
 public class Auspiciante extends Persona{
     private SectorCubierto secCubierto;
-    private static ArrayList<Feria> ferias = new ArrayList<>();
-    private static ArrayList<Auspiciante> auspiciantes = new ArrayList<>();
     
     //Constructor
 
@@ -27,37 +25,24 @@ public class Auspiciante extends Persona{
     // validar cedula o ruc
     public static boolean verificarCedula(String cedu){
         boolean validar= false;
-        for (Auspiciante auspican : auspiciantes){
+        for (Auspiciante auspican : Sistema.auspiciantes){
             if (auspican.numId.contains(cedu)){
             validar = true;
             }
         }
         return validar;
     }
-    // Encontrar auspiciante mediante cedula
-    public static Auspiciante encontrarAuspiciante(String cedula){
-        ArrayList<RedSocial> redSocial = new ArrayList<>();
-        RedSocial rs = new RedSocial(AppSocial.FACEBOOK, "x");
-        redSocial.add(rs);
-        Auspiciante auspiEditar = new Auspiciante("x", "x", "x", 0, "x", "x", "x", redSocial, SectorCubierto.ALIMENTACION); // Crear un objeto que luego será reemplazado
-        for (Auspiciante auspican : auspiciantes){
-            if (auspican.numId.equals(cedula)){
-                auspiEditar = auspican;
-            }
-        }
-        return auspiEditar;
-    }
     
     // Mostrar nombres de los Auspiciante
     public static void mostrarAuspiciante(){
-        for (Auspiciante auspi: auspiciantes ){
+        for (Auspiciante auspi: Sistema.auspiciantes ){
             System.out.println(auspi.nombre);
         }
     }
     //3.2 Todos los metodos para editar el auspiciante
     @Override
     public String toString(){ // Para mostrar los campos actuales antes de editar
-        return super.toString() + "\n Sector Cubierto: " + secCubierto;
+        return super.toString()+", Sector Cubierto: "+secCubierto;
     }
     public void editarNom(String nom){
         nombre = nom;

@@ -71,7 +71,7 @@ public class Feria {
     public String toString(){  
         String aus="["; //String para presentar los auspiciantes
         for(int j=0;j<auspiciantesEnFeria.size();j++){
-            String n= auspiciantesEnFeria.get(j).getAuspiciante().getNomPerRes();
+            String n= auspiciantesEnFeria.get(j).getAuspiciante().getNombre();
             aus+=n;
             if(j<(auspiciantesEnFeria.size()-1)) aus+="-";
         }
@@ -147,6 +147,7 @@ public class Feria {
         for(SeccionStand ss: seccionesStand){
             for(Stand s: ss.getSeccion()){
                 if(s.getCodigoSt().equals(cs))return s;
+                if(s.getCodigoSt().equals(cs+"*")) return s;
             }
         }
         return null;
@@ -201,6 +202,7 @@ public class Feria {
                         s.setPersona(a);
                         s.setFechaAsig(fa);
                         s.setcodigoSt(s.getCodigoSt()+"*");
+                        System.out.println("Stand asignado con exito");
                     }else System.out.println("El auspiciante no debe tener stand, así él/ella lo decidió");
                 }else System.out.println("El auspiciante ya tiene 2 stands asignado, solo puede tener max 2 stands");
             }else System.out.println("Esa persona no ha sido registrado o no existe");

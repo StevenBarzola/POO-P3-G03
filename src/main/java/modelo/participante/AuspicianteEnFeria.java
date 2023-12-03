@@ -35,11 +35,12 @@ public class AuspicianteEnFeria {
     }
   // 3.3 Asignar Auspiciante en la Feria
     public static boolean verificarAuspicianteFeria(String c, String nc){
-
-        Auspiciante encPer = Auspiciante.encontrarAuspiciante(nc);
-        Feria encFeria = Sistema.encontrarFeria(c);
-        return encPer != null  && encFeria != null;
-        
+        Persona encPer = Sistema.encontrarPersona(nc);
+        if(encPer!=null && encPer instanceof Auspiciante){
+            Feria encFeria = Sistema.encontrarFeria(c);
+            return encFeria != null;
+        }
+        return false;
     }   
     
     
