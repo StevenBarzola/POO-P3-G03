@@ -11,12 +11,9 @@ public class Persona {
     protected String sitioWeb;
     protected ArrayList<RedSocial> redesSociales;
 
+    //Getters and setters
     public String getNumId() {
         return numId;
-    }
-
-    public String getNombrePerRes() {
-        return nomPerRes;
     }
 
     public String getNomPerRes() {
@@ -38,6 +35,10 @@ public class Persona {
     public String getSitioWeb() {
         return sitioWeb;
     }
+    
+    public String getNombre(){
+      return nombre;
+  }
 
     public ArrayList<RedSocial> getRedesSociales() {
         return redesSociales;
@@ -58,11 +59,23 @@ public class Persona {
   public void setRedesSociales(ArrayList<RedSocial> redesSociales) {
     this.redesSociales = redesSociales;
   }
-  
-  public String getNombre(){
-      return nombre;
+
+  public void setTelefono(int telefono) {
+        this.telefono = telefono;
   }
-  
+
+    public void setNumId(String numId) {
+        this.numId = numId;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+ 
   
   public Persona(String numId, String nombre, int telefono, String email) {
     //Se crea un constructor para la clase Persona con las variables que se consideran más importantes. 

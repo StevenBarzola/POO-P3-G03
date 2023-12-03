@@ -43,6 +43,14 @@ public class Admin {
         +"\n4. Fecha de inicio"+"\n5. Fecha de fin"+"\n6. Horario"+"\n7. Cantidad de stand por seccion"
         +"\n8. Regresar");
     }
+    
+    //Presentar atributos de Emprendedor.
+    public static void mostrarAtributosEmprendedor(){
+        System.out.println("---Edicion de Emprendedor---"+"\n1. Nombre"+"\n2. Telefono"+"\n3. Email"
+        +"\n4. Direccion"+"\n5. Sitio web"+"\n6. Nombre persona responsable"+"\n7. Descripcion de los servicios que ofrece"
+        +"\n8. Nombres en cada red social que maneja"+"\n9. Regresar");
+    }
+    
 
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
@@ -169,7 +177,99 @@ public class Admin {
                 while(op2!=3){
                     mostrarMenuEmprendedor();
                     System.out.println("Elija una opcion: ");
-                    op2=sc.nextInt();   
+                    op2=sc.nextInt();  
+                    sc.nextLine();
+                    
+                    
+                    switch(op2){
+                        case 1: //Registrar emprendedor
+                        System.out.println("Ingrese el número de cédula o RUC: ");
+                        String numId= sc.nextLine();
+                        System.out.println("Ingrese el nombre: ");
+                        String nombrePer= sc.nextLine();
+                        System.out.println("Ingrese el teléfono: ");
+                        int telefono= sc.nextInt();
+                        sc.nextLine();
+                        System.out.println("Ingrese el email: ");
+                        String email= sc.nextLine();
+                        System.out.println("Ingrese una dirección (se puede dejar en blanco): ");
+                        String direccion= sc.nextLine();
+                        System.out.println("Ingrese sitio web (se puede dejar en blanco): ");
+                        String sitioWeb= sc.nextLine();
+                        System.out.println("Ingrese el nombre de la persona responsable: ");
+                        String nomPerRes= sc.nextLine();
+                        System.out.println("Ingrese la descripción de los servicios que ofrece: ");
+                        String descripcionServicios= sc.nextLine();
+                        System.out.println("Ingrese los nombres en cada red social que maneja (separados por coma y sin espacios): ");
+                        String rs= sc.nextLine();
+                        String[] redesSociales=rs.split(",");   //REV ------------------------
+                        //Se crea un objeto Persona.
+                        Persona p=new Persona(numId, nombrePer, telefono, email);
+                        Sistema.registrarEmp(p, descripcionServicios);
+                        sc.nextLine();
+                        break;
+                        case 2: //Editar emprendedor
+                        System.out.println("Ingrese el número de cédula o RUC: ");
+                        String numId1= sc.nextLine();
+                        Persona p1= Sistema.encontrarPersona(numId1);
+                        Emprendedor e1=(Emprendedor)p1;
+                        System.out.println("\n1. Nombre"+e1.getNombre()+"\n2. Telefono"+e1.getTelefono()+"\n3. Email"+e1.getEmail()
+        +"\n4. Direccion"+e1.getDireccion()+"\n5. Sitio web"+e1.getSitioWeb()+"\n6. Nombre persona responsable"+e1.getNomPerRes()+"\n7. Descripcion de los servicios que ofrece"
+        +e1.getDescripcionServicios()+"\n8. Nombres en cada red social que maneja"+e1.getRedesSociales()+"\n9. Regresar");
+                            int op22=0;
+                            while(op22!=9){
+                                mostrarAtributosEmprendedor();
+                                System.out.println("Elija una opcion a editar");
+                                op22= sc.nextInt();
+                                sc.nextLine();
+                                switch(op22){
+                                    case 1: //Editar nombre
+                                    System.out.println("Escriba un nuevo nombre: ");
+                                    String nombre1= sc.nextLine();
+                                    e1.setNomPerRes(nombre1);
+                                    break;
+                                    case 2: //Editar telefono
+                                    System.out.println("Escriba un nuevo telefono: ");
+                                    int telefono1=sc.nextInt(); 
+                                    sc.nextLine();
+                                    e1.setTelefono(telefono1);
+                                    break;
+                                    case 3: //Editar email
+                                    System.out.println("Escriba un nuevo email: ");
+                                    String email1= sc.nextLine();
+                                    e1.setEmail(email1);
+                                    break;
+                                    case 4: //Editar direccion.
+                                    System.out.println("Escriba una nueva direccion: ");
+                                    String direccion1= sc.nextLine();
+                                    e1.setDireccion(direccion1);
+                                    break;
+                                    case 5:
+                                    System.out.println("Escriba un nuevo sitio web: ");
+                                    String sitioWeb1= sc.nextLine();
+                                    e1.setSitioWeb(sitioWeb1);
+                                    break;
+                                    case 6:
+                                    System.out.println("Escriba un nuevo nombre de persona responsable: ");
+                                    String nomPerRes1= sc.nextLine();
+                                    e1.setNomPerRes(nomPerRes1);
+                                    break;
+                                    case 7:
+                                    System.out.println("Escriba una nueva descripcion de los servicios que ofrece: ");
+                                    String descripcionServicios1= sc.nextLine();
+                                    e1.setDescripcionServicios(descripcionServicios1);
+                                    break;
+                                    case 8:
+                                    System.out.println("Escriba los nuevos nombres en cada red social que maneja: ");
+                                    String rs1= sc.nextLine();
+                                    String[] redesSociales1=rs1.split(",");   //REV ------------------------
+                                    e1.setRedesSociales(redesSociales1);
+                                    break;
+                                }
+                            }
+                       
+                    }
+                 
                 }
                 break;
                 case 3: //Administracion Auspiciante
