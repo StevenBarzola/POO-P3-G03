@@ -35,4 +35,26 @@ public class Stand {
     public void setFechaAsig(String f){
         fechaAsig=f;
     }
+    
+    //Metodo toString
+    @Override
+    public String toString(){
+        return "Codigo: "+codigoSt+", fecha de asignacion: "+fechaAsig
+        +"Ocupado por: "+persona.toString();
+    }
+    
+    //Informacion del stand
+    public void verInformacionStand(){
+        if(persona!=null){
+            System.out.println(this.toString());
+        }else System.out.println("Este stand no tiene a nadie asignado");
+    }
+    
+    //Validar si el stand esta disponible
+    public boolean estaDisponible(){
+        if(codigoSt.length()==3){ //Ya que con * serían 3 caracteres
+            return false;
+        }return true;
+    }
+    
 }

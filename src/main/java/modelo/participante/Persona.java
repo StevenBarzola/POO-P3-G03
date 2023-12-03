@@ -2,8 +2,8 @@ package modelo.participante;
 import java.util.ArrayList;
 
 public class Persona {
-    protected String numld;
-    protected String nombrePer;
+    protected String numId;
+    protected String nombre;
     protected String nomPerRes;
     protected int telefono;
     protected String email;
@@ -11,12 +11,12 @@ public class Persona {
     protected String sitioWeb;
     protected ArrayList<RedSocial> redesSociales;
 
-    public String getNumld() {
-        return numld;
+    public String getNumId() {
+        return numId;
     }
 
-    public String getNombrePer() {
-        return nombrePer;
+    public String getNombrePerRes() {
+        return nomPerRes;
     }
 
     public String getNomPerRes() {
@@ -59,10 +59,15 @@ public class Persona {
     this.redesSociales = redesSociales;
   }
   
-  public Persona(String numld, String nombrePer, int telefono, String email) {
+  public String getNombre(){
+      return nombre;
+  }
+  
+  
+  public Persona(String numId, String nombre, int telefono, String email) {
     //Se crea un constructor para la clase Persona con las variables que se consideran más importantes. 
-    this.numld=numld;
-    this.nombrePer=nombrePer;
+    this.numId=numId;
+    this.nombre=nombre;
     this.telefono=telefono;
     this.email=email;
   }

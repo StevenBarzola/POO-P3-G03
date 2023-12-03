@@ -9,6 +9,7 @@ public class Auspiciante extends Persona{
     private static ArrayList<Auspiciante> auspiciantes = new ArrayList<>();
     
     //Constructor
+
     public Auspiciante(String ni, String np, String npr, int t, String e, String d, String sw, ArrayList<RedSocial> rs, SectorCubierto sc){
         super(ni,np,t,e);
         super.setOtherParams(npr, d, sw, rs );
@@ -27,7 +28,7 @@ public class Auspiciante extends Persona{
     public static boolean verificarCedula(String cedu){
         boolean validar= false;
         for (Auspiciante auspican : auspiciantes){
-            if (auspican.numld.contains(cedu)){
+            if (auspican.numId.contains(cedu)){
             validar = true;
             }
         }
@@ -40,7 +41,7 @@ public class Auspiciante extends Persona{
         redSocial.add(rs);
         Auspiciante auspiEditar = new Auspiciante("x", "x", "x", 0, "x", "x", "x", redSocial, SectorCubierto.ALIMENTACION); // Crear un objeto que luego será reemplazado
         for (Auspiciante auspican : auspiciantes){
-            if (auspican.numld.equals(cedula)){
+            if (auspican.numId.equals(cedula)){
                 auspiEditar = auspican;
             }
         }
@@ -50,7 +51,7 @@ public class Auspiciante extends Persona{
     // Mostrar nombres de los Auspiciante
     public static void mostrarAuspiciante(){
         for (Auspiciante auspi: auspiciantes ){
-            System.out.println(auspi.nombrePer);
+            System.out.println(auspi.nombre);
         }
     }
     //3.2 Todos los metodos para editar el auspiciante
@@ -59,7 +60,7 @@ public class Auspiciante extends Persona{
         return super.toString() + "\n Sector Cubierto: " + secCubierto;
     }
     public void editarNom(String nom){
-        nombrePer = nom;
+        nombre = nom;
     }
     public void editarNomResp(String npr){
         nomPerRes = npr;
@@ -93,7 +94,7 @@ public class Auspiciante extends Persona{
             }
         }
         for (Auspiciante auspi : auspiciantes){
-            String cedu = auspi.numld;
+            String cedu = auspi.numId;
             if ( cedu.equals(nc)){
                 validar1 = true;
             }
