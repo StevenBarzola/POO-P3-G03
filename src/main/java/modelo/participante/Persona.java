@@ -93,4 +93,21 @@ public class Persona {
     this.setRedesSociales(redesSociales);
     
   }
+  
+  //Metodo toString
+  @Override
+  public String toString(){
+      String cad="[";
+      for(int j=0;j<redesSociales.size();j++){
+          RedSocial rs= redesSociales.get(j);
+          String n= "("+rs.getAppSocial()+","+rs.getCuenta()+")";
+          cad+=n;
+          if(j<(redesSociales.size()-1)) cad+="-";
+      }
+      cad+="]";
+      
+      return "Numero de identificacion: "+numId+", nombre: "+nombre+", nombre de persona responsable: "+nomPerRes
+      +", telefono: "+telefono+", email: "+email+", direccion: "+direccion+", sitio web: "+sitioWeb+", Redes Sociales: "
+      +cad;
+  }
 }
