@@ -51,11 +51,19 @@ public class Admin {
         +"\n8. Nombres en cada red social que maneja"+"\n9. Regresar");
     }
     
-    //Presentar atriutos de Auspiciante
+
+    //Presentar redes sociales.
+    public static void mostrarRedesSociales(){
+        System.out.println("---Redes Sociales que se pueden registrar---"+"\n1. Twitter"+"\n2. Facebook"+"\n3. Instagram"
+        +"\n4. YouTube"+"\n5. TikTok"+"\n6. LinkedIn"+"\n7. Pinterest");
+}
+  
+    //Presentar atributos de Auspiciante.
      public static void mostrarAtributosAuspiciante(){
         System.out.println("---Edicion de Aupiciante---"+"\n1. Nombre"+"\n2. Nombre persona responsable"+"\n3. Telefono"
         +"\n4. Email"+"\n5. Direccion"+"\n6. Sitio web"+"\n7. Sectores cubiertos"
         +"\n8. Redes Sociales"+"\n9. Regresar");
+
     }
     
 
