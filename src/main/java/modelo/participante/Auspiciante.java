@@ -9,8 +9,9 @@ public class Auspiciante extends Persona{
     private static ArrayList<Auspiciante> auspiciantes = new ArrayList<>();
     
     //Constructor
-    public Auspiciante(String ni, String np, String npr, String t, String e, String d, String sw, SectorCubierto sc){
-        super(ni,np,npr,t,e,d,sw);
+    public Auspiciante(String ni, String np, String npr, int t, String e, String d, String sw, ArrayList<RedSocial> rs, SectorCubierto sc){
+        super(ni,np,t,e);
+        super.setOtherParams(npr, d, sw, rs );
         secCubierto=sc;
     }
     
@@ -26,7 +27,7 @@ public class Auspiciante extends Persona{
     public static boolean verificarCedula(String cedu){
         boolean validar= false;
         for (Auspiciante auspican : auspiciantes){
-            if (auspican.numId.contains(cedu)){
+            if (auspican.numld.contains(cedu)){
             validar = true;
             }
         }
@@ -34,10 +35,12 @@ public class Auspiciante extends Persona{
     }
     // Encontrar auspiciante mediante cedula
     public static Auspiciante encontrarAuspiciante(String cedula){
-        SectorCubierto tipo = SectorCubierto.ALIMENTACION;
-        Auspiciante auspiEditar = new Auspiciante("x", "x", "x", "x", "x", "x", "x", tipo); // Crear un objeto que luego será reemplazado
+        ArrayList<RedSocial> redSocial = new ArrayList<>();
+        RedSocial rs = new RedSocial(AppSocial.FACEBOOK, "x");
+        redSocial.add(rs);
+        Auspiciante auspiEditar = new Auspiciante("x", "x", "x", 0, "x", "x", "x", redSocial, SectorCubierto.ALIMENTACION); // Crear un objeto que luego será reemplazado
         for (Auspiciante auspican : auspiciantes){
-            if (auspican.numId.equals(cedula)){
+            if (auspican.numld.equals(cedula)){
                 auspiEditar = auspican;
             }
         }
@@ -47,7 +50,7 @@ public class Auspiciante extends Persona{
     // Mostrar nombres de los Auspiciante
     public static void mostrarAuspiciante(){
         for (Auspiciante auspi: auspiciantes ){
-            System.out.println(auspi.nombre);
+            System.out.println(auspi.nombrePer);
         }
     }
     //3.2 Todos los metodos para editar el auspiciante
@@ -56,12 +59,12 @@ public class Auspiciante extends Persona{
         return super.toString() + "\n Sector Cubierto: " + secCubierto;
     }
     public void editarNom(String nom){
-        nombre = nom;
+        nombrePer = nom;
     }
     public void editarNomResp(String npr){
-        nombrePerRes = npr;
+        nomPerRes = npr;
     }  
-    public void editarTelef(String t){
+    public void editarTelef(int t){
         telefono = t;
     }
     public void editarEmail(String e){
@@ -72,6 +75,9 @@ public class Auspiciante extends Persona{
     }
     public void editarSitioWeb(String sw){
         sitioWeb = sw;
+    }
+    public void editarRedSocial(ArrayList<RedSocial> rs){
+        redesSociales = rs;
     }
     public void editarSectorCubierto(SectorCubierto sc){
          secCubierto=sc;
@@ -87,7 +93,7 @@ public class Auspiciante extends Persona{
             }
         }
         for (Auspiciante auspi : auspiciantes){
-            String cedu = auspi.numId;
+            String cedu = auspi.numld;
             if ( cedu.equals(nc)){
                 validar1 = true;
             }

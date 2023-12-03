@@ -1,7 +1,7 @@
 package ejecucion;
 import modelo.evento.*;
 import modelo.participante.*;
-import java.util.Scanner;
+import java.util.*;
 
 public class Admin {
     
@@ -87,7 +87,7 @@ public class Admin {
                             System.out.println("Nombre persona responsable: ");
                             String nomper = sc2.nextLine();
                             System.out.println("Teléfono: ");
-                            String tele = sc2.nextLine();
+                            int tele = sc2.nextInt();
                             System.out.println("Email: ");
                             String email = sc2.nextLine();
                             System.out.println("Dirección (opcional): ");
@@ -119,8 +119,60 @@ public class Admin {
                             {
                             System.out.println("No está la opción");
                              }
-                            }    
-                            Persona a = new Auspiciante(cedula, nombre, nomper, tele, email, dir, sw, sec);
+                            }
+                            RedSocial.mostrarMenu();
+                            int elegir =0;
+                            ArrayList<RedSocial> redSocial = new ArrayList<>();
+                            while (elegir!=8){
+                                RedSocial.mostrarMenu();
+                                elegir = sc2.nextInt();
+                                System.out.println("Digite su usuario: ");
+                                String usuario = sc2.nextLine();
+                                switch(elegir){ 
+                                    case 1 -> {
+                                        RedSocial rs1 = new RedSocial(AppSocial.TWITTER, usuario);
+                                        redSocial.add(rs1);
+                                        break;
+                                    }
+                                    case 2 -> {
+                                        RedSocial rs2 = new RedSocial(AppSocial.FACEBOOK, usuario);
+                                        redSocial.add(rs2);
+                                        break;
+                                    }
+                                    case 3 -> {
+                                        RedSocial rs3 = new RedSocial(AppSocial.INSTAGRAM, usuario);
+                                        redSocial.add(rs3);
+                                        break;
+                                    }
+                                    case 4 -> {
+                                        RedSocial rs4 = new RedSocial(AppSocial.YOUTUBE, usuario);
+                                        redSocial.add(rs4);
+                                        break;
+                                    }
+                                    case 5 -> {
+                                        RedSocial rs5 = new RedSocial(AppSocial.TIKTOK, usuario);
+                                        redSocial.add(rs5);
+                                        break;
+                                    }
+                                    case 6 -> {
+                                        RedSocial rs6 = new RedSocial(AppSocial.LINKEDIN, usuario);
+                                        redSocial.add(rs6);
+                                        break;
+                                    }
+                                    case 7 -> {
+                                        RedSocial rs7 = new RedSocial(AppSocial.PINTEREST, usuario);
+                                        redSocial.add(rs7);
+                                        break;
+                                    }
+                                    case 8 -> {
+                                        break;
+                                    }
+                                }
+                                {
+                                    System.out.println("Elija un número valido. ");
+                                }   
+                            }
+                            Auspiciante a = new Auspiciante(cedula, nombre, nomper, tele, email, dir, sw, redSocial, sec);
                             break;
                         }
                         case 2 -> { 
@@ -129,7 +181,7 @@ public class Admin {
                             Auspiciante auspiEditar = Auspiciante.encontrarAuspiciante(cedula);
                             auspiEditar.toString();
                             int campoEditar = 0;
-                            while (campoEditar!=8){
+                            while (campoEditar!=9){
                                 System.out.println("Elija el campo que quiera editar: ");
                                 System.out.println("1. Nombre");
                                 System.out.println("2. Nombre persona responsable");
@@ -138,11 +190,10 @@ public class Admin {
                                 System.out.println("5. Dirección");
                                 System.out.println("6. Sitio web");
                                 System.out.println("7. Sectores cubiertos");
-                                System.out.println("8. Salir");
+                                System.out.println("8. Redes Sociales");
+                                System.out.println("9. Salir");
                                 campoEditar = sc2.nextInt();
-                                if (campoEditar==8){
-                                   campoEditar=8; 
-                                } else if (campoEditar>0 && campoEditar<8){
+                                if (campoEditar>0 && campoEditar<8){
                                     switch(campoEditar){
                                         case 1 -> {
                                             System.out.println("Nombre: ");
@@ -158,7 +209,7 @@ public class Admin {
                                         }
                                         case 3 -> {
                                             System.out.println("Teléfono: ");
-                                            String tele = sc3.nextLine();
+                                            int tele = sc3.nextInt();
                                             auspiEditar.editarTelef(tele);
                                             break;
                                         }
@@ -213,12 +264,66 @@ public class Admin {
                                                     }
                                             }
                                         }
-                                    }   
-                                  } else{
-                                    System.out.println("Número invalido: ");
-                                    }    
-                                } break; 
-                            } 
+                                        case 8 -> {
+                                            RedSocial.mostrarMenu();
+                                            int elegir =0;
+                                            ArrayList<RedSocial> redSocial = auspiEditar.getRedesSociales();
+                                            while (elegir!=8){
+                                                RedSocial.mostrarMenu();
+                                                elegir = sc2.nextInt();
+                                                System.out.println("Digite su usuario: ");
+                                                String usuario = sc2.nextLine();
+                                                switch(elegir){ 
+                                                    case 1 -> {
+                                                        RedSocial rs1 = new RedSocial(AppSocial.TWITTER, usuario);
+                                                        redSocial.add(rs1);
+                                                        break;
+                                                    }
+                                                    case 2 -> {
+                                                        RedSocial rs2 = new RedSocial(AppSocial.FACEBOOK, usuario);
+                                                        redSocial.add(rs2);
+                                                        break;
+                                                    }
+                                                    case 3 -> {
+                                                        RedSocial rs3 = new RedSocial(AppSocial.INSTAGRAM, usuario);
+                                                        redSocial.add(rs3);
+                                                        break;
+                                                    }
+                                                    case 4 -> {
+                                                        RedSocial rs4 = new RedSocial(AppSocial.YOUTUBE, usuario);
+                                                        redSocial.add(rs4);
+                                                        break;
+                                                    }
+                                                    case 5 -> {
+                                                        RedSocial rs5 = new RedSocial(AppSocial.TIKTOK, usuario);
+                                                        redSocial.add(rs5);
+                                                        break;
+                                                    }
+                                                    case 6 -> {
+                                                        RedSocial rs6 = new RedSocial(AppSocial.LINKEDIN, usuario);
+                                                        redSocial.add(rs6);
+                                                        break;
+                                                    }
+                                                    case 7 -> {
+                                                        RedSocial rs7 = new RedSocial(AppSocial.PINTEREST, usuario);
+                                                        redSocial.add(rs7);
+                                                        break;
+                                                    }
+                                                    case 8 -> {
+                                                        break;
+                                                    }
+                                                }
+                                                {
+                                                    System.out.println("Elija un número valido. ");
+                                                }   
+                                            }
+                                                        }
+                                                    }   
+                                                } else{
+                                                    System.out.println("Número invalido: ");
+                                                    }    
+                                               } break; 
+                                            } 
                         case 3 -> {
                             System.out.println("Ingrese codigo de la feria: ");
                             String codigo = sc3.nextLine();
