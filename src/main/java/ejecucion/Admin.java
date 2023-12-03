@@ -220,65 +220,66 @@ public class Admin {
                         String nomPerRes= sc.nextLine();
                         System.out.println("Ingrese la descripción de los servicios que ofrece: ");
                         String descripcionServicios= sc.nextLine();
-                        
-                        -----------------------------------------------
-                        mostrarRedesSociales();
-                        System.out.println("Ingrese los nombres en cada red social que maneja (separados por coma y sin espacios): ");
-                        String rs= sc.nextLine();
-                        String[] redesSociales=rs.split(",");   //REV ------------------------
-                        int op13=0;
-                            while(op13!=8){
-                                mostrarAtributosFeria();
-                                System.out.println("Elija una opcion a editar");
-                                op13= sc.nextInt();
-                                sc.nextLine();
-                                switch(op13){
-                                    case 1: //Editar nombre de la feria
-                                    System.out.println("Escriba un nuevo nombre: ");
-                                    String n1= sc.nextLine();
-                                    feria3.setNombre(n1);
-                                    break;
-                                    case 2: //Editar descripcion de la feria
-                                    System.out.println("Escriba una nueva descripcion: ");
-                                    String d1= sc.nextLine();
-                                    feria3.setDescripcion(d1);
-                                    break;
-                                    case 3: //Editar lugar de la feria
-                                    System.out.println("Escriba un nuevo lugar: ");
-                                    String l1= sc.nextLine();
-                                    feria3.setLugar(l1);
-                                    break;
-                                    case 4: //Editar fecha de inicio
-                                    System.out.println("Escriba una nueva fecha de inicio(Ej:09/12/23): ");
-                                    String fi1= sc.nextLine();
-                                    feria3.setFechaI(fi1);
-                                    break;
-                                    case 5:
-                                    System.out.println("Escriba una nueva fecha de fin(Ej:09/12/23): ");
-                                    String ff1= sc.nextLine();
-                                    feria3.setFechaF(ff1);    
-                                    break;
-                                    case 6:
-                                    System.out.println("Escriba un nuevo horario: ");
-                                    String h1= sc.nextLine();
-                                    feria3.setHorario(h1);    
-                                    break;
-                                    case 7:
-                                    System.out.println("Escriba la cantidad de stand para cada seccion(Ej:2/4/3/7) respectivamente: ");
-                                    String cs1= sc.nextLine();
-                                    String[] css= cs1.split("/");
-                                    feria3.AsignarSeccionesStand(Integer.parseInt(css[0]),Integer.parseInt(css[1]), 
-                                    Integer.parseInt(css[2]),Integer.parseInt(css[3]));
-                                    break;
-                                }
+         
+                    
+                         RedSocial.mostrarMenu();
+                            int elegir1 = sc.nextInt();
+                            ArrayList<RedSocial> redesSociales = new ArrayList<>();
+
+                            while (elegir1!=8){
+                                
+                                System.out.println("Digite su usuario: ");
+                                String usuario1 = sc5.nextLine();
+                                switch(elegir1){ 
+                                    case 1 -> {
+                                        RedSocial rs11 = new RedSocial(AppSocial.TWITTER, usuario1);
+                                        redesSociales.add(rs11);
+                                        break;
+                                    }
+                                    case 2 -> {
+                                        RedSocial rs21 = new RedSocial(AppSocial.FACEBOOK, usuario1);
+                                        redesSociales.add(rs21);
+                                        break;
+                                    }
+                                    case 3 -> {
+                                        RedSocial rs31 = new RedSocial(AppSocial.INSTAGRAM, usuario1);
+                                        redesSociales.add(rs31);
+                                        break;
+                                    }
+                                    case 4 -> {
+                                        RedSocial rs41 = new RedSocial(AppSocial.YOUTUBE, usuario1);
+                                        redesSociales.add(rs41);
+                                        break;
+                                    }
+                                    case 5 -> {
+                                        RedSocial rs51 = new RedSocial(AppSocial.TIKTOK, usuario1);
+                                        redesSociales.add(rs51);
+                                        break;
+                                    }
+                                    case 6 -> {
+                                        RedSocial rs61 = new RedSocial(AppSocial.LINKEDIN, usuario1);
+                                        redesSociales.add(rs61);
+                                        break;
+                                    }
+                                    case 7 -> {
+                                        RedSocial rs71 = new RedSocial(AppSocial.PINTEREST, usuario1);
+                                        redesSociales.add(rs71);
+                                        break;
+                                    }
+                                    
+                                } 
+                                RedSocial.mostrarMenu();
+                                elegir1 = sc.nextInt();
                             }
-                        -------------------------------------------------
-                        //Se crea un objeto Persona.
+                            
+                            //Se crea un objeto Persona.
                         Persona p=new Persona(numId, nombrePer, telefono, email);
+                        p.setOtherParams(nomPerRes, direccion, sitioWeb, redesSociales);
                         Sistema.registrarEmp(p, descripcionServicios);
                         sc.nextLine();
                         break;
-                        case 2: //Editar emprendedor
+                            
+                         case 2: //Editar emprendedor
                         System.out.println("Ingrese el número de cédula o RUC: ");
                         String numId1= sc.nextLine();
                         Persona p1= Sistema.encontrarPersona(numId1);
@@ -330,18 +331,60 @@ public class Admin {
                                     e1.setDescripcionServicios(descripcionServicios1);
                                     break;
                                     case 8:
-                                    System.out.println("Escriba los nuevos nombres en cada red social que maneja: ");
-                                    String rs1= sc.nextLine();
-                                    String[] redesSociales1=rs1.split(",");   //REV ------------------------
-                                    //e1.setRedesSociales(redesSociales1);
-                                    break;
-                                }
-                            }
-                       
-                    }
-                 
-                }
-                break;
+                                    RedSocial.mostrarMenu();
+                                            int elegir2 = sc.nextInt();
+                                            ArrayList<RedSocial> redSocial2 = p1.getRedesSociales();
+                                            while (elegir2!=8){
+                                                System.out.println("Digite su usuario: ");
+                                                String usuario2 = sc.nextLine();
+                                                switch(elegir2){ 
+                                                    case 1 -> {
+                                                        RedSocial rs12 = new RedSocial(AppSocial.TWITTER, usuario2);
+                                                        redSocial2.add(rs12);
+                                                        break;
+                                                    }
+                                                    case 2 -> {
+                                                        RedSocial rs22 = new RedSocial(AppSocial.FACEBOOK, usuario2);
+                                                        redSocial2.add(rs22);
+                                                        break;
+                                                    }
+                                                    case 3 -> {
+                                                        RedSocial rs32 = new RedSocial(AppSocial.INSTAGRAM, usuario2);
+                                                        redSocial2.add(rs32);
+                                                        break;
+                                                    }
+                                                    case 4 -> {
+                                                        RedSocial rs42 = new RedSocial(AppSocial.YOUTUBE, usuario2);
+                                                        redSocial2.add(rs42);
+                                                        break;
+                                                    }
+                                                    case 5 -> {
+                                                        RedSocial rs52 = new RedSocial(AppSocial.TIKTOK, usuario2);
+                                                        redSocial2.add(rs52);
+                                                        break;
+                                                    }
+                                                    case 6 -> {
+                                                        RedSocial rs62 = new RedSocial(AppSocial.LINKEDIN, usuario2);
+                                                        redSocial2.add(rs62);
+                                                        break;
+                                                    }
+                                                    case 7 -> {
+                                                        RedSocial rs72 = new RedSocial(AppSocial.PINTEREST, usuario2);
+                                                        redSocial2.add(rs72);
+                                                        break;
+                                                    }
+                                                }  
+                                                RedSocial.mostrarMenu();
+                                                elegir2 = sc6.nextInt();
+                                            }
+                                                        }
+                                                    }   
+                break;   
+                        }   
+                
+                      }  
+                break; 
+                        
                 case 3: //Administracion Auspiciante
                 int op3=0;
                 while(op3!=4){
