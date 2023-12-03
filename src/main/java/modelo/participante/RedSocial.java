@@ -41,6 +41,8 @@ public class RedSocial {
         System.out.println("6. Linkedln");
         System.out.println("7. Pinterest");
         System.out.println("8. Crear Cuenta");
+        System.out.println("Elegir una opción: ");
+        
     }
 
 }

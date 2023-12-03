@@ -83,23 +83,6 @@ public class Auspiciante extends Persona{
     public void editarSectorCubierto(SectorCubierto sc){
          secCubierto=sc;
     }
-    // 3.3 Asignar Auspiciante en la Feria
-    public static boolean verificarAuspicianteFeria(String c, String nc){
-        boolean validar = false;
-        boolean validar1 = false;
-        for (Feria f: ferias){
-            String cod = f.getCodigo();
-            if (c.equals(cod)){
-                validar = true;
-            }
-        }
-        for (Auspiciante auspi : auspiciantes){
-            String cedu = auspi.numId;
-            if ( cedu.equals(nc)){
-                validar1 = true;
-            }
-        }
-        return validar && validar1;
-    }
+  
 
 }

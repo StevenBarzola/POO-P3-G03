@@ -48,6 +48,9 @@ public class Admin {
         Scanner sc=new Scanner(System.in);
         Scanner sc2 = new Scanner(System.in);
         Scanner sc3 = new Scanner(System.in);
+        Scanner sc4 = new Scanner(System.in);
+        Scanner sc5 = new Scanner(System.in);
+        Scanner sc6 = new Scanner(System.in);
         int op=0;
         while(op!=5){
             mostrarMenuPrincipal();
@@ -181,7 +184,7 @@ public class Admin {
                     System.out.println("Elija una opcion: ");
                     op3=sc.nextInt();
                     switch (op3) {
-                        case 1 -> {
+                        case 1 -> { // 3.1 Registrar Auspiciante
                             Auspiciante.mostrarAuspiciante();
                             System.out.println("Número de cedula o RUC: ");
                             String cedula = sc2.nextLine();
@@ -200,15 +203,16 @@ public class Admin {
                             System.out.println("Teléfono: ");
                             int tele = sc2.nextInt();
                             System.out.println("Email: ");
-                            String email = sc2.nextLine();
+                            sc.nextLine();
+                            String email = sc3.nextLine();
                             System.out.println("Dirección (opcional): ");
-                            String dir = sc2.nextLine();
+                            String dir = sc3.nextLine();
                             System.out.println("Sitio web (opcional): ");
-                            String sw = sc2.nextLine();
+                            String sw = sc3.nextLine();
                             SectorCubierto sec = null;
                             while (sec == null){
                                 System.out.println("Sectores cubiertos: (ALIMENTACION, EDUCACION, SALUD, VESTIMENTA) ");
-                                String seCu = sc2.nextLine();   
+                                String seCu = sc4.nextLine();   
                                 switch (seCu){
                                    case "ALIMENTACION" -> {
                                        sec = SectorCubierto.ALIMENTACION;
@@ -227,18 +231,13 @@ public class Admin {
                                        break;
                                    }
                                 }
-                            {
-                            System.out.println("No está la opción");
-                             }
                             }
                             RedSocial.mostrarMenu();
-                            int elegir =0;
+                            int elegir = sc4.nextInt();
                             ArrayList<RedSocial> redSocial = new ArrayList<>();
                             while (elegir!=8){
-                                RedSocial.mostrarMenu();
-                                elegir = sc2.nextInt();
                                 System.out.println("Digite su usuario: ");
-                                String usuario = sc2.nextLine();
+                                String usuario = sc5.nextLine();
                                 switch(elegir){ 
                                     case 1 -> {
                                         RedSocial rs1 = new RedSocial(AppSocial.TWITTER, usuario);
@@ -278,17 +277,17 @@ public class Admin {
                                     case 8 -> {
                                         break;
                                     }
-                                }
-                                {
-                                    System.out.println("Elija un número valido. ");
-                                }   
+                                } 
+                                RedSocial.mostrarMenu();
+                                elegir = sc4.nextInt();
                             }
                             Auspiciante a = new Auspiciante(cedula, nombre, nomper, tele, email, dir, sw, redSocial, sec);
+                            System.out.println("Cuenta creada con éxito.");
                             break;
                         }
-                        case 2 -> { 
+                        case 2 -> { // 3.2 Editar Auspiciante
                             System.out.println("Digite número de cedula o RUC:");
-                            String cedula = sc2.nextLine();
+                            String cedula = sc5.nextLine();
                             Auspiciante auspiEditar = Auspiciante.encontrarAuspiciante(cedula);
                             auspiEditar.toString();
                             int campoEditar = 0;
@@ -303,42 +302,42 @@ public class Admin {
                                 System.out.println("7. Sectores cubiertos");
                                 System.out.println("8. Redes Sociales");
                                 System.out.println("9. Salir");
-                                campoEditar = sc2.nextInt();
+                                campoEditar = sc5.nextInt();
                                 if (campoEditar>0 && campoEditar<8){
                                     switch(campoEditar){
                                         case 1 -> {
                                             System.out.println("Nombre: ");
-                                            String nombre = sc3.nextLine();
+                                            String nombre = sc6.nextLine();
                                             auspiEditar.editarNom(nombre);
                                             break;
                                         }
                                         case 2 -> {
                                             System.out.println("Nombre persona responsable: ");
-                                            String nomper = sc3.nextLine();
+                                            String nomper = sc6.nextLine();
                                             auspiEditar.editarNomResp(nomper);
                                             break;
                                         }
                                         case 3 -> {
                                             System.out.println("Teléfono: ");
-                                            int tele = sc3.nextInt();
+                                            int tele = sc6.nextInt();
                                             auspiEditar.editarTelef(tele);
                                             break;
                                         }
                                         case 4 -> {
                                             System.out.println("Email: ");
-                                            String email = sc3.nextLine();
+                                            String email = sc6.nextLine();
                                             auspiEditar.editarNom(email);
                                             break;
                                         }
                                         case 5 -> {
                                             System.out.println("Dirección: ");
-                                            String dir = sc3.nextLine();
+                                            String dir = sc6.nextLine();
                                             auspiEditar.editarDireccion(dir);
                                             break;
                                         }
                                         case 6 -> {
                                             System.out.println("Sitio web: ");
-                                            String sw = sc3.nextLine();
+                                            String sw = sc6.nextLine();
                                             auspiEditar.editarSitioWeb(sw);
                                             break;
                                         }
@@ -346,7 +345,7 @@ public class Admin {
                                             SectorCubierto sec = null;
                                             while (sec == null){
                                                 System.out.println("Sectores cubiertos: (ALIMENTACION, EDUCACION, SALUD, VESTIMENTA) ");
-                                                String seCu = sc3.nextLine();
+                                                String seCu = sc6.nextLine();
                                                 switch (seCu){
                                                     case "ALIMENTACION" -> {
                                                         sec = SectorCubierto.ALIMENTACION;
@@ -377,13 +376,11 @@ public class Admin {
                                         }
                                         case 8 -> {
                                             RedSocial.mostrarMenu();
-                                            int elegir =0;
+                                            int elegir = sc6.nextInt();
                                             ArrayList<RedSocial> redSocial = auspiEditar.getRedesSociales();
                                             while (elegir!=8){
-                                                RedSocial.mostrarMenu();
-                                                elegir = sc2.nextInt();
                                                 System.out.println("Digite su usuario: ");
-                                                String usuario = sc2.nextLine();
+                                                String usuario = sc6.nextLine();
                                                 switch(elegir){ 
                                                     case 1 -> {
                                                         RedSocial rs1 = new RedSocial(AppSocial.TWITTER, usuario);
@@ -423,10 +420,9 @@ public class Admin {
                                                     case 8 -> {
                                                         break;
                                                     }
-                                                }
-                                                {
-                                                    System.out.println("Elija un número valido. ");
-                                                }   
+                                                }  
+                                                RedSocial.mostrarMenu();
+                                                elegir = sc6.nextInt();
                                             }
                                                         }
                                                     }   
@@ -435,12 +431,12 @@ public class Admin {
                                                     }    
                                                } break; 
                                             } 
-                        case 3 -> {
+                        case 3 -> { // 3.3 Asignar Auspiciante en Feria
                             System.out.println("Ingrese codigo de la feria: ");
                             String codigo = sc3.nextLine();
                             System.out.println("Ingrese número de cedula o RUC: ");
                             String cedu = sc3.nextLine();
-                            boolean val1 = Auspiciante.verificarAuspicianteFeria(codigo, cedu);
+                            boolean val1 = AuspicianteEnFeria.verificarAuspicianteFeria(codigo, cedu);
                             if (val1){
                                 Auspiciante auspi = Auspiciante.encontrarAuspiciante(cedu);
                                 System.out.println("Descripción de lo que cubre el auspicio: ");
@@ -449,14 +445,14 @@ public class Admin {
                                 String incluye = sc3.nextLine();
                                 boolean incluirStand = "Si".equals(incluye);
                                 AuspicianteEnFeria af = new AuspicianteEnFeria(auspi, descri, incluirStand);
-
+                                System.out.println("Auspiciante agregado a la feria.");
                             } else {
                                 System.out.println("Datos invalidos. ");
                             }
-                        }
+                        break;}
                         }   
                             }
-                        }
+                        break;} 
             if(op==4){
                 int op4=sc.nextInt(); 
                 sc.nextLine();
