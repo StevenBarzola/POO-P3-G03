@@ -1,4 +1,5 @@
 package modelo.participante;
+import modelo.evento.*;
 
 public class AuspicianteEnFeria {
     private Auspiciante auspiciante;
@@ -32,7 +33,14 @@ public class AuspicianteEnFeria {
     public void setTieneStand(boolean ts){
         tieneStand=ts;
     }
-    
+  // 3.3 Asignar Auspiciante en la Feria
+    public static boolean verificarAuspicianteFeria(String c, String nc){
+
+        Auspiciante encPer = Auspiciante.encontrarAuspiciante(nc);
+        Feria encFeria = Sistema.encontrarFeria(c);
+        return encPer != null  && encFeria != null;
+        
+    }   
     
     
     
