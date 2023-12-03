@@ -329,6 +329,7 @@ public class Admin {
                                     case 8:
                                     RedSocial.mostrarMenu();
                                             int elegir2 = sc.nextInt();
+                                            sc.nextLine();
                                             ArrayList<RedSocial> redSocial2 = p1.getRedesSociales();
                                             while (elegir2!=8){
                                                 System.out.println("Digite su usuario: ");
@@ -408,8 +409,8 @@ public class Admin {
                             String nomper = sc.nextLine();
                             System.out.println("Teléfono: ");
                             int tele = sc.nextInt();
-                            System.out.println("Email: ");
                             sc.nextLine();
+                            System.out.println("Email: ");
                             String email = sc.nextLine();
                             System.out.println("Dirección (opcional): ");
                             String dir = sc.nextLine();
@@ -511,38 +512,38 @@ public class Admin {
                                             case 1 -> {
                                                 System.out.println("Escriba un nuevo nombre: ");
                                                 String nombre = sc.nextLine();
-                                                auspiEditar.editarNom(nombre);
+                                                auspiEditar.setNombre(nombre);
                                                 break;
                                             }
                                             case 2 -> {
                                                 System.out.println("Escriba un nuevo nombre de persona responsable: ");
                                                 String nomper = sc.nextLine();
-                                                auspiEditar.editarNomResp(nomper);
+                                                auspiEditar.setNomPerRes(nomper);
                                                 break;
                                             }
                                             case 3 -> {
                                                 System.out.println("Escriba un nuevo numero de telefono: ");
                                                 int tele = sc.nextInt();
-                                                auspiEditar.editarTelef(tele);
+                                                auspiEditar.setTelefono(tele);
                                                 sc.nextLine();
                                                 break;
                                             }
                                             case 4 -> {
                                                 System.out.println("Escriba un nuevo email: ");
                                                 String email = sc.nextLine();
-                                                auspiEditar.editarNom(email);
+                                                auspiEditar.setEmail(email);
                                                 break;
                                             }
                                             case 5 -> {
                                                 System.out.println("Escriba una nueva direccion: ");
                                                 String dir = sc.nextLine();
-                                                auspiEditar.editarDireccion(dir);
+                                                auspiEditar.setDireccion(dir);
                                                 break;
                                             }
                                             case 6 -> {
                                                 System.out.println("Escriba un nuevo sitio web: ");
                                                 String sw = sc.nextLine();
-                                                auspiEditar.editarSitioWeb(sw);
+                                                auspiEditar.setSitioWeb(sw);
                                                 break;
                                             }
                                             case 7 -> {
@@ -553,22 +554,22 @@ public class Admin {
                                                     switch (seCu){
                                                         case "ALIMENTACION" -> {
                                                             sec = SectorCubierto.ALIMENTACION;
-                                                            auspiEditar.editarSectorCubierto(sec);
+                                                            auspiEditar.setSectorCubierto(sec);
                                                             break;
                                                         }    
                                                         case "EDUCACION" -> {
                                                             sec = SectorCubierto.EDUCACION;
-                                                            auspiEditar.editarSectorCubierto(sec);
+                                                            auspiEditar.setSectorCubierto(sec);
                                                             break;
                                                         }
                                                         case "SALUD" -> {
                                                             sec = SectorCubierto.SALUD;
-                                                            auspiEditar.editarSectorCubierto(sec);
+                                                            auspiEditar.setSectorCubierto(sec);
                                                             break;
                                                         }
                                                         case "VESTIMENTA" -> {
                                                             sec = SectorCubierto.VESTIMENTA;
-                                                            auspiEditar.editarSectorCubierto(sec);
+                                                            auspiEditar.setSectorCubierto(sec);
                                                             break;
                                                         }
                                                     }
@@ -630,6 +631,7 @@ public class Admin {
                                                     elegir = sc.nextInt();
                                                     sc.nextLine();
                                                     }
+                                                    auspiEditar.setRedesSociales(redSocial);
                                                             }
                                                         }   
                                                     } else{
