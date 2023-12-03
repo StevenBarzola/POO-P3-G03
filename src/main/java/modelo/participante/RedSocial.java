@@ -27,6 +27,7 @@ public class RedSocial {
         cuenta=c;
     } 
 
+   
     
      //mostar menu de redes sociales
     public static void mostrarMenu(){
