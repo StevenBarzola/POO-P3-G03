@@ -44,30 +44,5 @@ public class Auspiciante extends Persona{
     public String toString(){ // Para mostrar los campos actuales antes de editar
         return super.toString()+", Sector Cubierto: "+secCubierto;
     }
-    public void editarNom(String nom){
-        nombre = nom;
-    }
-    public void editarNomResp(String npr){
-        nomPerRes = npr;
-    }  
-    public void editarTelef(int t){
-        telefono = t;
-    }
-    public void editarEmail(String e){
-        email = e;
-    }
-    public void editarDireccion(String d){
-        direccion = d;
-    }
-    public void editarSitioWeb(String sw){
-        sitioWeb = sw;
-    }
-    public void editarRedSocial(ArrayList<RedSocial> rs){
-        redesSociales = rs;
-    }
-    public void editarSectorCubierto(SectorCubierto sc){
-         secCubierto=sc;
-    }
   
-
 }
