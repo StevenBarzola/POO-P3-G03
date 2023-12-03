@@ -1,10 +1,10 @@
 package modelo.participante;
-import java.util.ArrayList;
+
 public class RedSocial {
     private AppSocial appsocial;
     private String cuenta;
-    private ArrayList<RedSocial> redSocial = new ArrayList<>();
-    //Constructor
+    
+//Constructor
     public RedSocial(AppSocial a, String c){
         appsocial=a;
         cuenta=c;
@@ -26,9 +26,6 @@ public class RedSocial {
     public void setCuenta(String c){
         cuenta=c;
     } 
-    public ArrayList<RedSocial> getRedSocial(){
-        return redSocial;
-    }
     
      //mostar menu de redes sociales
     public static void mostrarMenu(){
@@ -40,7 +37,7 @@ public class RedSocial {
         System.out.println("5. Tiktok");
         System.out.println("6. Linkedln");
         System.out.println("7. Pinterest");
-        System.out.println("8. Crear Cuenta");
+        System.out.println("8. Salir");
         System.out.println("Elegir una opción: ");
         
     }

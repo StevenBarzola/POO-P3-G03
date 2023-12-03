@@ -703,7 +703,11 @@ public class Admin {
 
             }
             System.out.println("Gracias por usar nuestros servicios :)");
+            
+            sc.close();
+            
         }
+    
     }
     
        
