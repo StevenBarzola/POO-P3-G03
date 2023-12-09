@@ -22,5 +22,10 @@ public class Emprendedor extends Persona {
     //Constructor con los atributos heredados de Persona.
   }
   
+  @Override
+  public String toString(){
+      return super.toString()+"\nDescripcion de los servicios: "+descripcionServicios;
+  }
+  
   
 }

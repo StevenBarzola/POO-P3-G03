@@ -106,8 +106,8 @@ public class Persona {
       }
       cad+="]";
       
-      return "Numero de identificacion: "+numId+", nombre: "+nombre+", nombre de persona responsable: "+nomPerRes
-      +", telefono: "+telefono+", email: "+email+", direccion: "+direccion+", sitio web: "+sitioWeb+", Redes Sociales: "
+      return "Numero de identificacion: "+numId+"\nnombre: "+nombre+"\nnombre de persona responsable: "+nomPerRes
+      +"\ntelefono: "+telefono+"\nemail: "+email+"\ndireccion: "+direccion+"\nsitio web: "+sitioWeb+"\nRedes Sociales: "
       +cad;
   }
 }

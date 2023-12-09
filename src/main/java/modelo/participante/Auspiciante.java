@@ -42,7 +42,7 @@ public class Auspiciante extends Persona{
     //3.2 Todos los metodos para editar el auspiciante
     @Override
     public String toString(){ // Para mostrar los campos actuales antes de editar
-        return super.toString()+", Sector Cubierto: "+secCubierto;
+        return super.toString()+"\nSector Cubierto: "+secCubierto;
     }
   
 }
