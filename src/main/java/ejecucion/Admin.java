@@ -227,12 +227,13 @@ public class Admin {
                         String descripcionServicios= sc.nextLine();
          
                     
-                         RedSocial.mostrarMenu();
-                            int elegir1 = sc.nextInt();
+                            
+                            int elegir1 = 0;
                             ArrayList<RedSocial> redesSociales = new ArrayList<>();
-
                             while (elegir1!=8){
-                                
+                                RedSocial.mostrarMenu();
+                                elegir1 = sc.nextInt();
+                                sc.nextLine();
                                 switch(elegir1){ 
                                     case 1 -> {
                                         System.out.println("Digite su usuario: ");
@@ -284,9 +285,7 @@ public class Admin {
                                         break;
                                     }
                                     
-                                } 
-                                RedSocial.mostrarMenu();
-                                elegir1 = sc.nextInt();
+                                }
                             }
                             
                             //Se crea un objeto Persona.
