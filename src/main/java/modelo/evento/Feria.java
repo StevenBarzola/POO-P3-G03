@@ -77,9 +77,9 @@ public class Feria {
         }
         aus+="]";
         
-        return "Nombre: "+nombre+", descripcion: "+descripcion+", lugar: "+lugar
-        +", fecha de inicio: "+fechaI+", fecha de fin: "+fechaF+", horario: "
-        +horario+", auspiciantes: "+aus+", [Seccion#1: "+seccionesStand[0].getCanStand()
+        return "Nombre: "+nombre+"\ndescripcion: "+descripcion+"\nlugar: "+lugar
+        +"\nfecha de inicio: "+fechaI+"\nfecha de fin: "+fechaF+"\nhorario: "
+        +horario+"\nauspiciantes: "+aus+"\n[Seccion#1: "+seccionesStand[0].getCanStand()
         +" stand(s)"+" / Seccion#2: "+seccionesStand[1].getCanStand()+" stand(s)"
         +" / Seccion#3: "+seccionesStand[2].getCanStand()+" stand(s)"
         +" / Seccion#4: "+seccionesStand[3].getCanStand()+" stand(s)]";

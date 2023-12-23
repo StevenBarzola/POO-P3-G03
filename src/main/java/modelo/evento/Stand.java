@@ -41,8 +41,11 @@ public class Stand {
     public String toString(){
         char cod1= codigoSt.charAt(0);
         char cod2= codigoSt.charAt(1);
-        return "Codigo: "+String.valueOf(cod1)+String.valueOf(cod2)+", fecha de asignacion: "+fechaAsig
-        +", Ocupado por: "+"["+persona.toString()+"]";
+        String pers="";
+        if(persona instanceof Auspiciante){pers="(Auspiciante):";}
+        if(persona instanceof Emprendedor){pers="(Emprendedor):";}
+        return "Codigo: "+String.valueOf(cod1)+String.valueOf(cod2)+"\nfecha de asignacion: "+fechaAsig
+        +"\nOcupado por "+pers+"\n"+persona.toString();
     }
     
     //Informacion del stand
