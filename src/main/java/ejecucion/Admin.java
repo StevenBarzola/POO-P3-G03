@@ -226,69 +226,83 @@ public class Admin {
                         System.out.println("Ingrese la descripción de los servicios que ofrece: ");
                         String descripcionServicios= sc.nextLine();
          
-                    
+                         
+                        
                          RedSocial.mostrarMenu();
                             int elegir1 = sc.nextInt();
+                            sc.nextLine();
                             ArrayList<RedSocial> redSocial1 = new ArrayList<>();
+                            
 
-                             while (elegir1!=8){                                   //REVISARRRRRRRRRR   
-                                String usuario1 = sc.nextLine();
+                              //REVISARRRRRRRRRR   
 
                             while (elegir1!=8){
-                                RedSocial.mostrarMenu();
-                                elegir1 = sc.nextInt();
-                                sc.nextLine();
-
+                                
                                 switch(elegir1){ 
                                     case 1 -> {
+                                        System.out.println("Digite su usuario: ");
+                                        String usuario1 = sc.nextLine();
                                         RedSocial rs1 = new RedSocial(AppSocial.TWITTER, usuario1);
                                         redSocial1.add(rs1);
-                                        break;
-                                    }
+                            }
+                                    
                                     case 2 -> {
+                                        System.out.println("Digite su usuario: ");
+                                        String usuario1 = sc.nextLine();
                                         RedSocial rs2 = new RedSocial(AppSocial.FACEBOOK, usuario1);
                                         redSocial1.add(rs2);
-                                        break;
-                                    }
+                            }
+                                    
                                     case 3 -> {
+                                       System.out.println("Digite su usuario: ");
+                                        String usuario1 = sc.nextLine();
                                         RedSocial rs3 = new RedSocial(AppSocial.INSTAGRAM, usuario1);
                                         redSocial1.add(rs3);
-                                        break;
-                                    }
+                            }
+                                    
                                     case 4 -> {
+                                        System.out.println("Digite su usuario: ");
+                                        String usuario1 = sc.nextLine();
                                         RedSocial rs4 = new RedSocial(AppSocial.YOUTUBE, usuario1);
                                         redSocial1.add(rs4);
-                                        break;
-                                    }
+                            }
+                                    
                                     case 5 -> {
+                                        System.out.println("Digite su usuario: ");
+                                        String usuario1 = sc.nextLine();
                                         RedSocial rs5 = new RedSocial(AppSocial.TIKTOK, usuario1);
                                         redSocial1.add(rs5);
-                                        break;
-                                    }
+                            }
+                                    
                                     case 6 -> {
+                                    System.out.println("Digite su usuario: ");
+                                        String usuario1 = sc.nextLine();
                                         RedSocial rs6 = new RedSocial(AppSocial.LINKEDIN, usuario1);
                                         redSocial1.add(rs6);
-                                        break;
-                                    }
+                            }
+                                    
                                     case 7 -> {
+                                        System.out.println("Digite su usuario: ");
+                                        String usuario1 = sc.nextLine();
                                         RedSocial rs7 = new RedSocial(AppSocial.PINTEREST, usuario1);
                                         redSocial1.add(rs7);
-                                        break;
-                                    }
+                            }
+                                    
                                     case 8 -> {
-                                        break;
-                                    }
+                            }
+                                    
                                     
                               
                                 } 
-                                System.out.println("Digite su usuario: ");
- 
+
+                                
+                                        
                                 RedSocial.mostrarMenu();
                                 elegir1 = sc.nextInt();
                                 sc.nextLine();
                                 }
 
-                            }
+                            
                             
                             //Se crea un objeto Persona.
                         Persona p=new Emprendedor(numId, nombrePer, telefono, email, nomPerRes, direccion, sitioWeb, redSocial1, descripcionServicios);
