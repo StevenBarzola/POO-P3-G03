@@ -1,0 +1,12 @@
+modelo\participante\Auspiciante.class
+modelo\participante\Persona.class
+modelo\evento\Feria.class
+modelo\participante\SectorCubierto.class
+modelo\participante\AuspicianteEnFeria.class
+modelo\participante\RedSocial.class
+modelo\evento\Stand.class
+modelo\participante\AppSocial.class
+ejecucion\Admin.class
+modelo\evento\SeccionStand.class
+modelo\evento\Sistema.class
+modelo\participante\Emprendedor.class
