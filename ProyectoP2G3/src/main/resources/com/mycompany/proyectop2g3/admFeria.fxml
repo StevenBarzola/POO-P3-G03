@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g3.AdmFeriaController">
+   <center>
+      <TableView fx:id="tblFerias" prefHeight="356.0" prefWidth="725.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="colCodigo" prefWidth="53.59997636079788" text="Codigo" />
+          <TableColumn fx:id="colNombre" prefWidth="232.80002975463867" text="Nombre" />
+            <TableColumn fx:id="colFechaInicio" minWidth="0.0" prefWidth="94.39990234375" text="Fecha Inicio" />
+            <TableColumn fx:id="colLugar" minWidth="0.0" prefWidth="106.39996337890625" text="Lugar" />
+            <TableColumn fx:id="colNAuspiciantes" minWidth="8.79998779296875" prefWidth="107.20001220703125" text="N° Auspiciantes" />
+            <TableColumn fx:id="colNEmprendedores" prefWidth="148.0" text="N° Emprendedores" />
+        </columns>
+      </TableView>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnAgregarFeria" mnemonicParsing="false" onAction="#mostrarVentanaDatosFeria" prefHeight="23.0" prefWidth="100.0" text="Agregar Feria">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnregresarFeria" mnemonicParsing="false" onAction="#regresarFeria" prefHeight="26.0" prefWidth="66.0" text="Regresar" />
+         </children>
+      </HBox>
+   </bottom>
+   <top>
+      <HBox alignment="CENTER" prefHeight="68.0" prefWidth="734.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Administracion de Ferias">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
