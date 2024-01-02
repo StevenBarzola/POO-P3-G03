@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 public class Sistema{
   public static ArrayList<Feria> ferias =new ArrayList<>();
+  public static int contadorFerias=1;  
   public static ArrayList<Auspiciante> auspiciantes= new ArrayList<>();
   public static ArrayList<Emprendedor> emprendedores= new ArrayList<>();
   
   //Registrar feria
+  /*
   public static void registrarFeria(String n, String fi, String ff, String l, String d, String h,
   int can1, int can2, int can3, int can4){
       String c= "F"+String.valueOf(ferias.size()+1);
@@ -16,6 +18,14 @@ public class Sistema{
       feria.AsignarSeccionesStand(can1, can2, can3, can4);
       System.out.println("Feria registrada con exito!");
       System.out.println("El codigo de la feria es "+c);
+  }
+*/
+  
+  //Generar codigo de la feria
+  public static String generarCodigo(){
+      String c= "F"+String.valueOf(contadorFerias);
+      contadorFerias++;
+      return c;
   }
   
   //Buscar feria por codigo
