@@ -6,7 +6,7 @@ import modelo.evento.*;
 public class Auspiciante extends Persona{
     private SectorCubierto secCubierto;
     
-    //Constructor
+    //Constructor.
 
     public Auspiciante(String ni, String np, String npr, int t, String e, String d, String sw, ArrayList<RedSocial> rs, SectorCubierto sc){
         super(ni,np,t,e);
