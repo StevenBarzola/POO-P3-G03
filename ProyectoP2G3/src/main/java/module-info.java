@@ -4,5 +4,6 @@ module com.mycompany.proyectop2g {
     requires java.base;
 
     opens com.mycompany.proyectop2g to javafx.fxml;
-    exports com.mycompany.proyectop2g;
-}
+    exports com.mycompany.proyectop2g; 
+    opens modelo.evento to javafx.base;
+}    

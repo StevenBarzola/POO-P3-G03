@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g3.AdmFeriaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.AdmFeriaController">
    <center>
       <TableView fx:id="tblFerias" prefHeight="356.0" prefWidth="725.0" BorderPane.alignment="CENTER">
         <columns>
@@ -29,6 +29,10 @@
                   <Font size="13.0" />
                </font>
             </Button>
+            <Button mnemonicParsing="false" onAction="#editarFeria" text="Editar Feria" />
+            <Button mnemonicParsing="false" onAction="#mostrarDetallesFeria" text="Ver Detalles" />
+            <Button mnemonicParsing="false" onAction="#mostrarDetallesEmprendedor" text="Ver Emprendedores" />
+            <Button mnemonicParsing="false" onAction="#mostrarDetallesAuspiciante" text="Ver Auspiciantes" />
             <Button fx:id="btnregresarFeria" mnemonicParsing="false" onAction="#regresarFeria" prefHeight="26.0" prefWidth="66.0" text="Regresar" />
          </children>
       </HBox>

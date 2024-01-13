@@ -1,21 +1,24 @@
 package modelo.evento;
+import java.time.LocalDate;
 import modelo.participante.*;
 import java.util.ArrayList;
+import java.util.Objects;
+
 
 public class Feria {
     private String codigo;
     private String nombre;
-    private String fechaI;
-    private String fechaF;
+    private LocalDate fechaI;
+    private LocalDate fechaF;
     private String lugar;
     private String descripcion;
     private String horario;
     private ArrayList<AuspicianteEnFeria> auspiciantesEnFeria; 
     private SeccionStand[] seccionesStand;
-
+    
     
     //Constructor
-    public Feria(String c, String n, String fi, String ff, String l, String d, String h){
+    public Feria(String c, String n, LocalDate fi, LocalDate ff, String l, String d, String h){
         codigo=c;
         nombre=n;
         fechaI=fi;
@@ -32,9 +35,9 @@ public class Feria {
     
     public String getNombre(){return nombre;}
     
-    public String getFechaI(){return fechaI;}
+    public LocalDate getFechaI(){return fechaI;}
     
-    public String getFechaF(){return fechaF;}
+    public LocalDate getFechaF(){return fechaF;}
     
     public String getLugar(){return lugar;}
     
@@ -52,9 +55,9 @@ public class Feria {
     
     public void setNombre(String n){nombre=n;}
     
-    public void setFechaI(String fi){fechaI=fi;}
+    public void setFechaI(LocalDate fi){fechaI=fi;}
     
-    public void setFechaF(String ff){fechaF=ff;}
+    public void setFechaF(LocalDate ff){fechaF=ff;}
     
     public void setLugar(String l){lugar=l;}
     
@@ -69,20 +72,14 @@ public class Feria {
     //Metodo toString 
     @Override
     public String toString(){  
-        String aus="["; //String para presentar los auspiciantes
-        for(int j=0;j<auspiciantesEnFeria.size();j++){
-            String n= auspiciantesEnFeria.get(j).getAuspiciante().getNombre();
-            aus+=n;
-            if(j<(auspiciantesEnFeria.size()-1)) aus+="-";
-        }
-        aus+="]";
-        
-        return "Nombre: "+nombre+"\ndescripcion: "+descripcion+"\nlugar: "+lugar
-        +"\nfecha de inicio: "+fechaI+"\nfecha de fin: "+fechaF+"\nhorario: "
-        +horario+"\nauspiciantes: "+aus+"\n[Seccion#1: "+seccionesStand[0].getCanStand()
-        +" stand(s)"+" / Seccion#2: "+seccionesStand[1].getCanStand()+" stand(s)"
-        +" / Seccion#3: "+seccionesStand[2].getCanStand()+" stand(s)"
-        +" / Seccion#4: "+seccionesStand[3].getCanStand()+" stand(s)]";
+        String aus= getStringAuspiciantes();
+        String emp= getStringEmprendedores();
+        return "Nombre: "+nombre+"\nDescripcion: "+descripcion+"\nLugar: "+lugar
+        +"\nFecha de inicio: "+fechaI+"\nFecha de fin: "+fechaF+"\nHorario: "
+        +horario+"\nAuspiciantes: "+aus+"\nEmprendedores: "+emp+"\nSeccion#1: "+seccionesStand[0].getCanStand()
+        +" stand(s)"+"\nSeccion#2: "+seccionesStand[1].getCanStand()+" stand(s)"
+        +"\nSeccion#3: "+seccionesStand[2].getCanStand()+" stand(s)"
+        +"\nSeccion#4: "+seccionesStand[3].getCanStand()+" stand(s)";
     }
     
     //Mostrar informacion de la feria
@@ -117,8 +114,9 @@ public class Feria {
     }
     
     //Consultar emprendedores en feria
-    public void consultarEmprendedores(){
-        System.out.print("{");
+    public String consultarEmprendedores(){
+        int contador=1;
+        String emp= "";
         for(SeccionStand ss: seccionesStand){
             for(Stand s: ss.getSeccion()){
                 if(s.getPersona()!=null && s.getPersona() instanceof Emprendedor){
@@ -132,14 +130,49 @@ public class Feria {
                     if(l=='B'){sec+="2";}
                     if(l=='C'){sec+="3";}
                     if(l=='D'){sec+="4";}
-                    System.out.print("["+"Emprendedor: "+nomPerRes+", Nombre del emprendimiento: "
+                    emp+=contador+". "+"Emprendedor: "+nomPerRes+", Nombre del emprendimiento: "
                     +nombre+"Descripcion de servicios: "+descrip+", Seccion: "+sec
-                    +", Stand asignado: "+s.getCodigoSt()+"]");
+                    +", Stand asignado: "+s.getCodigoSt()+"]";
+                    emp+="\n";
+                    contador++;
                 }
             }
         }
-        System.out.print("}");
-        System.out.println("");
+        return emp;
+    }
+    
+    //Consultar auspiciantes en feria
+    public String consultarAuspiciantesEnFeria(){
+        int contador=1;
+        String aus="";
+        for(AuspicianteEnFeria aef:auspiciantesEnFeria){
+            String tieneStand= "";
+            Stand standAsignado=null;
+            String codigoStand="No tiene stand asignado";
+            if(aef.getTieneStand()==true){
+                tieneStand="Si";
+                standAsignado=encontrarStandAEF(aef);
+                codigoStand= standAsignado.getCodigoSt();
+            }else tieneStand="No";
+            aus+=contador+". "+"Nombre del auspiciante: "+aef.getAuspiciante().getNombre()+
+            ", Descripcion del auspicio: "+aef.getDescripcion()+", Tiene Stand: "+tieneStand+
+            ", Stand asignado: "+codigoStand;
+        }
+        return aus;
+    }
+    
+    //Buscar stand por AuspicianteEnFeria
+    public Stand encontrarStandAEF(AuspicianteEnFeria aef){
+        if(aef.getTieneStand()==true){
+            for(SeccionStand ss: seccionesStand){
+                for(Stand s: ss.getSeccion()){
+                    if(s.getPersona() instanceof Auspiciante && s.getPersona().getNumId().equals(aef.getAuspiciante().getNumId())){
+                        return s;
+                    }
+                }
+            }
+        }
+        return null;
     }
     
     //Buscar stand por codigo
@@ -209,6 +242,68 @@ public class Feria {
         }else  System.out.println("El stand se encuentra ocupado");
         
     }
+    
+    //Metodo que devuelve el numero de emprendedores de cada feria
+    public int getNumeroEmprendedores(){
+        int contador=0;
+        for(SeccionStand ss: seccionesStand){
+            for(Stand s: ss.getSeccion()){
+                 if(s.getPersona()!=null && s.getPersona() instanceof Emprendedor){
+                     contador++;
+                 }
+            }
+        }
+        return contador;
+    }
+    
+    //Metodo para devolver un String con los Auspiciantes
+    public String getStringAuspiciantes(){
+        String aus="["; //String para presentar los auspiciantes
+        for(int j=0;j<auspiciantesEnFeria.size();j++){
+            String n= auspiciantesEnFeria.get(j).getAuspiciante().getNombre();
+            aus+=n;
+            if(j<(auspiciantesEnFeria.size()-1)) aus+="-";
+        }
+        aus+="]";
+        return aus;
+    }
+    
+    //Metodo para devolver un Strin con los Emprendedores
+    public String getStringEmprendedores(){
+        String emp="["; //String para presentar los emprendedores
+        for(int j=0;j<seccionesStand.length;j++){
+            SeccionStand ss= seccionesStand[j];
+            for(int i=0;i<ss.getSeccion().size();i++){
+                if(ss.getSeccion().get(i).getPersona() instanceof Emprendedor){
+                    String n= ss.getSeccion().get(i).getPersona().getNomPerRes();
+                    emp+=n+"-";
+                }
+            }
+        }
+        emp+="]";
+        if(!emp.equals("[]")){
+            String m = emp.substring(0,emp.length()-2);
+            emp= m+"]";
+            return emp;
+        } 
+        return emp;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Feria other = (Feria) obj;
+        return Objects.equals(this.codigo, other.codigo);
+    }
+
     
 }   
    
