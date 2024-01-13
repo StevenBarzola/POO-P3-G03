@@ -1,0 +1,47 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    
+}
+
+
+.fondo{
+   -fx-background-color: #78DAC9;
+   -fx-alignment: CENTER;
+}
+
+.tablas{
+    -fx-tableColumn-prefWidth:50%;
+}
+
+.botones{
+    -fx-alignment:CENTER;
+    -fx-button-alignment: CENTER;
+}
+
+.encabezado{
+    -fx-alignment:CENTER;
+}
+
+.titulo{
+    -fx-background-radius:40px;
+    -fx-background-color: #FF5E1B;
+    -fx-alignment:CENTER;
+    -fx-text-fill: white;
+    -fx-padding:10;
+    -fx-font-size: 24;
+    -fx-font-family: "Poor Richard";
+}
+
+.datos{
+    -fx-font-size:14;
+    -fx-font-family:"Arial";
+    -fx-underline:true;
+    -fx-padding:5;
+}
+
+.checkbox{
+    -fx-padding:5;
+}

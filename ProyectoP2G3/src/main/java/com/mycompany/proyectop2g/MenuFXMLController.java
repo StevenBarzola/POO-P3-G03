@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package com.mycompany.sistema;
+package com.mycompany.proyectop2g;
 
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -11,7 +12,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-
+import com.mycompany.proyectop2g.*;
+import com.mycompany.proyectop2g.App;
 /**
  * FXML Controller class
  *
@@ -37,7 +39,6 @@ public class MenuFXMLController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }    
 
     @FXML
@@ -49,7 +50,8 @@ public class MenuFXMLController implements Initializable {
     }
 
     @FXML
-    private void administrarAusp(MouseEvent event) {
+    private void administrarAusp() throws IOException {
+        App.setRoot("/com/mycompany/proyectop2g/admAuspiciante");
     }
 
     @FXML
