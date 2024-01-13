@@ -1,4 +1,4 @@
-package com.mycompany.proyectop2g3;
+package com.mycompany.proyectop2g;
 
 public class Principal {
     public static void main(final String[] args) {
