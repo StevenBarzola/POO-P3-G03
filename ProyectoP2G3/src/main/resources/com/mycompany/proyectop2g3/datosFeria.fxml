@@ -18,7 +18,7 @@
             <Label text="Descripcion" />
             <Label text="Lugar" />
             <Label text="Fecha de Inicio" />
-            <Label text="Fecha de fin" />
+            <Label text="Fecha de Fin" />
             <Label text="Horario" />
             <Label text="N° Stands (Seccion 1)" />
             <Label text="N° Stands (Seccion 2)" />
@@ -44,18 +44,17 @@
       </VBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="57.0" prefWidth="558.0" spacing="40.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="47.0" prefWidth="504.0" spacing="40.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#guardarFeria" text="Guardar" />
-            <Button fx:id="btnCancelar" alignment="CENTER" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#regresar" text="Regresar" />
+            <Button mnemonicParsing="false" onAction="#limpiar" text="Limpiar" />
          </children>
       </HBox>
    </bottom>
    <right>
       <Pane prefHeight="222.0" prefWidth="130.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="8.0" layoutY="128.0" text="Ej: 12/08/23" />
-            <Label layoutX="8.0" layoutY="169.0" text="Ej: 15/08/23" />
             <Label layoutX="8.0" layoutY="210.0" text="Ej: 8.00 a 16.00" />
          </children>
       </Pane>

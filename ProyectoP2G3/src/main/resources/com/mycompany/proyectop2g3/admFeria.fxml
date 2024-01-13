@@ -29,6 +29,10 @@
                   <Font size="13.0" />
                </font>
             </Button>
+            <Button mnemonicParsing="false" onAction="#editarFeria" text="Editar Feria" />
+            <Button mnemonicParsing="false" onAction="#mostrarDetallesFeria" text="Ver Detalles" />
+            <Button mnemonicParsing="false" onAction="#mostrarDetallesEmprendedor" text="Ver Emprendedores" />
+            <Button mnemonicParsing="false" onAction="#mostrarDetallesAuspiciante" text="Ver Auspiciantes" />
             <Button fx:id="btnregresarFeria" mnemonicParsing="false" onAction="#regresarFeria" prefHeight="26.0" prefWidth="66.0" text="Regresar" />
          </children>
       </HBox>
