@@ -1,4 +1,4 @@
-package com.mycompany.proyectop2g3;
+package com.mycompany.proyectop2g;
 
 import java.io.IOException;
 import java.net.URL;
@@ -58,7 +58,8 @@ public class AdmFeriaController implements Initializable {
     }    
 
     @FXML
-    private void regresarFeria(ActionEvent event) {
+    private void regresarFeria(ActionEvent event) throws IOException{
+        App.setRoot("/com/mycompany/proyectop2g/MenuFXML");
     }
 
     @FXML

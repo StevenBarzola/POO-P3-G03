@@ -1,4 +1,4 @@
-package com.mycompany.proyectop2g3;
+package com.mycompany.proyectop2g;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
