@@ -58,10 +58,12 @@
       </HBox>
    </bottom>
    <center>
-      <TableView styleClass="tabla" BorderPane.alignment="CENTER">
+      <TableView fx:id="tblAuspiEnFeria" styleClass="tabla" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn text="Feria" />
-          <TableColumn text="Auspiciante" />
+          <TableColumn fx:id="colFeria" prefWidth="94.0" text="Feria" />
+          <TableColumn fx:id="colAuspiciante" minWidth="0.0" prefWidth="155.0" text="Auspiciante" />
+            <TableColumn fx:id="colDescripcion" prefWidth="117.0" text="Descripcion" />
+            <TableColumn fx:id="colStand" minWidth="0.0" prefWidth="113.0" text="Stand" />
         </columns>
       </TableView>
    </center>

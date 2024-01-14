@@ -162,7 +162,7 @@ public class AgregarAuspiController implements Initializable {
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Information Dialog");
                 alert.setHeaderText("Auspiciante");
-                alert.setContentText("Hola "+nombre.getText()+" su cuenta fue realizada correctamente.");
+                alert.setContentText("Hola "+nombre.getText()+" su auspicio fue registrada correctamente.");
                 alert.showAndWait();
                 admAuspiciante();
             }else{
