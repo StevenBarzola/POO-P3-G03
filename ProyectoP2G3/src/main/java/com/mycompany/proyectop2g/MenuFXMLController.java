@@ -47,7 +47,8 @@ public class MenuFXMLController implements Initializable {
     }
 
     @FXML
-    private void administrarEmpr(MouseEvent event) {
+    private void administrarEmpr(MouseEvent event) throws IOException{
+        App.setRoot("/com/mycompany/proyectop2g/admEmprendedor");
     }
 
     @FXML
