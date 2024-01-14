@@ -224,7 +224,7 @@ public class Feria {
                 cont= limiteStand(e.getNumId());
                 if(cont==0){
                     s.setPersona(e);
-                    s.setFechaAsig(fa);
+                    s.setFechaAsig(LocalDate.now());
                     s.setcodigoSt(s.getCodigoSt()+"*");
                     System.out.println("Stand asignado con exito");
                 }else System.out.println("Ya tiene un stand asignado, solo puede tener un stand");
@@ -235,7 +235,7 @@ public class Feria {
                 if(cont<2){
                     if(anf.getTieneStand()==true){
                         s.setPersona(a);
-                        s.setFechaAsig(fa);
+                        s.setFechaAsig(LocalDate.now());
                         s.setcodigoSt(s.getCodigoSt()+"*");
                         System.out.println("Stand asignado con exito");
                     }else System.out.println("El auspiciante no debe tener stand, así él/ella lo decidió");

@@ -11,14 +11,14 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.AdmStandController">
    <top>
-      <HBox alignment="CENTER_LEFT" prefHeight="83.0" prefWidth="600.0" spacing="140.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" prefHeight="107.0" prefWidth="600.0" spacing="140.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#regresar" pickOnBounds="true" preserveRatio="true" translateX="5.0">
                <image>
                   <Image url="@../../../imagenes/regresar.png" />
                </image>
             </ImageView>
-            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="268.0">
+            <VBox alignment="CENTER" prefHeight="94.0" prefWidth="268.0" spacing="5.0">
                <children>
                   <Label prefHeight="32.0" prefWidth="244.0" styleClass="titulo" text="Administracion de Stand">
                      <font>
@@ -28,10 +28,13 @@
                         <InnerShadow />
                      </effect>
                   </Label>
-                  <Label fx:id="lblFeriaSeleccionada" text="Feria: ">
+                  <Label fx:id="lblFeriaSeleccionada" styleClass="labelFeria" text="Feria:">
                      <font>
                         <Font size="18.0" />
                      </font>
+                     <effect>
+                        <InnerShadow height="10.0" radius="4.5" width="10.0" />
+                     </effect>
                   </Label>
                </children>
             </VBox>
@@ -39,7 +42,7 @@
       </HBox>
    </top>
    <center>
-      <VBox prefHeight="245.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="300.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <HBox fx:id="hb1Seccion" alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="600.0" spacing="20.0">
                <children>
@@ -76,7 +79,4 @@
          </children>
       </VBox>
    </center>
-   <bottom>
-      <HBox prefHeight="74.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
-   </bottom>
 </BorderPane>

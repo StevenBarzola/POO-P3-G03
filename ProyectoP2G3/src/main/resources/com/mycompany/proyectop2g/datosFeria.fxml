@@ -9,13 +9,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="513.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.DatosFeriaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="465.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.DatosFeriaController">
    <left>
-      <VBox alignment="CENTER" prefHeight="396.0" prefWidth="160.0" spacing="16.5" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="427.0" prefWidth="160.0" spacing="16.5" BorderPane.alignment="CENTER">
          <children>
             <Label styleClass="datos" text="Nombre" />
             <Label styleClass="datos" text="Descripcion" />
@@ -38,7 +37,7 @@
             <TextField fx:id="txtLugar" />
             <DatePicker fx:id="dateFechaInicio" prefHeight="26.0" prefWidth="282.0" />
             <DatePicker fx:id="dateFechaFin" prefHeight="26.0" prefWidth="280.0" />
-            <TextField fx:id="txtHorario" />
+            <TextField fx:id="txtHorario" promptText="Ej: 8.00 a 16.00" />
             <TextField fx:id="txtNStand1" />
             <TextField fx:id="txtNStand2" />
             <TextField fx:id="txtNStand3" />
@@ -54,16 +53,6 @@
          </children>
       </HBox>
    </bottom>
-   <right>
-      <Pane prefHeight="222.0" prefWidth="130.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="8.0" layoutY="226.0" text="Ej: 8.00 a 16.00">
-               <font>
-                  <Font size="13.0" />
-               </font></Label>
-         </children>
-      </Pane>
-   </right>
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="74.0" prefWidth="504.0" spacing="140.0" BorderPane.alignment="CENTER">
          <children>
@@ -83,4 +72,7 @@
          </children>
       </HBox>
    </top>
+   <right>
+      <VBox prefHeight="427.0" prefWidth="78.0" BorderPane.alignment="CENTER" />
+   </right>
 </BorderPane>

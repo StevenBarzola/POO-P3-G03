@@ -44,8 +44,7 @@ public class DatosFeriaController implements Initializable {
     private TextField txtNStand4;
     
     private Feria feria;
-    @FXML
-    private Button btnGuardar;
+    
     /**
      * Initializes the controller class.
      */
