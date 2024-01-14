@@ -4,23 +4,37 @@
  */
 package com.mycompany.proyectop2g;
 
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
-
+import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import modelo.participante.*;
 /**
  * FXML Controller class
  *
- * @author User
+ * @author USER
  */
 public class AgregarEmpController implements Initializable {
 
+    @FXML
+    private ImageView regresar;
+    
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
-    
+    @FXML
+    private void admEmprendedor() throws IOException{
+        App.setRoot("/com/mycompany/proyectop2g/AdmEmprendedor");
+    }
+
+
 }

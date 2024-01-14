@@ -42,16 +42,12 @@
    <bottom>
       <HBox prefHeight="100.0" prefWidth="744.0" styleClass="botones" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="crearAuspi" mnemonicParsing="false" onAction="#nuevoAuspiciante" styleClass="botones" text="Nuevo Emprendedor">
+            <Button fx:id="crearEmp" mnemonicParsing="false" onAction="#nuevoEmprendedor" styleClass="botones" text="Nuevo Emprendedor">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="editar" mnemonicParsing="false" onAction="#editarAuspiciante" styleClass="botones" text="Editar Emprendedor">
-               <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </HBox.margin>
-            </Button>
+            <Button fx:id="editarEmp1" mnemonicParsing="false" onAction="#editarEmprendedor" styleClass="botones" text="Editar Emprendedor" />
          </children>
       </HBox>
    </bottom>
