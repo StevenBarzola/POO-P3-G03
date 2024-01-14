@@ -45,3 +45,15 @@
 .checkbox{
     -fx-padding:5;
 }
+
+.segundaVentana{
+    -fx-background-color:white;
+    -fx-padding:5;
+    -fx-alignment:CENTER;
+}
+
+.requerido{
+    -fx-text-fill: red;
+    
+    
+}

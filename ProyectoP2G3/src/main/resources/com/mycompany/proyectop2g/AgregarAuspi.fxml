@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
@@ -14,129 +15,196 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.AgregarAuspiController">
-   <top>
-      <HBox prefHeight="80.0" prefWidth="200.0" styleClass="encabezado" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fx:id="regresar" fitHeight="150.0" fitWidth="40.0" onMouseClicked="#admAuspiciante" pickOnBounds="true" preserveRatio="true" translateX="-170.0">
-               <image>
-                  <Image url="@../../../imagenes/regresar.png" />
-               </image>
-            </ImageView>
-            <Label styleClass="titulo" text="Nuevo Auspiciante">
-               <effect>
-                  <InnerShadow />
-               </effect></Label>
-         </children>
-      </HBox>
-   </top>
-   <left>
-      <AnchorPane prefHeight="200.0" prefWidth="20.0" BorderPane.alignment="CENTER" />
-   </left>
-   <right>
-      <AnchorPane prefHeight="200.0" prefWidth="20.0" BorderPane.alignment="CENTER" />
-   </right>
-   <center>
-      <GridPane styleClass="formulario" BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="contenedores">
+<StackPane cache="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.AgregarAuspiController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css">
+         <top>
+            <HBox prefHeight="80.0" prefWidth="200.0" styleClass="encabezado" BorderPane.alignment="CENTER">
                <children>
-                  <Label styleClass="datos" text="Número de cedula / Ruc:" />
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" styleClass="campos" />
+                  <ImageView fx:id="regresar" fitHeight="150.0" fitWidth="40.0" onMouseClicked="#admAuspiciante" pickOnBounds="true" preserveRatio="true" translateX="-170.0">
+                     <image>
+                        <Image url="@../../../imagenes/regresar.png" />
+                     </image>
+                  </ImageView>
+                  <Label styleClass="titulo" text="Nuevo Auspiciante">
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </Label>
                </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="contenedores" GridPane.rowIndex="1">
+            </HBox>
+         </top>
+         <left>
+            <AnchorPane prefHeight="200.0" prefWidth="20.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <AnchorPane prefHeight="200.0" prefWidth="20.0" BorderPane.alignment="CENTER" />
+         </right>
+         <bottom>
+            <HBox prefHeight="50.0" prefWidth="200.0" styleClass="botones" BorderPane.alignment="CENTER">
                <children>
-                  <Label styleClass="datos" text="Nombre persona responsable:" />
-                  <TextField maxWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" styleClass="campos" />
+                  <Button fx:id="CrearAuspiciante" mnemonicParsing="false" onAction="#guardarAuspiciante" text="Guardar" />
                </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="contenedores" GridPane.rowIndex="2">
+            </HBox>
+         </bottom>
+         <center>
+            <GridPane styleClass="formulario" BorderPane.alignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
-                  <Label styleClass="datos" text="Télefono:" />
-                  <TextField maxWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" styleClass="campos" />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="contenedores" GridPane.columnIndex="1">
-               <children>
-                  <VBox prefHeight="200.0">
+                  <VBox prefHeight="200.0" prefWidth="100.0" styleClass="contenedores">
                      <children>
-                        <Label styleClass="datos" text="Nombre:" />
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" styleClass="campos" />
+                        <HBox maxHeight="-Infinity" prefHeight="27.0" prefWidth="300.0">
+                           <children>
+                              <Label prefHeight="20.0" prefWidth="165.0" styleClass="datos" text="Número de cedula / Ruc:" />
+                              <Label styleClass="requerido" text="*" />
+                           </children>
+                        </HBox>
+                        <TextField fx:id="cedula" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" styleClass="campos" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" styleClass="contenedores" GridPane.rowIndex="1">
+                     <children>
+                        <HBox maxHeight="-Infinity" prefHeight="27.0" prefWidth="200.0">
+                           <children>
+                              <Label styleClass="datos" text="Nombre persona responsable:" />
+                              <Label styleClass="requerido" text="*" />
+                           </children>
+                        </HBox>
+                        <TextField fx:id="nombreRespo" maxWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" styleClass="campos" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" styleClass="contenedores" GridPane.rowIndex="2">
+                     <children>
+                        <HBox maxWidth="-Infinity" prefHeight="27.0" prefWidth="200.0">
+                           <children>
+                              <Label styleClass="datos" text="Télefono:" />
+                              <Label styleClass="requerido" text="*" />
+                           </children>
+                        </HBox>
+                        <TextField fx:id="telefono" maxWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" styleClass="campos" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" styleClass="contenedores" GridPane.columnIndex="1">
+                     <children>
+                        <VBox prefHeight="200.0">
+                           <children>
+                              <HBox maxWidth="-Infinity" prefHeight="27.0" prefWidth="200.0">
+                                 <children>
+                                    <Label styleClass="datos" text="Nombre:" />
+                                    <Label styleClass="requerido" text="*" />
+                                 </children>
+                              </HBox>
+                              <TextField fx:id="nombre" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" styleClass="campos" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" styleClass="contenedores" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Label styleClass="datos" text="Dirección:" />
+                        <TextField fx:id="direccion" styleClass="campos" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" styleClass="contenedores" GridPane.rowIndex="3">
+                     <children>
+                        <Label styleClass="datos" text="Sitio Web:" />
+                        <TextField fx:id="sitioWeb" maxWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" styleClass="contenedores" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <children>
+                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="27.0" prefWidth="200.0">
+                           <children>
+                              <Label styleClass="datos" text="Sectores Cubiertos:" />
+                              <Label styleClass="requerido" text="*" />
+                           </children>
+                        </HBox>
+                        <ComboBox fx:id="sectoresCubiertos" prefWidth="150.0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" styleClass="contenedores" GridPane.rowIndex="4">
+                     <children>
+                        <HBox maxHeight="-Infinity" prefHeight="27.0" prefWidth="200.0">
+                           <children>
+                              <Label styleClass="datos" text="Red Social:" />
+                              <Label styleClass="requerido" text="*" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <CheckBox fx:id="twitter" mnemonicParsing="false" styleClass="checkbox" text="Twitter" />
+                              <CheckBox fx:id="instagram" mnemonicParsing="false" styleClass="checkbox" text="Instagram" />
+                              <CheckBox fx:id="facebook" mnemonicParsing="false" styleClass="checkbox" text="Facebook" />
+                              <CheckBox fx:id="tiktok" mnemonicParsing="false" styleClass="checkbox" text="TikTok" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" styleClass="contenedores" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <HBox maxWidth="-Infinity" prefHeight="27.0" prefWidth="200.0">
+                           <children>
+                              <Label styleClass="datos" text="Email:" />
+                              <Label styleClass="requerido" text="*" />
+                           </children>
+                        </HBox>
+                        <TextField fx:id="email" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" styleClass="campos" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <children>
+                        <AnchorPane maxHeight="-Infinity" prefHeight="25.0" prefWidth="320.0" />
+                        <HBox prefHeight="23.0" prefWidth="280.0">
+                           <children>
+                              <CheckBox fx:id="youtube" mnemonicParsing="false" styleClass="checkbox" text="Youtube" />
+                              <CheckBox fx:id="linkedln" mnemonicParsing="false" styleClass="checkbox" text="Linkedln" />
+                              <CheckBox fx:id="pinterest" mnemonicParsing="false" styleClass="checkbox" text="Pinterest" />
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
                </children>
-            </VBox>
-            <VBox prefHeight="200.0" styleClass="contenedores" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            </GridPane>
+         </center>
+      </BorderPane>
+      <BorderPane fx:id="segundaVentana" prefHeight="402.0" prefWidth="605.0" stylesheets="@../../../styles/estilos.css" visible="false">
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="segundaVentana" BorderPane.alignment="CENTER">
                <children>
-                  <Label styleClass="datos" text="Dirección:" />
-                  <TextField styleClass="campos" />
+                  <Label fx:id="redSocial" styleClass="datos" text="Esriba su usuario para " />
+                  <TextField fx:id="cuenta" maxWidth="-Infinity" />
+                  <Button fx:id="guardar" mnemonicParsing="false" text="Guardar">
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" styleClass="contenedores" GridPane.rowIndex="3">
-               <children>
-                  <Label styleClass="datos" text="Sitio Web:" />
-                  <TextField maxWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" styleClass="contenedores" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <children>
-                  <Label styleClass="datos" text="Sectores Cubiertos:" />
-                  <ComboBox fx:id="sectoresCubiertos" prefWidth="150.0" />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" styleClass="contenedores" GridPane.rowIndex="4">
-               <children>
-                  <Label styleClass="datos" text="Red Social:" />
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <CheckBox styleClass="checkbox" mnemonicParsing="false" text="Twitter" />
-                        <CheckBox styleClass="checkbox" mnemonicParsing="false" text="Instagram" />
-                        <CheckBox styleClass="checkbox" mnemonicParsing="false" text="Facebook" />
-                        <CheckBox styleClass="checkbox" mnemonicParsing="false" text="TikTok" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" styleClass="contenedores" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <children>
-                  <Label styleClass="datos" text="Email:" />
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" styleClass="campos" />
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <children>
-                  <AnchorPane maxHeight="-Infinity" prefHeight="26.0" prefWidth="280.0" />
-                  <HBox prefHeight="23.0" prefWidth="280.0">
-                     <children>
-                        <CheckBox styleClass="checkbox" mnemonicParsing="false" text="Youtube" />
-                        <CheckBox styleClass="checkbox" mnemonicParsing="false" text="Linkedln" />
-                        <CheckBox styleClass="checkbox" mnemonicParsing="false" text="Pinterest" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </children>
-      </GridPane>
-   </center>
-   <bottom>
-      <HBox prefHeight="50.0" prefWidth="200.0" styleClass="botones" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" text="Guardar" />
-         </children>
-      </HBox>
-   </bottom>
-</BorderPane>
+         </center>
+         <left>
+            <AnchorPane prefHeight="200.0" prefWidth="70.0" BorderPane.alignment="TOP_LEFT" />
+         </left>
+         <bottom>
+            <AnchorPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="BOTTOM_CENTER" />
+         </bottom>
+         <right>
+            <AnchorPane prefHeight="200.0" prefWidth="70.0" BorderPane.alignment="CENTER_RIGHT" />
+         </right>
+         <top>
+            <AnchorPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="TOP_CENTER" />
+         </top>
+      </BorderPane>
+   </children>
+</StackPane>
