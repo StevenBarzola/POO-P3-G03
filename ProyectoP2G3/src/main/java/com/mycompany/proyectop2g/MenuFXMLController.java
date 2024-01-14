@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import com.mycompany.proyectop2g.*;
 import com.mycompany.proyectop2g.App;
+import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
@@ -47,7 +48,8 @@ public class MenuFXMLController implements Initializable {
     }
 
     @FXML
-    private void administrarEmpr(MouseEvent event) {
+    private void administrarEmpr(MouseEvent event) throws IOException{
+        App.setRoot("/com/mycompany/proyectop2g/admEmprendedor");
     }
 
     @FXML
@@ -61,6 +63,8 @@ public class MenuFXMLController implements Initializable {
 
     @FXML
     private void salirMenu(MouseEvent event) {
+        Stage stage= (Stage) btnSalir.getScene().getWindow();
+        stage.close();
     }
     
 }

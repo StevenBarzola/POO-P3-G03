@@ -42,6 +42,26 @@
     -fx-padding:5;
 }
 
+.datosSeccion{
+    -fx-font-size:14;
+    -fx-font-family:"Arial";
+    -fx-padding:5;
+    -fx-background-color: white;
+    -fx-background-radius: 7;
+}
+
 .checkbox{
     -fx-padding:5;
+}
+
+.segundaVentana{
+    -fx-background-color:white;
+    -fx-padding:5;
+    -fx-alignment:CENTER;
+}
+
+.requerido{
+    -fx-text-fill: red;
+    
+    
 }

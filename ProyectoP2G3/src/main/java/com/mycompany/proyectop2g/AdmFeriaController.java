@@ -28,10 +28,6 @@ import modelo.participante.*;
 public class AdmFeriaController implements Initializable {
     
     @FXML
-    private Button btnAgregarFeria;
-    @FXML
-    private Button btnregresarFeria;
-    @FXML
     private TableView<Feria> tblFerias;
     @FXML
     private TableColumn colCodigo;
@@ -63,14 +59,14 @@ public class AdmFeriaController implements Initializable {
         );        
         if(Sistema.ferias.size()!=0) tblFerias.getItems().addAll(Sistema.ferias);
     }    
-
+     
     @FXML
-    private void regresarFeria(ActionEvent event) throws IOException{
+    private void regresarFeria(MouseEvent event)throws IOException {
         App.setRoot("/com/mycompany/proyectop2g/MenuFXML");
     }
-
+    
     @FXML
-    private void mostrarVentanaDatosFeria(ActionEvent event) throws IOException {
+    private void agregarFeria(ActionEvent event) throws IOException{
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/mycompany/proyectop2g/datosFeria.fxml"));
         Parent root= loader.load();
         DatosFeriaController controlador= loader.getController();
@@ -78,7 +74,7 @@ public class AdmFeriaController implements Initializable {
         Stage stage= new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
-        stage.show();     
+        stage.show();   
     }
 
     @FXML
@@ -190,6 +186,6 @@ public class AdmFeriaController implements Initializable {
         }
         
     }
-    
+
     
 }

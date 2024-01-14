@@ -15,6 +15,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import modelo.evento.*;
 
@@ -43,6 +44,8 @@ public class DatosFeriaController implements Initializable {
     private TextField txtNStand4;
     
     private Feria feria;
+    @FXML
+    private Button btnGuardar;
     /**
      * Initializes the controller class.
      */
@@ -112,7 +115,7 @@ public class DatosFeriaController implements Initializable {
     }
 
     @FXML
-    private void regresar(ActionEvent event) throws Exception {
+    private void regresar(MouseEvent event) throws IOException{
         feria=null;
         Stage stage= (Stage) txtNombre.getScene().getWindow();
         stage.close();
@@ -122,5 +125,7 @@ public class DatosFeriaController implements Initializable {
     public Feria getFeria(){
         return feria;
     }
+
+   
     
 }

@@ -4,31 +4,34 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="504.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.DatosFeriaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="513.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.DatosFeriaController">
    <left>
-      <VBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="160.0" spacing="25.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="396.0" prefWidth="160.0" spacing="16.5" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Nombre" />
-            <Label text="Descripcion" />
-            <Label text="Lugar" />
-            <Label text="Fecha de Inicio" />
-            <Label text="Fecha de Fin" />
-            <Label text="Horario" />
-            <Label text="N° Stands (Seccion 1)" />
-            <Label text="N° Stands (Seccion 2)" />
-            <Label text="N° Stands (Seccion 3)" />
-            <Label text="N° Stands (Seccion 4)" />
+            <Label styleClass="datos" text="Nombre" />
+            <Label styleClass="datos" text="Descripcion" />
+            <Label styleClass="datos" text="Lugar" />
+            <Label styleClass="datos" text="Fecha de Inicio" />
+            <Label styleClass="datos" text="Fecha de Fin" />
+            <Label styleClass="datos" text="Horario" />
+            <Label styleClass="datos" text="N° Stands (Seccion 1)" />
+            <Label styleClass="datos" text="N° Stands (Seccion 2)" />
+            <Label styleClass="datos" text="N° Stands (Seccion 3)" />
+            <Label styleClass="datos" text="N° Stands (Seccion 4)" />
          </children>
       </VBox>
    </left>
    <center>
-      <VBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="300.0" spacing="15.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="350.0" prefWidth="300.0" spacing="17.0" styleClass="botones" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="txtNombre" />
             <TextField fx:id="txtDescripcion" />
@@ -44,10 +47,9 @@
       </VBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="47.0" prefWidth="504.0" spacing="40.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="514.0" spacing="40.0" styleClass="botones" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#guardarFeria" text="Guardar" />
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#regresar" text="Regresar" />
+            <Button mnemonicParsing="false" onAction="#guardarFeria" stylesheets="@../../../styles/estilos.css" text="Guardar" />
             <Button mnemonicParsing="false" onAction="#limpiar" text="Limpiar" />
          </children>
       </HBox>
@@ -55,17 +57,28 @@
    <right>
       <Pane prefHeight="222.0" prefWidth="130.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="8.0" layoutY="210.0" text="Ej: 8.00 a 16.00" />
+            <Label layoutX="8.0" layoutY="226.0" text="Ej: 8.00 a 16.00">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
          </children>
       </Pane>
    </right>
    <top>
-      <HBox alignment="CENTER" prefHeight="59.0" prefWidth="558.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" prefHeight="74.0" prefWidth="504.0" spacing="140.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" text="NUEVA FERIA">
+            <ImageView fitHeight="34.0" fitWidth="36.0" onMouseClicked="#regresar" pickOnBounds="true" preserveRatio="true" translateX="5.0">
+               <image>
+                  <Image url="@../../../imagenes/regresar.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" prefHeight="18.0" prefWidth="163.0" styleClass="titulo" text="Nueva Feria">
                <font>
                   <Font size="14.0" />
                </font>
+               <effect>
+                  <InnerShadow />
+               </effect>
             </Label>
          </children>
       </HBox>
