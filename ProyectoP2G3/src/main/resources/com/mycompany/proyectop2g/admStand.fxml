@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.AdmStandController">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="83.0" prefWidth="600.0" spacing="105.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" text="Regresar" />
+            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="268.0">
+               <children>
+                  <Label text="Administracion de Stand">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblFeriaSeleccionada" text="Feria: ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox prefHeight="245.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="hb1Seccion" alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="600.0" spacing="20.0">
+               <children>
+                  <Label text="Seccion 1:" />
+               </children>
+            </HBox>
+            <HBox fx:id="hb2Seccion" alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="600.0" spacing="20.0">
+               <children>
+                  <Label text="Seccion 2:" />
+               </children>
+            </HBox>
+            <HBox fx:id="hb3Seccion" alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="600.0" spacing="20.0">
+               <children>
+                  <Label text="Seccion 3:" />
+               </children>
+            </HBox>
+            <HBox fx:id="hb4Seccion" alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="600.0" spacing="20.0">
+               <children>
+                  <Label text="Seccion 4:" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox prefHeight="74.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

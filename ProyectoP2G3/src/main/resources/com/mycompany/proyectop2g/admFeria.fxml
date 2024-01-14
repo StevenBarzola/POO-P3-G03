@@ -22,24 +22,25 @@
       </TableView>
    </center>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="btnAgregarFeria" mnemonicParsing="false" onAction="#mostrarVentanaDatosFeria" prefHeight="23.0" prefWidth="100.0" text="Agregar Feria">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
+            <Button mnemonicParsing="false" onAction="#administrarStands" text="Administrar Stands" />
             <Button mnemonicParsing="false" onAction="#editarFeria" text="Editar Feria" />
             <Button mnemonicParsing="false" onAction="#mostrarDetallesFeria" text="Ver Detalles" />
             <Button mnemonicParsing="false" onAction="#mostrarDetallesEmprendedor" text="Ver Emprendedores" />
             <Button mnemonicParsing="false" onAction="#mostrarDetallesAuspiciante" text="Ver Auspiciantes" />
-            <Button fx:id="btnregresarFeria" mnemonicParsing="false" onAction="#regresarFeria" prefHeight="26.0" prefWidth="66.0" text="Regresar" />
          </children>
       </HBox>
    </bottom>
    <top>
-      <HBox alignment="CENTER" prefHeight="68.0" prefWidth="734.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="734.0" spacing="160.0" BorderPane.alignment="TOP_RIGHT">
          <children>
+            <Button fx:id="btnregresarFeria" mnemonicParsing="false" onAction="#regresarFeria" prefHeight="26.0" prefWidth="66.0" text="Regresar" />
             <Label text="Administracion de Ferias">
                <font>
                   <Font size="24.0" />

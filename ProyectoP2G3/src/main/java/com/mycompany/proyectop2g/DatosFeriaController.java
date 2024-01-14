@@ -6,12 +6,16 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import modelo.evento.*;
 
 public class DatosFeriaController implements Initializable {
@@ -37,71 +41,59 @@ public class DatosFeriaController implements Initializable {
     private TextField txtNStand3;
     @FXML
     private TextField txtNStand4;
+    
+    private Feria feria;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       //TODO
+        //TODO
     }    
+    
+    public void initAtributos(Feria fe){
+        feria=fe;
+        txtNombre.setText(feria.getNombre());
+        txtDescripcion.setText(feria.getDescripcion());
+        txtLugar.setText(feria.getLugar());
+        dateFechaInicio.setValue(feria.getFechaI());
+        dateFechaFin.setValue(feria.getFechaF());
+        txtHorario.setText(feria.getHorario());
+        txtNStand1.setText(String.valueOf(feria.getSeccionesStand()[0].getCanStand()));
+        txtNStand2.setText(String.valueOf(feria.getSeccionesStand()[1].getCanStand()));
+        txtNStand3.setText(String.valueOf(feria.getSeccionesStand()[2].getCanStand()));         
+        txtNStand4.setText(String.valueOf(feria.getSeccionesStand()[3].getCanStand()));
+    }
     
     @FXML
     private void guardarFeria(ActionEvent event) {
+       try{
+           String nombre= txtNombre.getText();
+           String descripcion= txtDescripcion.getText();
+           String lugar= txtLugar.getText();
+           LocalDate fechaInicio= dateFechaInicio.getValue();
+           LocalDate fechaFin= dateFechaFin.getValue();
+           String horario= txtHorario.getText();
+           int nStand1= Integer.parseInt(txtNStand1.getText());
+           int nStand2= Integer.parseInt(txtNStand2.getText());
+           int nStand3= Integer.parseInt(txtNStand3.getText());
+           int nStand4= Integer.parseInt(txtNStand4.getText());
+           Sistema.registrarFeria(nombre,fechaInicio,fechaFin,lugar,descripcion,horario,nStand1,nStand2,nStand3,nStand4);
+           
+           
+           Alert alerta= new Alert(Alert.AlertType.INFORMATION);
+           alerta.setTitle("Aviso");
+           alerta.setHeaderText("Acerca de la feria");
+           alerta.setContentText("La feria ha sido registrada exitosamente");
+           alerta.showAndWait();
+       }catch(Exception e){
+           Alert alerta= new Alert(Alert.AlertType.ERROR);
+           alerta.setTitle("Aviso");
+           alerta.setHeaderText("Error en los datos ingresados");
+           alerta.setContentText("Los datos ingresados son inválidos. Por favor, revise que todo este correcto");
+           alerta.showAndWait();
+       }
        
-       try{
-           String nombre= txtNombre.getText();
-           String descripcion= txtDescripcion.getText();
-           String lugar= txtLugar.getText();
-           LocalDate fechaInicio= dateFechaInicio.getValue();
-           LocalDate fechaFin= dateFechaFin.getValue();
-           String horario= txtHorario.getText();
-           int nStand1= Integer.parseInt(txtNStand1.getText());
-           int nStand2= Integer.parseInt(txtNStand2.getText());
-           int nStand3= Integer.parseInt(txtNStand3.getText());
-           int nStand4= Integer.parseInt(txtNStand4.getText());
-           Sistema.registrarFeria(nombre,fechaInicio,fechaFin,lugar,descripcion,horario,nStand1,nStand2,nStand3,nStand4);
-           
-           
-           Alert alerta= new Alert(Alert.AlertType.INFORMATION);
-           alerta.setTitle("Aviso");
-           alerta.setHeaderText("Acerca de la feria");
-           alerta.setContentText("La feria ha sido registrada exitosamente");
-           alerta.showAndWait();
-       }catch(Exception e){
-           Alert alerta= new Alert(Alert.AlertType.ERROR);
-           alerta.setTitle("Aviso");
-           alerta.setHeaderText("Error en los datos ingresados");
-           alerta.setContentText("Los datos ingresados son inválidos. Por favor, revise que todo este correcto");
-           alerta.showAndWait();
-       }
-       /*    
-       try{
-           String nombre= txtNombre.getText();
-           String descripcion= txtDescripcion.getText();
-           String lugar= txtLugar.getText();
-           LocalDate fechaInicio= dateFechaInicio.getValue();
-           LocalDate fechaFin= dateFechaFin.getValue();
-           String horario= txtHorario.getText();
-           int nStand1= Integer.parseInt(txtNStand1.getText());
-           int nStand2= Integer.parseInt(txtNStand2.getText());
-           int nStand3= Integer.parseInt(txtNStand3.getText());
-           int nStand4= Integer.parseInt(txtNStand4.getText());
-           Sistema.registrarFeria(nombre,fechaInicio,fechaFin,lugar,descripcion,horario,nStand1,nStand2,nStand3,nStand4);
-           
-           
-           Alert alerta= new Alert(Alert.AlertType.INFORMATION);
-           alerta.setTitle("Aviso");
-           alerta.setHeaderText("Acerca de la feria");
-           alerta.setContentText("La feria ha sido registrada exitosamente");
-           alerta.showAndWait();
-       }catch(Exception e){
-           Alert alerta= new Alert(Alert.AlertType.ERROR);
-           alerta.setTitle("Aviso");
-           alerta.setHeaderText("Error en los datos ingresados");
-           alerta.setContentText("Los datos ingresados son inválidos. Por favor, revise que todo este correcto");
-           alerta.showAndWait();
-       }
-       */
        
     }
 
@@ -121,7 +113,14 @@ public class DatosFeriaController implements Initializable {
 
     @FXML
     private void regresar(ActionEvent event) throws Exception {
-        App.setRoot("admFeria");
+        feria=null;
+        Stage stage= (Stage) txtNombre.getScene().getWindow();
+        stage.close();
+        App.setRoot("/com/mycompany/proyectop2g/admFeria");
+    }
+    
+    public Feria getFeria(){
+        return feria;
     }
     
 }

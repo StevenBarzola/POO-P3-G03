@@ -53,6 +53,8 @@ public class Feria {
         return seccionesStand;
     }
     
+    public void setCodigo(String c) {codigo=c;}
+    
     public void setNombre(String n){nombre=n;}
     
     public void setFechaI(LocalDate fi){fechaI=fi;}
@@ -301,8 +303,12 @@ public class Feria {
             return false;
         }
         final Feria other = (Feria) obj;
-        return Objects.equals(this.codigo, other.codigo);
+        return Objects.equals(this.nombre, other.nombre);
     }
+
+   
+
+    
 
     
 }   
