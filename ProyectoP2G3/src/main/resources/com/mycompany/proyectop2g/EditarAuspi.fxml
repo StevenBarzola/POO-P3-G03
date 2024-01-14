@@ -200,7 +200,7 @@
                               </GridPane>
                            </children>
                         </StackPane>
-                        <Button mnemonicParsing="false" text="Actualizar" />
+                        <Button fx:id="actualizar" mnemonicParsing="false" text="Actualizar" />
                      </children>
                      <VBox.margin>
                         <Insets top="20.0" />
