@@ -1,9 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
-
-
 package com.mycompany.proyectop2g;
 
 import java.net.URL;
@@ -12,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.fxml.*;
 import javafx.scene.image.ImageView;
 import java.io.*;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
 /**
@@ -20,7 +15,11 @@ import javafx.scene.control.Button;
  * @author USER
  */
 public class AdmEmprendedorController implements Initializable {
-    
+
+    @FXML
+    private Button crearAuspi;
+    @FXML
+    private Button editar;
     @FXML
     private ImageView regresar;
     @FXML
@@ -49,6 +48,14 @@ public class AdmEmprendedorController implements Initializable {
     @FXML
     private void editarEmprendedor() throws IOException{
         App.setRoot("/com/mycompany/proyectop2g/EditarEmp");
+    }
+
+    @FXML
+    private void nuevoAuspiciante(ActionEvent event) {
+    }
+
+    @FXML
+    private void editarAuspiciante(ActionEvent event) {
     }
     
   

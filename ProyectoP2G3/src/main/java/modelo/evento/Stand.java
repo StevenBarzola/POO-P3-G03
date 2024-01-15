@@ -1,10 +1,11 @@
 package modelo.evento;
+import java.time.LocalDate;
 import modelo.participante.*;
 
 public class Stand {
     private String codigoSt;
     private Persona persona;
-    private String fechaAsig;
+    private LocalDate fechaAsig;
     
     //Constructor
     public Stand(String cs){
@@ -20,7 +21,7 @@ public class Stand {
         return persona;
     }
     
-    public String getFechaAsig(){
+    public LocalDate getFechaAsig(){
         return fechaAsig;
     }
     
@@ -32,7 +33,7 @@ public class Stand {
         persona=p;
     }
     
-    public void setFechaAsig(String f){
+    public void setFechaAsig(LocalDate f){
         fechaAsig=f;
     }
     

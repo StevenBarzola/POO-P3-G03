@@ -42,6 +42,22 @@
     -fx-padding:5;
 }
 
+.datosSeccion{
+    -fx-font-size:16;
+    -fx-font-family: "Poor Richard";
+    -fx-padding:5;
+    -fx-background-color: white;
+    -fx-background-radius: 7;
+}
+
+.labelFeria{
+    -fx-font-family: "Poor Richard";
+    -fx-font-size:24;
+    -fx-background-color: white;
+    -fx-padding:3;
+    -fx-background-radius:10px;
+}
+
 .checkbox{
     -fx-padding:5;
 }

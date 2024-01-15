@@ -15,6 +15,8 @@ public class Feria {
     private String horario;
     private ArrayList<AuspicianteEnFeria> auspiciantesEnFeria; 
     private SeccionStand[] seccionesStand;
+    private int contadorAus=1;
+    private int contadorEmp=1;
     
     
     //Constructor
@@ -52,6 +54,8 @@ public class Feria {
     public SeccionStand[] getSeccionesStand(){
         return seccionesStand;
     }
+    
+    public void setCodigo(String c) {codigo=c;}
     
     public void setNombre(String n){nombre=n;}
     
@@ -115,7 +119,6 @@ public class Feria {
     
     //Consultar emprendedores en feria
     public String consultarEmprendedores(){
-        int contador=1;
         String emp= "";
         for(SeccionStand ss: seccionesStand){
             for(Stand s: ss.getSeccion()){
@@ -130,34 +133,40 @@ public class Feria {
                     if(l=='B'){sec+="2";}
                     if(l=='C'){sec+="3";}
                     if(l=='D'){sec+="4";}
-                    emp+=contador+". "+"Emprendedor: "+nomPerRes+", Nombre del emprendimiento: "
+                    emp+=contadorEmp+". "+"Emprendedor: "+nomPerRes+", Nombre del emprendimiento: "
                     +nombre+"Descripcion de servicios: "+descrip+", Seccion: "+sec
-                    +", Stand asignado: "+s.getCodigoSt()+"]";
-                    emp+="\n";
-                    contador++;
+                    +", Stand asignado: "+s.getCodigoSt()+"\n";
+                    contadorEmp++;
                 }
             }
         }
+        contadorEmp=1;
         return emp;
     }
     
     //Consultar auspiciantes en feria
     public String consultarAuspiciantesEnFeria(){
-        int contador=1;
         String aus="";
         for(AuspicianteEnFeria aef:auspiciantesEnFeria){
             String tieneStand= "";
             Stand standAsignado=null;
             String codigoStand="No tiene stand asignado";
-            if(aef.getTieneStand()==true){
-                tieneStand="Si";
+            if(aef.getTieneStand()==true && encontrarStandAEF(aef)!=null){
+                tieneStand="SI";
                 standAsignado=encontrarStandAEF(aef);
                 codigoStand= standAsignado.getCodigoSt();
-            }else tieneStand="No";
-            aus+=contador+". "+"Nombre del auspiciante: "+aef.getAuspiciante().getNombre()+
+            }else if(aef.getTieneStand()==true && encontrarStandAEF(aef)==null){
+                tieneStand="SI";
+                codigoStand="Aun no tiene stand asignado";
+            }else{ 
+                tieneStand="NO";
+            }
+            aus+=contadorAus+". "+"Auspiciante: "+aef.getAuspiciante().getNombre()+
             ", Descripcion del auspicio: "+aef.getDescripcion()+", Tiene Stand: "+tieneStand+
-            ", Stand asignado: "+codigoStand;
+            ", Stand asignado: "+codigoStand+"\n";
+            contadorAus++;
         }
+        contadorAus=1;
         return aus;
     }
     
@@ -222,7 +231,7 @@ public class Feria {
                 cont= limiteStand(e.getNumId());
                 if(cont==0){
                     s.setPersona(e);
-                    s.setFechaAsig(fa);
+                    s.setFechaAsig(LocalDate.now());
                     s.setcodigoSt(s.getCodigoSt()+"*");
                     System.out.println("Stand asignado con exito");
                 }else System.out.println("Ya tiene un stand asignado, solo puede tener un stand");
@@ -233,7 +242,7 @@ public class Feria {
                 if(cont<2){
                     if(anf.getTieneStand()==true){
                         s.setPersona(a);
-                        s.setFechaAsig(fa);
+                        s.setFechaAsig(LocalDate.now());
                         s.setcodigoSt(s.getCodigoSt()+"*");
                         System.out.println("Stand asignado con exito");
                     }else System.out.println("El auspiciante no debe tener stand, así él/ella lo decidió");
@@ -301,8 +310,12 @@ public class Feria {
             return false;
         }
         final Feria other = (Feria) obj;
-        return Objects.equals(this.codigo, other.codigo);
+        return Objects.equals(this.nombre, other.nombre);
     }
+
+   
+
+    
 
     
 }   

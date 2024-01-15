@@ -7,23 +7,28 @@ import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import modelo.evento.*;
 import modelo.participante.*;
 
 public class AdmFeriaController implements Initializable {
     
-    @FXML
-    private Button btnAgregarFeria;
-    @FXML
-    private Button btnregresarFeria;
     @FXML
     private TableView<Feria> tblFerias;
     @FXML
@@ -56,15 +61,22 @@ public class AdmFeriaController implements Initializable {
         );        
         if(Sistema.ferias.size()!=0) tblFerias.getItems().addAll(Sistema.ferias);
     }    
-
+     
     @FXML
-    private void regresarFeria(ActionEvent event) throws IOException{
+    private void regresarFeria(MouseEvent event)throws IOException {
         App.setRoot("/com/mycompany/proyectop2g/MenuFXML");
     }
-
+    
     @FXML
-    private void mostrarVentanaDatosFeria(ActionEvent event) throws IOException {
-        App.setRoot("datosFeria");
+    private void agregarFeria(ActionEvent event) throws IOException{
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/mycompany/proyectop2g/datosFeria.fxml"));
+        Parent root= loader.load();
+        DatosFeriaController controlador= loader.getController();
+        Scene scene= new Scene(root);
+        Stage stage= new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.show();   
     }
 
     @FXML
@@ -96,7 +108,12 @@ public class AdmFeriaController implements Initializable {
             if(feriaSeleccionada.consultarEmprendedores().length()<5){
                 alerta.setContentText("No hay emprendedores registrados en la feria");
             }else{
-                alerta.setContentText(feriaSeleccionada.consultarEmprendedores());
+                TextArea textArea = new TextArea(feriaSeleccionada.consultarEmprendedores());
+                textArea.setEditable(false);
+                textArea.setWrapText(true);
+                ScrollPane scrollPane = new ScrollPane(textArea);
+                scrollPane.setFitToWidth(true);
+                alerta.getDialogPane().setContent(scrollPane);
             }
             alerta.showAndWait();
         }else{
@@ -118,7 +135,12 @@ public class AdmFeriaController implements Initializable {
             if(feriaSeleccionada.consultarAuspiciantesEnFeria().length()<5){
                 alerta.setContentText("No hay auspiciantes registrados en la feria");
             }else{
-                alerta.setContentText(feriaSeleccionada.consultarAuspiciantesEnFeria());
+                TextArea textArea = new TextArea(feriaSeleccionada.consultarAuspiciantesEnFeria());
+                textArea.setEditable(false);
+                textArea.setWrapText(true);
+                ScrollPane scrollPane = new ScrollPane(textArea);
+                scrollPane.setFitToWidth(true);
+                alerta.getDialogPane().setContent(scrollPane);
             }
             alerta.showAndWait();
         }else{
@@ -134,7 +156,15 @@ public class AdmFeriaController implements Initializable {
     private void editarFeria(ActionEvent event) throws Exception{
         Feria feriaSeleccionada= tblFerias.getSelectionModel().getSelectedItem();
         if(feriaSeleccionada!=null){
-            App.setRoot("datosFeria");
+            FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/mycompany/proyectop2g/datosFeria.fxml"));
+            Parent root= loader.load();
+            DatosFeriaController controlador= loader.getController();
+            controlador.initAtributos(feriaSeleccionada);
+            Scene scene= new Scene(root);
+            Stage stage= new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
         }else{
             Alert alerta= new Alert(Alert.AlertType.WARNING);
             alerta.setTitle("Aviso");
@@ -142,6 +172,31 @@ public class AdmFeriaController implements Initializable {
             alerta.setContentText("Si desea editar los campos de una feria, debe seleccionar la feria primero");
             alerta.showAndWait();
         }
+    }
+    
+    
+    @FXML
+    private void administrarStands(ActionEvent event) throws IOException {
+        Feria feriaSeleccionada= tblFerias.getSelectionModel().getSelectedItem();
+        if(feriaSeleccionada!=null){
+            FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/mycompany/proyectop2g/admStand.fxml"));
+            Parent root= loader.load();
+            AdmStandController controlador= loader.getController();
+            //controlador.inicAtributos(feriaSeleccionada);
+            controlador.crearStands(feriaSeleccionada);
+            Scene scene= new Scene(root);
+            Stage stage= new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+        }else{
+            Alert alerta= new Alert(Alert.AlertType.WARNING);
+            alerta.setTitle("Aviso");
+            alerta.setHeaderText("Feria no seleccionada");
+            alerta.setContentText("Si desea administrar los stands de una feria, debe seleccionar la feria primero");
+            alerta.showAndWait();
+        }
+        
     }
 
     
