@@ -15,8 +15,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
@@ -106,7 +108,12 @@ public class AdmFeriaController implements Initializable {
             if(feriaSeleccionada.consultarEmprendedores().length()<5){
                 alerta.setContentText("No hay emprendedores registrados en la feria");
             }else{
-                alerta.setContentText(feriaSeleccionada.consultarEmprendedores());
+                TextArea textArea = new TextArea(feriaSeleccionada.consultarEmprendedores());
+                textArea.setEditable(false);
+                textArea.setWrapText(true);
+                ScrollPane scrollPane = new ScrollPane(textArea);
+                scrollPane.setFitToWidth(true);
+                alerta.getDialogPane().setContent(scrollPane);
             }
             alerta.showAndWait();
         }else{
@@ -128,7 +135,12 @@ public class AdmFeriaController implements Initializable {
             if(feriaSeleccionada.consultarAuspiciantesEnFeria().length()<5){
                 alerta.setContentText("No hay auspiciantes registrados en la feria");
             }else{
-                alerta.setContentText(feriaSeleccionada.consultarAuspiciantesEnFeria());
+                TextArea textArea = new TextArea(feriaSeleccionada.consultarAuspiciantesEnFeria());
+                textArea.setEditable(false);
+                textArea.setWrapText(true);
+                ScrollPane scrollPane = new ScrollPane(textArea);
+                scrollPane.setFitToWidth(true);
+                alerta.getDialogPane().setContent(scrollPane);
             }
             alerta.showAndWait();
         }else{

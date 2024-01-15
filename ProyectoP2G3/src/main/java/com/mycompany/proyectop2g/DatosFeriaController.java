@@ -116,9 +116,9 @@ public class DatosFeriaController implements Initializable {
     @FXML
     private void regresar(MouseEvent event) throws IOException{
         feria=null;
+        App.setRoot("/com/mycompany/proyectop2g/admFeria");
         Stage stage= (Stage) txtNombre.getScene().getWindow();
         stage.close();
-        App.setRoot("/com/mycompany/proyectop2g/admFeria");
     }
     
     public Feria getFeria(){

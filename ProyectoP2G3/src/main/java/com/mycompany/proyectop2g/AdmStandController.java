@@ -67,7 +67,7 @@ public class AdmStandController implements Initializable {
                 dropShadow.setRadius(5);    
                 lbStand.setEffect(dropShadow);
                if(s.getPersona()!=null){
-                   lbStand.setStyle("-fx-background-color: yellow; -fx-padding: 10px; -fx-text-fill: white; -fx-background-radius: 12;");
+                   lbStand.setStyle("-fx-background-color: yellow; -fx-padding: 10px; -fx-text-fill: white; -fx-background-radius: 12; -fx-font-weight: bold;");
                    lbStand.setOnMouseClicked(e -> {
                        Alert alerta= new Alert(Alert.AlertType.INFORMATION);
                        alerta.setTitle("Informacion del stand");
@@ -75,16 +75,18 @@ public class AdmStandController implements Initializable {
                        String pe="";
                        if(s.getPersona() instanceof Emprendedor) {
                            pe="Emprendedor";
-                           alerta.setContentText("Nombre: "+p.getNomPerRes()+"\nTelefono: "+p.getTelefono()+"\nCorreo: "+p.getEmail());
+                           alerta.setContentText("Stand: "+s.getCodigoSt()+"\nAsignado el: "+s.getFechaAsig()+"\nTipo: "+pe+"\nNombre: "+
+                           p.getNomPerRes()+"\nTelefono: "+p.getTelefono()+"\nCorreo: "+p.getEmail());
                        }else if(s.getPersona() instanceof Auspiciante){
                            pe="Auspiciante";
-                           alerta.setContentText("Nombre: "+p.getNombre()+"\nTelefono: "+p.getTelefono()+"\nCorreo: "+p.getEmail());
+                           alerta.setContentText("Stand: "+s.getCodigoSt()+"\nAsignado el: "+s.getFechaAsig()+"\nTipo: "+pe+"\nNombre: "+
+                           p.getNombre()+"\nTelefono: "+p.getTelefono()+"\nCorreo: "+p.getEmail());
                        }
-                       alerta.setHeaderText("Stand "+s.getCodigoSt()+" reservado el "+s.getFechaAsig()+" por el "+pe+":");
+                       alerta.setHeaderText("Stand reservado");
                        alerta.showAndWait();
                    });
                }else{
-                   lbStand.setStyle("-fx-background-color: green; -fx-padding: 10px; -fx-text-fill: white; -fx-background-radius: 12;");
+                   lbStand.setStyle("-fx-background-color: green; -fx-padding: 10px; -fx-text-fill: white; -fx-background-radius: 12; -fx-font-weight: bold;");
                    lbStand.setOnMouseClicked(e ->{
                        Alert alerta= new Alert(Alert.AlertType.CONFIRMATION);
                        alerta.setTitle("Informacion del stand");
@@ -99,12 +101,13 @@ public class AdmStandController implements Initializable {
                                FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/mycompany/proyectop2g/reservarStand.fxml"));
                                Parent root= loader.load();
                                ReservarStandController controlador= loader.getController();
-                               controlador.iniAtributos(feria,s);
+                               controlador.iniAtributos(feria,s,lblFeriaSeleccionada);
                                Scene scene= new Scene(root);
                                Stage stage= new Stage();
                                stage.initModality(Modality.APPLICATION_MODAL);
                                stage.setScene(scene);
                                stage.showAndWait();
+                               
                            }catch(IOException io){
                                 System.out.println("Error cambio de ventana: "+io.getMessage());
                            }
@@ -126,11 +129,11 @@ public class AdmStandController implements Initializable {
     @FXML
     private void regresar(MouseEvent event) throws IOException{
         feria=null;
+        App.setRoot("/com/mycompany/proyectop2g/admFeria");
         Stage stage= (Stage) lblFeriaSeleccionada.getScene().getWindow();
         stage.close();
-        App.setRoot("/com/mycompany/proyectop2g/admFeria");
     }
     
-   
+    
     
 }

@@ -5,12 +5,14 @@ public class AuspicianteEnFeria {
     private Auspiciante auspiciante;
     private String descripcion; 
     private boolean tieneStand;
+    private Feria feria;
     
     //Constructor
-    public AuspicianteEnFeria(Auspiciante a, String d, boolean ts){
+    public AuspicianteEnFeria(Feria f, Auspiciante a, String d, boolean ts){
         auspiciante=a;
         descripcion=d;
         tieneStand=ts;
+        feria=f;
     }
     
     //Getters y Setters
@@ -25,13 +27,18 @@ public class AuspicianteEnFeria {
     public boolean getTieneStand(){
         return tieneStand;
     }
-    
+    public Feria getFeria(){
+        return feria;
+    }
     public void setDescripcion(String d){
         descripcion=d;
     } 
     
     public void setTieneStand(boolean ts){
         tieneStand=ts;
+    }
+    public void setFeria(Feria f){
+        feria=f;
     }
   // 3.3 Asignar Auspiciante en la Feria
     public static boolean verificarAuspicianteFeria(String c, String nc){

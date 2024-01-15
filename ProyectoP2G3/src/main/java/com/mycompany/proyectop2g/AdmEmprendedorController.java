@@ -22,7 +22,10 @@ public class AdmEmprendedorController implements Initializable {
     private Button editar;
     @FXML
     private ImageView regresar;
-    
+    @FXML
+    private Button crearEmp;
+    @FXML
+    private Button editarEmp1;
 
     /**
      * Initializes the controller class.
@@ -37,10 +40,12 @@ public class AdmEmprendedorController implements Initializable {
         App.setRoot("/com/mycompany/proyectop2g/MenuFXML");
     }
     
+    @FXML
     private void nuevoEmprendedor() throws IOException{
         App.setRoot("/com/mycompany/proyectop2g/AgregarEmp");
     }
     
+    @FXML
     private void editarEmprendedor() throws IOException{
         App.setRoot("/com/mycompany/proyectop2g/EditarEmp");
     }
@@ -53,5 +58,6 @@ public class AdmEmprendedorController implements Initializable {
     private void editarAuspiciante(ActionEvent event) {
     }
     
-    
+  
 }
+
