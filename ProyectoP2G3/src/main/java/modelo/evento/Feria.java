@@ -133,9 +133,9 @@ public class Feria {
                     if(l=='B'){sec+="2";}
                     if(l=='C'){sec+="3";}
                     if(l=='D'){sec+="4";}
-                    emp+=contadorEmp+". "+"Emprendedor: "+nomPerRes+", Nombre del emprendimiento: "
-                    +nombre+"Descripcion de servicios: "+descrip+", Seccion: "+sec
-                    +", Stand asignado: "+s.getCodigoSt()+"\n";
+                    emp+=contadorEmp+". "+"Emprendedor: "+nomPerRes+" / Nombre del emprendimiento: "
+                    +nombre+" / Descripcion de servicios: "+descrip+" / Seccion: "+sec
+                    +" / Stand asignado: "+s.getCodigoSt()+"\n";
                     contadorEmp++;
                 }
             }
@@ -149,39 +149,52 @@ public class Feria {
         String aus="";
         for(AuspicianteEnFeria aef:auspiciantesEnFeria){
             String tieneStand= "";
-            Stand standAsignado=null;
+            ArrayList<Stand> stAsignados= new ArrayList<>();
             String codigoStand="No tiene stand asignado";
-            if(aef.getTieneStand()==true && encontrarStandAEF(aef)!=null){
+            if(aef.getTieneStand()==true && encontrarStandAEF(aef).size()!=0){
                 tieneStand="SI";
-                standAsignado=encontrarStandAEF(aef);
-                codigoStand= standAsignado.getCodigoSt();
-            }else if(aef.getTieneStand()==true && encontrarStandAEF(aef)==null){
+                stAsignados=encontrarStandAEF(aef);
+                if(stAsignados.size()==2){
+                    codigoStand= stAsignados.get(0).getCodigoSt()+", "+stAsignados.get(1).getCodigoSt();
+                }else if(stAsignados.size()==1){
+                    codigoStand= stAsignados.get(0).getCodigoSt();
+                }
+            }else if(aef.getTieneStand()==true && encontrarStandAEF(aef).size()==0){
                 tieneStand="SI";
-                codigoStand="Aun no tiene stand asignado";
+                codigoStand="Aun no tiene stand(s) asignado(s)";
             }else{ 
                 tieneStand="NO";
             }
-            aus+=contadorAus+". "+"Auspiciante: "+aef.getAuspiciante().getNombre()+
-            ", Descripcion del auspicio: "+aef.getDescripcion()+", Tiene Stand: "+tieneStand+
-            ", Stand asignado: "+codigoStand+"\n";
-            contadorAus++;
+            
+            if(tieneStand.equals("SI")){
+                aus+=contadorAus+". "+"Auspiciante: "+aef.getAuspiciante().getNombre()+
+                " / Descripcion del auspicio: "+aef.getDescripcion()+" / Tiene stand: "+tieneStand+
+                " / Stand(s) asignado(s): "+codigoStand+"\n";
+                contadorAus++;
+            }else{
+                aus+=contadorAus+". "+"Auspiciante: "+aef.getAuspiciante().getNombre()+
+                " / Descripcion del auspicio: "+aef.getDescripcion()+" / Tiene stand: "+tieneStand+"\n";
+                contadorAus++;
+            }
+            
         }
         contadorAus=1;
         return aus;
     }
     
     //Buscar stand por AuspicianteEnFeria
-    public Stand encontrarStandAEF(AuspicianteEnFeria aef){
+    public ArrayList<Stand> encontrarStandAEF(AuspicianteEnFeria aef){
+        ArrayList<Stand> stands= new ArrayList<>();
         if(aef.getTieneStand()==true){
             for(SeccionStand ss: seccionesStand){
                 for(Stand s: ss.getSeccion()){
                     if(s.getPersona() instanceof Auspiciante && s.getPersona().getNumId().equals(aef.getAuspiciante().getNumId())){
-                        return s;
+                        stands.add(s);
                     }
                 }
             }
         }
-        return null;
+        return stands;
     }
     
     //Buscar stand por codigo
