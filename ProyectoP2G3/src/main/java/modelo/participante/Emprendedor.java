@@ -1,6 +1,7 @@
 package modelo.participante;
 
 import java.util.ArrayList;
+import modelo.evento.Sistema;
 
 
 public class Emprendedor extends Persona {
@@ -21,6 +22,17 @@ public class Emprendedor extends Persona {
     descripcionServicios=ds;
     //Constructor con los atributos heredados de Persona.
   }
+  
+  // validar cedula o ruc
+    public static boolean verificarCedula(String cedu){
+        boolean validar= false;
+        for (Emprendedor emp : Sistema.emprendedores){
+            if (emp.numId.contains(cedu)){
+            validar = true;
+            }
+        }
+        return validar;
+    }
   
   @Override
   public String toString(){
