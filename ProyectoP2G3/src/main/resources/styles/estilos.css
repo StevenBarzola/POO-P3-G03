@@ -94,7 +94,7 @@
     -fx-border-color:black;
     -fx-table-header-border-color: black;
 }
-/*
+
 .table-column{
     -fx-background-color:#FBF9C7;
 }
@@ -112,4 +112,3 @@
 .custom-cell:selected{
     -fx-control-inner-background-alt: derive(-fx-base, 20%);
 }
-*/
