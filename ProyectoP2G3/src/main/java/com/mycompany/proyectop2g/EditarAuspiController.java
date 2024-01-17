@@ -21,7 +21,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import modelo.participante.*;
 import modelo.evento.*;
 
@@ -93,12 +95,16 @@ public class EditarAuspiController implements Initializable {
     private TextField direccion;
     @FXML
     private TextField sitioWeb;
-    @FXML
     private Auspiciante auspiEditar;
     @FXML
     private ComboBox<SectorCubierto> sectoresCubiertos;
     private String usuario="Ingrese el usuario de ";
     ArrayList<RedSocial> redesSociales = new ArrayList<>();
+   
+    @FXML
+    private StackPane ventanaPrincipal;
+    @FXML
+    private ImageView regresar;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -125,9 +131,7 @@ public class EditarAuspiController implements Initializable {
         email.setText(null);
         direccion.setText(null);
         sitioWeb.setText(null);
-        editarAuspiciante.setVisible(false);
     }   
-    @FXML
     private void handleCheckBoxSelection(CheckBox checkbox, String c){
         if (checkbox.isSelected()) { infoRedSocial(c); }
         else { 
@@ -146,7 +150,6 @@ public class EditarAuspiController implements Initializable {
             }
         }
     }
-    @FXML
     private void infoRedSocial(String r){
         segundaVentana.setVisible(true);
         cuenta.setText(null);
@@ -188,12 +191,11 @@ public class EditarAuspiController implements Initializable {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setHeaderText("Usuario no Encontrado");
-            alert.setContentText("No se encontrado un auspiciante con la cedula ingresada.");
+            alert.setContentText("No se ha encontrado un auspiciante con la cedula ingresada.");
             alert.showAndWait();
         }
     }
     
-    @FXML
     private void campoDatos() {
         NombrePanel.setVisible(false);
         NombreRespoPanel.setVisible(false);
