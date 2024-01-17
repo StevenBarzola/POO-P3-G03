@@ -235,7 +235,7 @@ public class AdmStandController implements Initializable {
                         stage1.setScene(scene);
                         stage1.initStyle(StageStyle.UNDECORATED);
                         
-                        crearStands(feria);
+                        //crearStands(feria);
                         feria=null;
                         stand=null;
                         ventanaRegistrarStand.setVisible(false);
