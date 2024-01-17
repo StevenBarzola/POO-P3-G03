@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?> 
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane styleClass="fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.MenuFXMLController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.MenuFXMLController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="140.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="365.0" minWidth="10.0" prefWidth="335.0" />
@@ -59,14 +59,6 @@
                      </effect>
                   </Button>
                   <Button fx:id="btnAdmAusp" defaultButton="true" mnemonicParsing="false" onAction="#administrarAusp" prefHeight="40.0" prefWidth="337.0" style="-fx-background-color: #FF5E1B; -fx-background-radius: 40px;" text="Administración de Auspiciantes" textFill="#fcfcfc" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="Poor Richard" size="22.0" />
-                     </font>
-                     <effect>
-                        <InnerShadow />
-                     </effect>
-                  </Button>
-                  <Button fx:id="btnAdmStand" defaultButton="true" mnemonicParsing="false" onMouseClicked="#administrarStand" prefHeight="36.0" prefWidth="336.0" style="-fx-background-color: #FF5E1B; -fx-background-radius: 40px;" text="Administración de Stands" textFill="WHITE" GridPane.rowIndex="6">
                      <font>
                         <Font name="Poor Richard" size="22.0" />
                      </font>

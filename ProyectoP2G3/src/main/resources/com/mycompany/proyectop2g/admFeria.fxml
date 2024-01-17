@@ -10,61 +10,108 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="730.0" stylesheets="@../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.AdmFeriaController">
-   <center>
-      <TableView fx:id="tblFerias" prefHeight="356.0" prefWidth="725.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn fx:id="colCodigo" prefWidth="53.59997636079788" text="Codigo" />
-          <TableColumn fx:id="colNombre" prefWidth="232.80002975463867" text="Nombre" />
-            <TableColumn fx:id="colFechaInicio" minWidth="0.0" prefWidth="94.39990234375" text="Fecha Inicio" />
-            <TableColumn fx:id="colLugar" minWidth="0.0" prefWidth="106.39996337890625" text="Lugar" />
-            <TableColumn fx:id="colNAuspiciantes" minWidth="8.79998779296875" prefWidth="107.20001220703125" text="N° Auspiciantes" />
-            <TableColumn fx:id="colNEmprendedores" prefWidth="148.0" text="N° Emprendedores" />
-        </columns>
-      </TableView>
-   </center>
-   <bottom>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" styleClass="botones" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" onAction="#agregarFeria" prefHeight="23.0" prefWidth="100.0" text="Agregar Feria">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#administrarStands" text="Administrar Stands" />
-            <Button mnemonicParsing="false" onAction="#editarFeria" text="Editar Feria" />
-            <Button mnemonicParsing="false" onAction="#mostrarDetallesFeria" text="Ver Detalles" />
-            <Button mnemonicParsing="false" onAction="#mostrarDetallesEmprendedor" text="Ver Emprendedores" />
-            <Button mnemonicParsing="false" onAction="#mostrarDetallesAuspiciante" text="Ver Auspiciantes" />
-         </children>
-      </HBox>
-   </bottom>
-   <top>
-      <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="734.0" spacing="205.0" BorderPane.alignment="TOP_RIGHT">
-         <children>
-            <ImageView fitHeight="32.0" fitWidth="37.0" onMouseClicked="#regresarFeria" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../imagenes/regresar.png" />
-               </image>
-            </ImageView>
-            <Label styleClass="titulo" text="Administracion de Ferias">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <effect>
-                  <InnerShadow />
-               </effect>
-            </Label>
-         </children>
-      </HBox>
-   </top>
-   <styleClass>
-      <String fx:value="botones" />
-      <String fx:value="checkbox" />
-      <String fx:value="fondo" />
-      <String fx:value="encabezado" />
-      <String fx:value="tablas" />
-   </styleClass>
-</BorderPane>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.AdmFeriaController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="730.0" stylesheets="@../../../styles/estilos.css">
+         <center>
+            <TableView fx:id="tblFerias" prefHeight="356.0" prefWidth="725.0" styleClass="tablas" BorderPane.alignment="CENTER">
+               <columns>
+                  <TableColumn fx:id="colCodigo" prefWidth="53.59997636079788" text="Codigo" />
+                  <TableColumn fx:id="colNombre" prefWidth="232.80002975463867" text="Nombre" />
+                  <TableColumn fx:id="colFechaInicio" minWidth="0.0" prefWidth="94.39990234375" text="Fecha Inicio" />
+                  <TableColumn fx:id="colLugar" minWidth="0.0" prefWidth="106.39996337890625" text="Lugar" />
+                  <TableColumn fx:id="colNAuspiciantes" minWidth="8.79998779296875" prefWidth="107.20001220703125" text="N° Auspiciantes" />
+                  <TableColumn fx:id="colNEmprendedores" prefWidth="148.0" text="N° Emprendedores" />
+               </columns>
+            </TableView>
+         </center>
+         <bottom>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" styleClass="botones" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#agregarFeria" prefHeight="47.0" prefWidth="91.0" styleClass="estilo_botones2" text="Agregar Feria" wrapText="true">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../imagenes/agregar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#administrarStands" prefHeight="47.0" prefWidth="115.0" styleClass="estilo_botones2" text="Administrar Stands" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../imagenes/adm.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button mnemonicParsing="false" onAction="#editarFeria" prefWidth="84.0" styleClass="estilo_botones2" text="Editar Feria" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../imagenes/editar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button mnemonicParsing="false" onAction="#mostrarDetallesFeria" prefWidth="92.0" styleClass="estilo_botones2" text="Ver Detalles" textAlignment="CENTER" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../imagenes/ver.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button mnemonicParsing="false" onAction="#mostrarDetallesEmprendedor" prefWidth="132.0" styleClass="estilo_botones2" text="Ver Emprendedores" textAlignment="CENTER" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../imagenes/ver.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button mnemonicParsing="false" onAction="#mostrarDetallesAuspiciante" prefWidth="118.0" styleClass="estilo_botones2" text="Ver Auspiciantes" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../imagenes/ver.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+               </children>
+            </HBox>
+         </bottom>
+         <top>
+            <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="734.0" spacing="205.0" BorderPane.alignment="TOP_RIGHT">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="37.0" onMouseClicked="#regresarFeria" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../imagenes/regresar.png" />
+                     </image>
+                  </ImageView>
+                  <Label styleClass="titulo" text="Administracion de Ferias">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </Label>
+               </children>
+            </HBox>
+         </top>
+         <styleClass>
+            <String fx:value="botones" />
+            <String fx:value="checkbox" />
+            <String fx:value="fondo" />
+            <String fx:value="encabezado" />
+            <String fx:value="tablas" />
+         </styleClass>
+      </BorderPane>
+   </children>
+</StackPane>

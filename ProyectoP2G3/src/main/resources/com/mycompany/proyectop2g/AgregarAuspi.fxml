@@ -182,7 +182,7 @@
       </BorderPane>
       <BorderPane fx:id="segundaVentana" prefHeight="402.0" prefWidth="605.0" stylesheets="@../../../styles/estilos.css" visible="false">
          <center>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="segundaVentana" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="130.0" prefWidth="100.0" styleClass="segundaVentana" BorderPane.alignment="CENTER">
                <children>
                   <Label fx:id="redSocial" styleClass="datos" text="Esriba su usuario para " />
                   <TextField fx:id="cuenta" maxWidth="-Infinity" />
@@ -197,13 +197,13 @@
             <AnchorPane prefHeight="200.0" prefWidth="70.0" BorderPane.alignment="TOP_LEFT" />
          </left>
          <bottom>
-            <AnchorPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="BOTTOM_CENTER" />
+            <AnchorPane prefHeight="120.0" prefWidth="200.0" BorderPane.alignment="BOTTOM_CENTER" />
          </bottom>
          <right>
             <AnchorPane prefHeight="200.0" prefWidth="70.0" BorderPane.alignment="CENTER_RIGHT" />
          </right>
          <top>
-            <AnchorPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="TOP_CENTER" />
+            <AnchorPane prefHeight="120.0" prefWidth="70.0" BorderPane.alignment="CENTER" />
          </top>
       </BorderPane>
    </children>
