@@ -24,6 +24,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.stage.StageStyle;
 import modelo.evento.*;
 import modelo.participante.*;
 
@@ -69,6 +70,7 @@ public class AdmFeriaController implements Initializable {
     
     @FXML
     private void agregarFeria(ActionEvent event) throws IOException{
+        
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/mycompany/proyectop2g/datosFeria.fxml"));
         Parent root= loader.load();
         DatosFeriaController controlador= loader.getController();
@@ -76,8 +78,10 @@ public class AdmFeriaController implements Initializable {
         Stage stage= new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
-        stage.show();   
-    }
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.show();
+        
+}
 
     @FXML
     private void mostrarDetallesFeria(ActionEvent event) {
@@ -178,16 +182,17 @@ public class AdmFeriaController implements Initializable {
     @FXML
     private void administrarStands(ActionEvent event) throws IOException {
         Feria feriaSeleccionada= tblFerias.getSelectionModel().getSelectedItem();
-        if(feriaSeleccionada!=null){
+        if(feriaSeleccionada!=null){           
             FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/mycompany/proyectop2g/admStand.fxml"));
             Parent root= loader.load();
             AdmStandController controlador= loader.getController();
-            //controlador.inicAtributos(feriaSeleccionada);
+            controlador.inicAtributos(feriaSeleccionada);
             controlador.crearStands(feriaSeleccionada);
             Scene scene= new Scene(root);
             Stage stage= new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.showAndWait();
         }else{
             Alert alerta= new Alert(Alert.AlertType.WARNING);
@@ -198,6 +203,6 @@ public class AdmFeriaController implements Initializable {
         }
         
     }
-
+    
     
 }

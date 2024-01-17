@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="465.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.DatosFeriaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="555.0" prefWidth="465.0" styleClass="segundaVentana" stylesheets="@../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.DatosFeriaController">
    <left>
       <VBox alignment="CENTER" prefHeight="427.0" prefWidth="160.0" spacing="16.5" BorderPane.alignment="CENTER">
          <children>
@@ -30,7 +30,7 @@
       </VBox>
    </left>
    <center>
-      <VBox alignment="CENTER" prefHeight="350.0" prefWidth="300.0" spacing="17.0" styleClass="botones" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="350.0" prefWidth="300.0" spacing="17.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="txtNombre" />
             <TextField fx:id="txtDescripcion" />
@@ -46,22 +46,34 @@
       </VBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="514.0" spacing="40.0" styleClass="botones" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="514.0" spacing="40.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#guardarFeria" stylesheets="@../../../styles/estilos.css" text="Guardar" />
-            <Button mnemonicParsing="false" onAction="#limpiar" text="Limpiar" />
+            <Button fx:id="guardar" mnemonicParsing="false" onAction="#guardarFeria" styleClass="estilo_botones" stylesheets="@../../../styles/estilos.css" text="Guardar">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="estilo_botones">
+                     <image>
+                        <Image url="@../../../imagenes/guardar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Impact" size="12.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#limpiar" styleClass="estilo_botones" text="Limpiar">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../imagenes/limpiar.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
          </children>
       </HBox>
    </bottom>
    <top>
-      <HBox alignment="CENTER_LEFT" prefHeight="74.0" prefWidth="504.0" spacing="140.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" prefHeight="74.0" prefWidth="504.0" styleClass="encabezado" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="34.0" fitWidth="36.0" onMouseClicked="#regresar" pickOnBounds="true" preserveRatio="true" translateX="5.0">
-               <image>
-                  <Image url="@../../../imagenes/regresar.png" />
-               </image>
-            </ImageView>
-            <Label alignment="CENTER" prefHeight="18.0" prefWidth="163.0" styleClass="titulo" text="Nueva Feria">
+            <Label alignment="CENTER" prefHeight="18.0" prefWidth="163.0" styleClass="titulo" text="Nueva Feria" translateX="25.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -69,6 +81,11 @@
                   <InnerShadow />
                </effect>
             </Label>
+            <ImageView fitHeight="34.0" fitWidth="36.0" onMouseClicked="#regresar" pickOnBounds="true" preserveRatio="true" translateX="125.0" translateY="-15.0">
+               <image>
+                  <Image url="@../../../imagenes/cerrar.png" />
+               </image>
+            </ImageView>
          </children>
       </HBox>
    </top>

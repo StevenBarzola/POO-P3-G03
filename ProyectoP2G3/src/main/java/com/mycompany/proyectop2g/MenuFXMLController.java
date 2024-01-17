@@ -57,9 +57,7 @@ public class MenuFXMLController implements Initializable {
         App.setRoot("/com/mycompany/proyectop2g/admAuspiciante");
     }
 
-    @FXML
-    private void administrarStand(MouseEvent event) {
-    }
+  
 
     @FXML
     private void salirMenu(MouseEvent event) {

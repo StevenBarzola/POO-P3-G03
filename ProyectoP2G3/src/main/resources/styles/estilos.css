@@ -12,10 +12,6 @@
    -fx-alignment: CENTER;
 }
 
-.tablas{
-    -fx-tableColumn-prefWidth:50%;
-}
-
 .botones{
     -fx-alignment:CENTER;
     -fx-button-alignment: CENTER;
@@ -63,13 +59,57 @@
 }
 
 .segundaVentana{
-    -fx-background-color:white;
+    -fx-background-color: #FCD6D6;
     -fx-padding:5;
     -fx-alignment:CENTER;
 }
 
 .requerido{
-    -fx-text-fill: red;
-    
-    
+    -fx-text-fill: red;  
 }
+
+.estilo_botones{
+    -fx-background-color: #8FF9FB;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3),5,0,5,0);
+    -fx-font-family: "Impact";
+    -fx-font-size:14;
+}
+
+.estilo_botones2{
+    -fx-background-color: #FF7A7A;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3),5,0,5,0);
+    -fx-font-family: "Garlic";
+    -fx-text-fill:white;
+    -fx-background-radius:30px;
+    -fx-font-size:12px;
+    -fx-border-color:white;
+    -fx-border-radius: 30px;
+    -fx-border-width: 2px;
+    -fx-alignment: CENTER;
+    -fx-pref-height: 47px;
+}
+.table-view{
+    -fx-background-color:#FBF9C7;
+    -fx-table-cell-border-color: black;
+    -fx-border-color:black;
+    -fx-table-header-border-color: black;
+}
+/*
+.table-column{
+    -fx-background-color:#FBF9C7;
+}
+.table-roll-cell{
+    -fx-border-color: black;
+}
+.table-view .column-header{
+    -fx-border-color: black;
+}
+.custom-cell {
+    
+    -fx-text-fill: black;
+    -fx-background-color:transparent;
+}
+.custom-cell:selected{
+    -fx-control-inner-background-alt: derive(-fx-base, 20%);
+}
+*/
