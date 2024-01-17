@@ -186,7 +186,6 @@ public class AdmFeriaController implements Initializable {
             FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/mycompany/proyectop2g/admStand.fxml"));
             Parent root= loader.load();
             AdmStandController controlador= loader.getController();
-            controlador.inicAtributos(feriaSeleccionada);
             controlador.crearStands(feriaSeleccionada);
             Scene scene= new Scene(root);
             Stage stage= new Stage();

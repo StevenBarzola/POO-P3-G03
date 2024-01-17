@@ -174,8 +174,6 @@ public class AdmStandController implements Initializable {
                 alerta.setHeaderText("Stand "+stand.getCodigoSt());
                 alerta.setContentText("El stand ha sido reservado con exito");
                 alerta.showAndWait();
-                feria=null;
-                stand=null;
                 //Stage stage= (Stage) txtIDPersona.getScene().getWindow();
                 //stage.close();
                 //abajo
@@ -195,6 +193,8 @@ public class AdmStandController implements Initializable {
                 feria=null;
                 stand=null;
                 ventanaRegistrarStand.setVisible(false);
+                Stage stage= (Stage) lblFeriaSeleccionada.getScene().getWindow();
+                stage.close();
                 stage1.show();
                 //arriba
             }else{
