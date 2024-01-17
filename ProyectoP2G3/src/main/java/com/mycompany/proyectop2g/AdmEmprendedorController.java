@@ -27,8 +27,6 @@ public class AdmEmprendedorController implements Initializable {
     @FXML
     private Button crearEmp;
     @FXML
-    private Button editarEmp1;
-    @FXML
     private TableView<Emprendedor> tblEmp;
     @FXML
     private TableColumn<Emprendedor, String> colCedula;
