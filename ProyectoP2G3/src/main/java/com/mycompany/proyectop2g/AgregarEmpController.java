@@ -157,7 +157,7 @@ public class AgregarEmpController implements Initializable {
             if(cedula.getText()!= null && telefono.getText()!= null && email.getText()!=null 
                && nombreRespo.getText()!=null && nombre.getText()!=null && descripcion.getText()!=null && !redesSociales.isEmpty()){
                 int telef = Integer.parseInt(telefono.getText());
-                Emprendedor e = new Emprendedor(cedula.getText(),nombre.getText(), telef,nombreRespo.getText(),email.getText(),
+                Emprendedor e = new Emprendedor(cedula.getText(),nombre.getText(), telef,email.getText(),nombreRespo.getText(),
                        direccion.getText(), sitioWeb.getText(), redesSociales, descripcion.getText() );
                 Sistema.emprendedores.add(e);
                 Alert alert = new Alert(AlertType.INFORMATION);
