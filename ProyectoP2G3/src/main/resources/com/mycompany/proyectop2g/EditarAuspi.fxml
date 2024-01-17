@@ -61,7 +61,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </Button>
-                  <VBox fx:id="editarAuspiciante" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="checkbox">
+                  <VBox fx:id="editarEmprendedor" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="checkbox">
                      <children>
                         <Label styleClass="datos" text="Escoja el campo a editar:" />
                         <ComboBox fx:id="campos" prefWidth="150.0">
