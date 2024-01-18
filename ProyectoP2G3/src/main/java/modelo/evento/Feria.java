@@ -103,6 +103,27 @@ public class Feria {
         seccionesStand[3].crearStands(3);
     }
     
+    //editar seccion 1
+    public void editarSeccion1(int can){
+        seccionesStand[0]= new SeccionStand(can);
+        seccionesStand[0].crearStands(0);
+    }
+    //editar seccion 2
+    public void editarSeccion2(int can){
+        seccionesStand[1]= new SeccionStand(can);
+        seccionesStand[1].crearStands(1);
+    }
+    //editar seccion 3
+    public void editarSeccion3(int can){
+        seccionesStand[2]= new SeccionStand(can);
+        seccionesStand[2].crearStands(1);
+    }
+    //editar seccion 4
+    public void editarSeccion4(int can){
+        seccionesStand[3]= new SeccionStand(can);
+        seccionesStand[3].crearStands(1);
+    }
+    
     //Mostrar los stands
     public void mostrarStands(){
         System.out.println("---Distribucion de stands---");

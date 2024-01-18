@@ -74,6 +74,7 @@ public class AdmFeriaController implements Initializable {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/mycompany/proyectop2g/datosFeria.fxml"));
         Parent root= loader.load();
         DatosFeriaController controlador= loader.getController();
+        controlador.cambiarTitulo("Nueva Feria");
         Scene scene= new Scene(root);
         Stage stage= new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -163,12 +164,22 @@ public class AdmFeriaController implements Initializable {
             FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/mycompany/proyectop2g/datosFeria.fxml"));
             Parent root= loader.load();
             DatosFeriaController controlador= loader.getController();
-            controlador.initAtributos(feriaSeleccionada);
-            Scene scene= new Scene(root);
-            Stage stage= new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(scene);
-            stage.showAndWait();
+            boolean aceptar=controlador.initAtributos(feriaSeleccionada);
+            if(aceptar==true){
+                controlador.cambiarTitulo("Editar Feria");
+                Scene scene= new Scene(root);
+                Stage stage= new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(scene);
+                stage.showAndWait();
+            }else{
+                Alert alerta= new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("Aviso");
+                alerta.setHeaderText("La feria esta en progreso o ha finalizado");
+                alerta.setContentText("No se pueden editar ferias en progresos o finalizados");
+                alerta.showAndWait();
+            }
+            
         }else{
             Alert alerta= new Alert(Alert.AlertType.WARNING);
             alerta.setTitle("Aviso");
