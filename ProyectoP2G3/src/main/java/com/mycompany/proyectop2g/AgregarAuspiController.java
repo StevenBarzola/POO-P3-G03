@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.ButtonType;
 import java.util.Optional;
 import modelo.participante.*;
@@ -69,6 +70,8 @@ public class AgregarAuspiController implements Initializable {
     private TextField sitioWeb;
     @FXML
     private Button CrearAuspiciante;
+    @FXML
+    private ImageView cerrarVentana;
     
     private String usuario="Ingrese el usuario de ";
     
@@ -109,7 +112,7 @@ public class AgregarAuspiController implements Initializable {
     
     @FXML
     private void handleCheckBoxSelection(CheckBox checkbox, String c){
-        if (checkbox.isSelected()) { infoRedSocial(c); }
+        if (checkbox.isSelected()) { infoRedSocial(checkbox, c); }
         else { 
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Confirmation Dialog");
@@ -127,7 +130,7 @@ public class AgregarAuspiController implements Initializable {
         }
     }
     @FXML
-    private void infoRedSocial(String r){
+    private void infoRedSocial(CheckBox ch, String r){
         segundaVentana.setVisible(true);
         cuenta.setText(null);
         redSocial.setText(null);
@@ -147,7 +150,8 @@ public class AgregarAuspiController implements Initializable {
                         segundaVentana.setVisible(false);
                     }  
                 }
-        );        
+        );
+        cerrarVentana.setOnMouseClicked(e -> {segundaVentana.setVisible(false); ch.setSelected(false);});
     }
     
     @FXML

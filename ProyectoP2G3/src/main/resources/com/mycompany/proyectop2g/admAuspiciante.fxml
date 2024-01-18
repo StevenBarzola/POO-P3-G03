@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.AdmAuspicianteController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="555.0" prefWidth="730.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.AdmAuspicianteController">
    <top>
       <HBox prefHeight="102.0" prefWidth="730.0" styleClass="encabezado" BorderPane.alignment="CENTER">
          <children>
@@ -42,28 +42,49 @@
    <bottom>
       <HBox prefHeight="100.0" prefWidth="744.0" styleClass="botones" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="crearAuspi" mnemonicParsing="false" onAction="#nuevoAuspiciante" styleClass="botones" text="Nuevo Auspiciante">
+            <Button fx:id="crearAuspi" mnemonicParsing="false" onAction="#nuevoAuspiciante" styleClass="estilo_botones2" text="Nuevo Auspiciante">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </HBox.margin></Button>
-            <Button fx:id="editar" mnemonicParsing="false" onAction="#editarAuspiciante" styleClass="botones" text="Editar Auspiciante">
+               </HBox.margin>
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../imagenes/agregar.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="editar" mnemonicParsing="false" onAction="#editarAuspiciante" styleClass="estilo_botones2" text="Editar Auspiciante">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </HBox.margin></Button>
-            <Button fx:id="asignar" mnemonicParsing="false" onAction="#asignarAuspiciante" styleClass="botones" text="Asignar Auspiciante en Feria">
+               </HBox.margin>
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../imagenes/editar.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="asignar" mnemonicParsing="false" onAction="#asignarAuspiciante" prefWidth="154.0" styleClass="estilo_botones2" text="Asignar Auspiciante en Feria" wrapText="true">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </HBox.margin></Button>
+               </HBox.margin>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../imagenes/feria.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
          </children>
       </HBox>
    </bottom>
    <center>
       <TableView fx:id="tblAuspiEnFeria" styleClass="tabla" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="colFeria" prefWidth="94.0" text="Feria" />
-          <TableColumn fx:id="colAuspiciante" minWidth="0.0" prefWidth="155.0" text="Auspiciante" />
-            <TableColumn fx:id="colDescripcion" prefWidth="117.0" text="Descripcion" />
-            <TableColumn fx:id="colStand" minWidth="0.0" prefWidth="113.0" text="Stand" />
+          <TableColumn fx:id="colFeria" maxWidth="-1.0" minWidth="170.0" prefWidth="94.0" text="Feria" />
+          <TableColumn fx:id="colAuspiciante" maxWidth="-Infinity" minWidth="170.0" prefWidth="155.0" text="Auspiciante" />
+            <TableColumn fx:id="colDescripcion" maxWidth="-Infinity" minWidth="250.0" prefWidth="117.0" text="Descripcion" />
+            <TableColumn fx:id="colStand" maxWidth="-Infinity" minWidth="100.0" prefWidth="113.0" text="Stand" />
         </columns>
       </TableView>
    </center>

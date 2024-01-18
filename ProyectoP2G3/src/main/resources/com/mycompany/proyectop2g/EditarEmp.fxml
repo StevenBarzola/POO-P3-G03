@@ -18,9 +18,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.EditarEmpController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="555.0" prefWidth="730.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.EditarEmpController">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="555.0" prefWidth="730.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css">
          <top>
             <HBox prefHeight="100.0" prefWidth="200.0" styleClass="encabezado" BorderPane.alignment="CENTER">
                <children>
@@ -56,12 +56,19 @@
                         <Insets />
                      </VBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" onAction="#verificarEmprendedor" text="Verificar Emprendedor">
+                  <Button mnemonicParsing="false" onAction="#verificarEmprendedor" styleClass="estilo_botones2" text="Verificar Emprendedor">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../imagenes/verificar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <VBox fx:id="editarAuspiciante" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="checkbox">
+                  <VBox fx:id="editarEmprendedor" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="checkbox" visible="false">
                      <children>
                         <Label styleClass="datos" text="Escoja el campo a editar:" />
                         <ComboBox fx:id="campos" prefWidth="150.0">
@@ -200,7 +207,14 @@
                               </GridPane>
                            </children>
                         </StackPane>
-                        <Button fx:id="actualizar" mnemonicParsing="false" text="Actualizar" />
+                        <Button fx:id="actualizar" mnemonicParsing="false" styleClass="estilo_botones2" text="Actualizar">
+                           <graphic>
+                              <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../imagenes/actualizar.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                      </children>
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -213,16 +227,28 @@
             <AnchorPane prefHeight="20.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
-      <BorderPane fx:id="segundaVentana" prefHeight="402.0" prefWidth="605.0" stylesheets="@../../../styles/estilos.css" visible="false">
+      <BorderPane fx:id="segundaVentana" prefHeight="555.0" prefWidth="730.0" stylesheets="@../../../styles/estilos.css" visible="false">
          <center>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="segundaVentana" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="263.0" prefWidth="590.0" styleClass="segundaVentana" BorderPane.alignment="CENTER">
                <children>
+                  <ImageView fx:id="cerrarVentana" fitHeight="150.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" translateX="270.0" translateY="-70.0">
+                     <image>
+                        <Image url="@../../../imagenes/cerrar.png" />
+                     </image>
+                  </ImageView>
                   <Label fx:id="redSocial" styleClass="datos" text="Esriba su usuario para " />
                   <TextField fx:id="cuenta" maxWidth="-Infinity" />
-                  <Button fx:id="guardar" mnemonicParsing="false" text="Guardar">
+                  <Button fx:id="guardar" mnemonicParsing="false" styleClass="estilo_botones" text="Guardar">
                      <VBox.margin>
                         <Insets top="8.0" />
                      </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../imagenes/guardar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                </children>
             </VBox>
@@ -231,13 +257,13 @@
             <AnchorPane prefHeight="200.0" prefWidth="70.0" BorderPane.alignment="TOP_LEFT" />
          </left>
          <bottom>
-            <AnchorPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="BOTTOM_CENTER" />
+            <AnchorPane maxHeight="-Infinity" prefHeight="136.0" prefWidth="730.0" BorderPane.alignment="BOTTOM_CENTER" />
          </bottom>
          <right>
             <AnchorPane prefHeight="200.0" prefWidth="70.0" BorderPane.alignment="CENTER_RIGHT" />
          </right>
          <top>
-            <AnchorPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="TOP_CENTER" />
+            <AnchorPane prefHeight="147.0" prefWidth="730.0" BorderPane.alignment="TOP_CENTER" />
          </top>
       </BorderPane>
    </children>
