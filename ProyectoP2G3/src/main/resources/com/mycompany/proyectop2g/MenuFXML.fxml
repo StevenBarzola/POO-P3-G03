@@ -7,9 +7,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="437.0" prefWidth="552.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.MenuFXMLController">
+<BorderPane prefHeight="555.0" prefWidth="730.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.MenuFXMLController">
    <top>
-      <VBox alignment="CENTER" prefHeight="82.0" prefWidth="552.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="111.0" prefWidth="730.0" BorderPane.alignment="CENTER">
          <children>
             <Text fill="#04071b" strokeType="OUTSIDE" strokeWidth="0.0" text="MENÚ PRINCIPAL">
                <font>
@@ -31,7 +31,7 @@
       </VBox>
    </bottom>
    <center>
-      <VBox fx:id="opcionesBox" alignment="CENTER" prefHeight="250.0" prefWidth="82.0" spacing="30.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="opcionesBox" alignment="CENTER" prefHeight="346.0" prefWidth="730.0" spacing="30.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="btnAdmFeria" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onMouseClicked="#administrarFeria" prefHeight="43.0" prefWidth="361.0" style="-fx-background-color: #FF5E1B; -fx-background-radius: 40px;" text="Administración de Ferias" textAlignment="CENTER" textFill="WHITE">
                <font>

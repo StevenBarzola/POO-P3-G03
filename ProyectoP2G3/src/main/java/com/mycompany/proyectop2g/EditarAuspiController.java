@@ -98,6 +98,8 @@ public class EditarAuspiController implements Initializable {
     private Auspiciante auspiEditar;
     @FXML
     private ComboBox<SectorCubierto> sectoresCubiertos;
+    @FXML
+    private ImageView cerrarVentana;
     private String usuario="Ingrese el usuario de ";
     ArrayList<RedSocial> redesSociales = new ArrayList<>();
    
@@ -133,7 +135,7 @@ public class EditarAuspiController implements Initializable {
         sitioWeb.setText(null);
     }   
     private void handleCheckBoxSelection(CheckBox checkbox, String c){
-        if (checkbox.isSelected()) { infoRedSocial(c); }
+        if (checkbox.isSelected()) { infoRedSocial(checkbox,c); }
         else { 
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Confirmation Dialog");
@@ -150,7 +152,7 @@ public class EditarAuspiController implements Initializable {
             }
         }
     }
-    private void infoRedSocial(String r){
+    private void infoRedSocial(CheckBox ch, String r){
         segundaVentana.setVisible(true);
         cuenta.setText(null);
         redSocial.setText(null);
@@ -170,7 +172,8 @@ public class EditarAuspiController implements Initializable {
                         segundaVentana.setVisible(false);
                     }  
                 }
-        );        
+        );    
+        cerrarVentana.setOnMouseClicked(e -> {segundaVentana.setVisible(false); ch.setSelected(false);});
     }
     @FXML
     private void admAuspiciante() throws IOException{
@@ -365,4 +368,10 @@ public class EditarAuspiController implements Initializable {
                alert.close();
             }
     }
+    @FXML
+    private void cerrarVentana(){
+        segundaVentana.setVisible(false);
+        
+    }
+    
 }

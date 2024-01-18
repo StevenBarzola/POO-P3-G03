@@ -70,6 +70,8 @@ public class AgregarEmpController implements Initializable {
     private TextField cuenta;
     @FXML
     private Button guardar;
+    @FXML
+    private ImageView cerrarVentana;
     
      private String usuario="Ingrese el usuario de ";
     ArrayList<RedSocial> redesSociales = new ArrayList<>();
@@ -111,7 +113,7 @@ public class AgregarEmpController implements Initializable {
     }
 
     private void handleCheckBoxSelection(CheckBox checkbox, String c){
-        if (checkbox.isSelected()) { infoRedSocial(c); }
+        if (checkbox.isSelected()) { infoRedSocial(checkbox,c); }
         else { 
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Confirmation Dialog");
@@ -128,7 +130,7 @@ public class AgregarEmpController implements Initializable {
             }
         }
     }
-    private void infoRedSocial(String r){
+    private void infoRedSocial(CheckBox ch, String r){
         segundaVentana.setVisible(true);
         cuenta.setText(null);
         redSocial.setText(null);
@@ -148,7 +150,8 @@ public class AgregarEmpController implements Initializable {
                         segundaVentana.setVisible(false);
                     }  
                 }
-        );        
+        ); 
+        cerrarVentana.setOnMouseClicked(e -> {segundaVentana.setVisible(false); ch.setSelected(false);});
     }
     
     @FXML

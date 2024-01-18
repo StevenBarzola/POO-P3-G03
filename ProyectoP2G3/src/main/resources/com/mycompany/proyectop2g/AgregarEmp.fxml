@@ -17,9 +17,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane cache="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.AgregarEmpController">
+<StackPane cache="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="555.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectop2g.AgregarEmpController">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="555.0" prefWidth="730.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css">
          <top>
             <HBox prefHeight="80.0" prefWidth="200.0" styleClass="encabezado" BorderPane.alignment="CENTER">
                <children>
@@ -43,9 +43,16 @@
             <AnchorPane prefHeight="200.0" prefWidth="20.0" BorderPane.alignment="CENTER" />
          </right>
          <bottom>
-            <HBox prefHeight="50.0" prefWidth="200.0" styleClass="botones" BorderPane.alignment="CENTER">
+            <HBox prefHeight="75.0" prefWidth="730.0" styleClass="botones" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="CrearEmprendedor" mnemonicParsing="false" onAction="#guardarEmprendedor" text="Guardar" />
+                  <Button fx:id="CrearEmprendedor" mnemonicParsing="false" onAction="#guardarEmprendedor" styleClass="estilo_botones2" text="Guardar">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../imagenes/guardar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
             </HBox>
          </bottom>
@@ -181,14 +188,26 @@
       </BorderPane>
       <BorderPane fx:id="segundaVentana" prefHeight="402.0" prefWidth="605.0" stylesheets="@../../../styles/estilos.css" visible="false">
          <center>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="segundaVentana" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="282.0" prefWidth="590.0" styleClass="segundaVentana" BorderPane.alignment="CENTER">
                <children>
+                  <ImageView fx:id="cerrarVentana" fitHeight="150.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" translateX="270.0" translateY="-75.0">
+                     <image>
+                        <Image url="@../../../imagenes/cerrar.png" />
+                     </image>
+                  </ImageView>
                   <Label fx:id="redSocial" styleClass="datos" text="Esriba su usuario para " />
                   <TextField fx:id="cuenta" maxWidth="-Infinity" />
-                  <Button fx:id="guardar" mnemonicParsing="false" text="Guardar">
+                  <Button fx:id="guardar" mnemonicParsing="false" styleClass="estilo_botones" text="Guardar">
                      <VBox.margin>
                         <Insets top="8.0" />
                      </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../imagenes/guardar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                </children>
             </VBox>
@@ -203,7 +222,7 @@
             <AnchorPane prefHeight="200.0" prefWidth="70.0" BorderPane.alignment="CENTER_RIGHT" />
          </right>
          <top>
-            <AnchorPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="TOP_CENTER" />
+            <AnchorPane prefHeight="147.0" prefWidth="730.0" BorderPane.alignment="TOP_CENTER" />
          </top>
       </BorderPane>
    </children>
