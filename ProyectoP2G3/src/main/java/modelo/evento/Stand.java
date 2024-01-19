@@ -1,8 +1,9 @@
 package modelo.evento;
+import java.io.Serializable;
 import java.time.LocalDate;
 import modelo.participante.*;
 
-public class Stand {
+public class Stand implements Serializable{
     private String codigoSt;
     private Persona persona;
     private LocalDate fechaAsig;

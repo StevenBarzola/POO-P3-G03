@@ -1,11 +1,12 @@
 package modelo.evento;
+import java.io.Serializable;
 import java.time.LocalDate;
 import modelo.participante.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
 
-public class Feria {
+public class Feria implements Serializable{
     private String codigo;
     private String nombre;
     private LocalDate fechaI;

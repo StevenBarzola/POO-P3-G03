@@ -1,7 +1,8 @@
 package modelo.participante;
+import java.io.Serializable;
 import modelo.evento.*;
 
-public class AuspicianteEnFeria {
+public class AuspicianteEnFeria implements Serializable{
     private Auspiciante auspiciante;
     private String descripcion; 
     private boolean tieneStand;

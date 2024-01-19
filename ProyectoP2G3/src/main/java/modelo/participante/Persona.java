@@ -1,7 +1,8 @@
 package modelo.participante;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Persona {
+public class Persona implements Serializable{
     protected String numId;
     protected String nombre;
     protected String nomPerRes;

@@ -1,5 +1,7 @@
 package modelo.participante;
 
-public enum SectorCubierto{
+import java.io.Serializable;
+
+public enum SectorCubierto implements Serializable{
     ALIMENTACION, EDUCACION, SALUD, VESTIMENTA;
 }
