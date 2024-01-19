@@ -1,6 +1,8 @@
 package modelo.participante;
 
-public class RedSocial {
+import java.io.Serializable;
+
+public class RedSocial implements Serializable{
     private AppSocial appsocial;
     private String cuenta;
     

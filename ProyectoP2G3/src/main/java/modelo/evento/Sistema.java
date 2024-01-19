@@ -1,11 +1,15 @@
 package modelo.evento;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.time.LocalDate;
 import modelo.participante.*;
 import java.util.ArrayList;
 
-public class Sistema{
-  public static ArrayList<Feria> ferias =new ArrayList<>();
-  public static int contadorFerias=1;  
+public class Sistema implements Serializable{
+  public static ArrayList<Feria> ferias =new ArrayList<>(); 
   public static ArrayList<Auspiciante> auspiciantes= new ArrayList<>();
   public static ArrayList<Emprendedor> emprendedores= new ArrayList<>();
   
@@ -64,6 +68,31 @@ public class Sistema{
         emprendedores.add(emp);
         System.out.println("Emprendedor registrado con exito");
     }
+  }
+  
+  public static void guardarDatos(){
+      try(ObjectOutputStream out= new ObjectOutputStream(new FileOutputStream("src/main/java/archivos/datos.ser"))){
+          out.writeObject(ferias);
+          out.writeObject(emprendedores);
+          out.writeObject(auspiciantes);
+          out.flush();
+      }catch(Exception e){
+          System.out.println("Error al guardar datos: "+e.getMessage());
+      }
+  }
+  
+  public static void cargarDatos(){
+      Object[] objetosDes= new Object[3];
+      try(ObjectInputStream inp= new ObjectInputStream(new FileInputStream("src/main/java/archivos/datos.ser"))){
+          for(int i=0;i<objetosDes.length;i++){
+              objetosDes[i]= inp.readObject();
+          }
+          ferias=(ArrayList<Feria>) objetosDes[0];
+          emprendedores=(ArrayList<Emprendedor>) objetosDes[1];
+          auspiciantes=(ArrayList<Auspiciante>) objetosDes[2];
+      }catch(Exception e){
+          System.out.println("Error al cargar datos: "+e.getMessage());
+      }
   }
  
   

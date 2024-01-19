@@ -14,7 +14,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import com.mycompany.proyectop2g.*;
 import com.mycompany.proyectop2g.App;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+import modelo.evento.Sistema;
 /**
  * FXML Controller class
  *
@@ -35,11 +38,16 @@ public class MenuFXMLController implements Initializable {
     @FXML
     private Button btnSalir;
 
+    private static boolean soloUnaVez=true;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        if(soloUnaVez==true) {
+            Sistema.cargarDatos();
+            soloUnaVez=false;
+        }
     }    
 
     @FXML
@@ -60,9 +68,24 @@ public class MenuFXMLController implements Initializable {
   
 
     @FXML
-    private void salirMenu(MouseEvent event) {
-        Stage stage= (Stage) btnSalir.getScene().getWindow();
-        stage.close();
+    private void salirMenu(MouseEvent event){
+        Alert alerta= new Alert(Alert.AlertType.CONFIRMATION);
+        alerta.setTitle("Aviso");
+        alerta.setHeaderText("Guardar los datos de la administracion");
+        alerta.setContentText("¿Desea guardar?");
+        ButtonType botonSi = new ButtonType("Sí");
+        ButtonType botonNo = new ButtonType("No");
+        alerta.getButtonTypes().setAll(botonSi, botonNo);
+        alerta.showAndWait().ifPresent(response -> {
+            if (response == botonSi) {
+                Sistema.guardarDatos();
+                Stage stage= (Stage) btnSalir.getScene().getWindow();
+                stage.close();
+            }else if(response == botonNo){
+                Stage stage= (Stage) btnSalir.getScene().getWindow();
+                stage.close();
+            }
+         });
     }
     
 }

@@ -1,7 +1,8 @@
 package modelo.evento;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SeccionStand {
+public class SeccionStand implements Serializable{
     private int canStand;
     private ArrayList<Stand> seccion;
     
