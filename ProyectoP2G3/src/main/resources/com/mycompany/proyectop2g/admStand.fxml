@@ -48,7 +48,7 @@
          <children>
             <HBox fx:id="hb1Seccion" alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="600.0" spacing="20.0">
                <children>
-                  <Label styleClass="datosSeccion" text="Seccion 1:" translateX="5.0">
+                  <Label prefHeight="30.0" prefWidth="68.0" styleClass="datosSeccion" text="Seccion 1:" translateX="5.0">
                      <effect>
                         <InnerShadow height="10.0" radius="4.5" width="10.0" />
                      </effect></Label>

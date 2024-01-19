@@ -73,7 +73,7 @@
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="74.0" prefWidth="504.0" styleClass="encabezado" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="18.0" prefWidth="163.0" styleClass="titulo" text="Nueva Feria" translateX="25.0">
+            <Label fx:id="lblTituloFeria" alignment="CENTER" prefHeight="18.0" prefWidth="163.0" styleClass="titulo" text="Nueva Feria" translateX="25.0">
                <font>
                   <Font size="14.0" />
                </font>
