@@ -70,7 +70,7 @@ public class DatosFeriaController implements Initializable {
         txtNStand2.setText(String.valueOf(feria.getSeccionesStand()[1].getCanStand()));
         txtNStand3.setText(String.valueOf(feria.getSeccionesStand()[2].getCanStand()));         
         txtNStand4.setText(String.valueOf(feria.getSeccionesStand()[3].getCanStand()));
-        if(LocalDate.now().isAfter(feria.getFechaI())){ //Valida si la feria ha finalizado 
+        if(LocalDate.now().isAfter(feria.getFechaI())){ //Valida si se puede editar la feria
             feria=null;
             App.setRoot("/com/mycompany/proyectop2g/admFeria");
             return false;
@@ -226,6 +226,7 @@ public class DatosFeriaController implements Initializable {
         return feria;
     }
     
+    //Para cambiar el titulo segun si es edicion o nueva feria
     public void cambiarTitulo(String texto){
         lblTituloFeria.setText(texto);
     }
