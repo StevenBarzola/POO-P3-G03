@@ -253,6 +253,15 @@ public class Feria {
         }    
         return null;
     }
+    // Verificar que ya no esté el mismo auspiciante en Feria
+    public static boolean verificarAuspiciante(ArrayList<AuspicianteEnFeria> lista, Auspiciante a){
+        for (AuspicianteEnFeria l:lista){
+            if(l.getAuspiciante().equals(a)){
+                return true;
+            }
+        }
+        return false;
+    }
     
     //Reservar stand a emprendedor o auspiciante
     public void reservarStand(String cs, String cp, String fa){

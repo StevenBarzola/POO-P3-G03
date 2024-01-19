@@ -50,23 +50,20 @@ public class AsignarAuspiController implements Initializable {
                 e -> {
                     if (codigo.getText()!=null && cedula.getText()!=null){
                         if(AuspicianteEnFeria.verificarAuspicianteFeria(codigo.getText(), cedula.getText())){
+                            feria = Sistema.encontrarFeria(codigo.getText());
                             Persona p = Sistema.encontrarPersona(cedula.getText());
                             auspiciante = (Auspiciante)p;
-                            feria = Sistema.encontrarFeria(codigo.getText());
-                            segundaVentana.setVisible(true);
-                        } else {
-                            alertas_error();
-                            cedula.setText(null);
-                        }
-                    }else {
-                        alertas_warning();
-                    }
-                }
-        );
+                            boolean verif = Feria.verificarAuspiciante(feria.getAuspiciantesEnFeria(), auspiciante);
+                            if(!verif){
+                                segundaVentana.setVisible(true);
+                            } else {  alertas_yaexiste(); cedula.setText(null); }
+                        } else {  alertas_error(); cedula.setText(null); }
+                    }else { alertas_warning();  }
+                } );
         asignarAuspiciante.setOnAction(
                 e -> {
                     if(descripcion.getText()!=null){
-                        AuspicianteEnFeria a = new AuspicianteEnFeria(feria, auspiciante, descripcion.getText(), incluyeStand.isSelected());
+                        AuspicianteEnFeria a = new AuspicianteEnFeria(feria, auspiciante, descripcion.getText(),incluyeStand.isSelected());
                         feria.getAuspiciantesEnFeria().add(a);
                         alertas_informacion();
                         try {
@@ -92,6 +89,14 @@ public class AsignarAuspiController implements Initializable {
         alert.setTitle("Warning Dialog");
         alert.setHeaderText("Label Vacio");
         alert.setContentText("El label está vacio");
+        alert.showAndWait();
+    }
+    
+    private void alertas_yaexiste(){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Warning Dialog");
+        alert.setHeaderText("Auspiciante encontrado");
+        alert.setContentText("El auspiciante ya está asignando en la feria. ");
         alert.showAndWait();
     }
     
