@@ -20,8 +20,8 @@ public class Sistema implements Serializable{
       Feria feria= new Feria(c,n,fi,ff,l,d,h);
       ferias.add(feria);
       feria.AsignarSeccionesStand(can1, can2, can3, can4);
-      System.out.println("Feria registrada con exito!");
-      System.out.println("El codigo de la feria es "+c);
+      //System.out.println("Feria registrada con exito!");
+      //System.out.println("El codigo de la feria es "+c);
       return feria;
   }
   
@@ -70,6 +70,7 @@ public class Sistema implements Serializable{
     }
   }
   
+  //Guarda los datos ingresados al archivo "datos.ser"
   public static void guardarDatos(){
       try(ObjectOutputStream out= new ObjectOutputStream(new FileOutputStream("src/main/java/archivos/datos.ser"))){
           out.writeObject(ferias);
@@ -81,6 +82,7 @@ public class Sistema implements Serializable{
       }
   }
   
+  //Carga los datos que estan en el archivo "datos.ser"
   public static void cargarDatos(){
       Object[] objetosDes= new Object[3];
       try(ObjectInputStream inp= new ObjectInputStream(new FileInputStream("src/main/java/archivos/datos.ser"))){
