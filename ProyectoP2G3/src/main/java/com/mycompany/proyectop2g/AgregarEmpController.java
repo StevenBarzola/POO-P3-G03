@@ -109,7 +109,7 @@ public class AgregarEmpController implements Initializable {
     }        
     @FXML
     private void admEmprendedor() throws IOException{
-        App.setRoot("/com/mycompany/proyectop2g/AdmEmprendedor");
+        App.setRoot("/com/mycompany/proyectop2g/admEmprendedor");
     }
 
     private void handleCheckBoxSelection(CheckBox checkbox, String c){
@@ -159,16 +159,24 @@ public class AgregarEmpController implements Initializable {
             if (!Emprendedor.verificarCedula(cedula.getText())){
             if(cedula.getText()!= null && telefono.getText()!= null && email.getText()!=null 
                && nombreRespo.getText()!=null && nombre.getText()!=null && descripcion.getText()!=null && !redesSociales.isEmpty()){
-                int telef = Integer.parseInt(telefono.getText());
-                Emprendedor e = new Emprendedor(cedula.getText(),nombre.getText(), telef,email.getText(),nombreRespo.getText(),
-                       direccion.getText(), sitioWeb.getText(), redesSociales, descripcion.getText() );
-                Sistema.emprendedores.add(e);
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText("Emprendedor");
-                alert.setContentText("Hola "+nombre.getText()+" su emprendimiento fue registrado correctamente.");
-                alert.showAndWait();
-                admEmprendedor();
+                try{
+                    int telef = Integer.parseInt(telefono.getText());
+                    Emprendedor e = new Emprendedor(cedula.getText(),nombre.getText(), telef,email.getText(),nombreRespo.getText(),
+                        direccion.getText(), sitioWeb.getText(), redesSociales, descripcion.getText() );
+                    Sistema.emprendedores.add(e);
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Information Dialog");
+                    alert.setHeaderText("Emprendedor");
+                    alert.setContentText("Hola "+nombre.getText()+" su emprendimiento fue registrado correctamente.");
+                    alert.showAndWait();
+                    admEmprendedor();
+                }catch(Exception e){
+                    Alert alert = new Alert(AlertType.WARNING);
+                    alert.setTitle("Warning Dialog");
+                    alert.setHeaderText("Error en los datos");
+                    alert.setContentText("Los datos ingresados son invalidos");
+                    alert.showAndWait();
+                }
             }else{
                 Alert alert = new Alert(AlertType.WARNING);
                 alert.setTitle("Warning Dialog");

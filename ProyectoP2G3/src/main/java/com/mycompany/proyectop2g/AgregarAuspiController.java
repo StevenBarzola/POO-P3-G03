@@ -107,7 +107,7 @@ public class AgregarAuspiController implements Initializable {
     
     @FXML
     private void admAuspiciante() throws IOException{
-        App.setRoot("/com/mycompany/proyectop2g/AdmAuspiciante");
+        App.setRoot("/com/mycompany/proyectop2g/admAuspiciante");
     }
     
     @FXML
@@ -159,16 +159,24 @@ public class AgregarAuspiController implements Initializable {
         if (!Auspiciante.verificarCedula(cedula.getText())){
             if(cedula.getText()!= null && telefono.getText()!= null && email.getText()!=null 
                && nombreRespo.getText()!=null && nombre.getText()!=null && sectoresCubiertos.getValue()!=null && !redesSociales.isEmpty()){
-                int telef = Integer.parseInt(telefono.getText());
-                Auspiciante a = new Auspiciante(cedula.getText(),nombre.getText(), nombreRespo.getText(), telef,email.getText(),
-                       direccion.getText(), sitioWeb.getText(), redesSociales, sectoresCubiertos.getValue() );
-                Sistema.auspiciantes.add(a);
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText("Auspiciante");
-                alert.setContentText("Hola "+nombre.getText()+" su auspicio fue registrada correctamente.");
-                alert.showAndWait();
-                admAuspiciante();
+                try{
+                    int telef = Integer.parseInt(telefono.getText());
+                    Auspiciante a = new Auspiciante(cedula.getText(),nombre.getText(), nombreRespo.getText(), telef,email.getText(),
+                           direccion.getText(), sitioWeb.getText(), redesSociales, sectoresCubiertos.getValue() );
+                    Sistema.auspiciantes.add(a);
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Information Dialog");
+                    alert.setHeaderText("Auspiciante");
+                    alert.setContentText("Hola "+nombre.getText()+" su auspicio fue registrada correctamente.");
+                    alert.showAndWait();
+                    admAuspiciante();
+                }catch(Exception e){
+                    Alert alert = new Alert(AlertType.WARNING);
+                    alert.setTitle("Warning Dialog");
+                    alert.setHeaderText("Error en los datos");
+                    alert.setContentText("Los datos ingresados son invalidos");
+                    alert.showAndWait();
+                }
             }else{
                 Alert alert = new Alert(AlertType.WARNING);
                 alert.setTitle("Warning Dialog");
