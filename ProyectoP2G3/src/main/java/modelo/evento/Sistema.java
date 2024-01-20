@@ -50,6 +50,22 @@ public class Sistema implements Serializable{
       return null;
   }
   
+  //Valida por ruc o ced, para que no se repita sin importar el tipo de persona
+  public static boolean verificarCedula(String cedu){
+      boolean validar= false;
+        for(Auspiciante ausp : auspiciantes){
+            if (ausp.getNumId().equals(cedu)){
+                validar = true;
+            }
+        }
+        for(Emprendedor emp : emprendedores){
+            if (emp.getNumId().equals(cedu)){
+                validar = true;
+            }
+        }
+        return validar;
+  }
+  
   //Registra un emprendedor si no se encuentra allí.
   public static void registrarEmp(Persona p) {
     Emprendedor emp=(Emprendedor)p;

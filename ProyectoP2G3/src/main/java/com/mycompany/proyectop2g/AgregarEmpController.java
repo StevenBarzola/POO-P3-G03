@@ -156,7 +156,7 @@ public class AgregarEmpController implements Initializable {
     
     @FXML
     private void guardarEmprendedor() throws IOException{
-            if (!Emprendedor.verificarCedula(cedula.getText())){
+            if (!Sistema.verificarCedula(cedula.getText())){
             if(cedula.getText()!= null && telefono.getText()!= null && email.getText()!=null 
                && nombreRespo.getText()!=null && nombre.getText()!=null && descripcion.getText()!=null && !redesSociales.isEmpty()){
                 try{
