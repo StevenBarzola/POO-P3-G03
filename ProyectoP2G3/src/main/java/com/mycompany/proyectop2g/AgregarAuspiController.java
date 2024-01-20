@@ -156,7 +156,7 @@ public class AgregarAuspiController implements Initializable {
     
     @FXML
     private void guardarAuspiciante() throws IOException{
-        if (!Auspiciante.verificarCedula(cedula.getText())){
+        if (!Sistema.verificarCedula(cedula.getText())){
             if(cedula.getText()!= null && telefono.getText()!= null && email.getText()!=null 
                && nombreRespo.getText()!=null && nombre.getText()!=null && sectoresCubiertos.getValue()!=null && !redesSociales.isEmpty()){
                 try{
