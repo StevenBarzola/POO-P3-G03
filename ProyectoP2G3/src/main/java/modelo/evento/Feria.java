@@ -321,7 +321,7 @@ public class Feria implements Serializable{
         return aus;
     }
     
-    //Metodo para devolver un Strin con los Emprendedores
+    //Metodo para devolver un String con los Emprendedores
     public String getStringEmprendedores(){
         String emp="["; //String para presentar los emprendedores
         for(int j=0;j<seccionesStand.length;j++){

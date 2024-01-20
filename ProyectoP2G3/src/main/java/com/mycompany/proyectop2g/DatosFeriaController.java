@@ -58,6 +58,7 @@ public class DatosFeriaController implements Initializable {
         //TODO
     }    
     
+    //En caso de que se edite una feria se llenan los cuadros de textos y hace la validacion
     public boolean initAtributos(Feria fe) throws IOException{
         feria=fe;
         txtNombre.setText(feria.getNombre());
@@ -78,6 +79,7 @@ public class DatosFeriaController implements Initializable {
         return true;
     }
     
+    //Guarda una nueva feria o la edicion de una feria existente
     @FXML
     private void guardarFeria(ActionEvent event) throws IOException {
         if(feria==null){ //Nueva feria
@@ -200,6 +202,7 @@ public class DatosFeriaController implements Initializable {
        
     }
 
+    //Limpia los cuadros de textos
     @FXML
     private void limpiar(ActionEvent event) {
         txtNombre.setText("");
@@ -226,7 +229,7 @@ public class DatosFeriaController implements Initializable {
         return feria;
     }
     
-    //Para cambiar el titulo segun si es edicion o nueva feria
+    //Cambia el titulo de la ventana si se trata de una edicion o nueva feria
     public void cambiarTitulo(String texto){
         lblTituloFeria.setText(texto);
     }

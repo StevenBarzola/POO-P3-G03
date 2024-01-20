@@ -51,11 +51,12 @@ public class AdmStandController implements Initializable {
     
     //private Feria feria;
     private Stand stand;
-    private Label lb; //Para cerrar la escena de su ventana
+    private Label lb;
     /**
      * Initializes the controller class.
      */
     
+    //Inicializa la feria seleccionada de la tabla de ferias
     public void inicAtributos(Feria fe){
         feria=fe;
     }
@@ -65,6 +66,7 @@ public class AdmStandController implements Initializable {
         
     }
 
+    //Crea los stands segun la feria seleccionada
     public void crearStands(Feria fe){
         inicAtributos(fe);
         lblFeriaSeleccionada.setText("Feria: "+fe.getCodigo());
@@ -111,23 +113,6 @@ public class AdmStandController implements Initializable {
                        if (response == botonSi) {
                            iniAtributos(feria,s,lblFeriaSeleccionada);
                            ventanaRegistrarStand.setVisible(true);
-                           /*
-                           try{                               
-                               FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/mycompany/proyectop2g/reservarStand.fxml"));
-                               Parent root= loader.load();
-                               ReservarStandController controlador= loader.getController();
-                               controlador.iniAtributos(feria,s,lblFeriaSeleccionada);
-                               Scene scene= new Scene(root);
-                               Stage stage= new Stage();
-                               stage.initModality(Modality.APPLICATION_MODAL);
-                               stage.setScene(scene);
-                               stage.showAndWait();
-                                
-                               
-                           }catch(IOException io){
-                                System.out.println("Error cambio de ventana: "+io.getMessage());
-                           }
-                            */
                        }else if(response == botonNo) {
                            alerta.close();
                        }
@@ -152,13 +137,14 @@ public class AdmStandController implements Initializable {
         stage.close();
     }
     
-    
+    //Otro inciador de atributos
     public void iniAtributos(Feria fe, Stand st, Label lbl){
         feria=fe;
         stand=st;
         lb=lbl;
     }
     
+    //Reserva un stand segun el tipo de persona y sus condiciones
     @FXML
     private void reservar(ActionEvent event) throws IOException{
         Persona per= Sistema.encontrarPersona(txtIDPersona.getText());
@@ -174,11 +160,6 @@ public class AdmStandController implements Initializable {
                 alerta.setHeaderText("Stand "+stand.getCodigoSt());
                 alerta.setContentText("El stand ha sido reservado con exito");
                 alerta.showAndWait();
-                //Stage stage= (Stage) txtIDPersona.getScene().getWindow();
-                //stage.close();
-                //abajo
-                //Stage stage2= (Stage) lb.getScene().getWindow();
-                //stage2.close();
                 App.setRoot("/com/mycompany/proyectop2g/admFeria");
                 
                 FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/mycompany/proyectop2g/admStand.fxml"));

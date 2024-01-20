@@ -48,6 +48,8 @@ public class AdmFeriaController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    //Inicializa la tabla con los datos de las ferias existentes
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         colCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
@@ -164,7 +166,7 @@ public class AdmFeriaController implements Initializable {
             FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/mycompany/proyectop2g/datosFeria.fxml"));
             Parent root= loader.load();
             DatosFeriaController controlador= loader.getController();
-            boolean aceptar=controlador.initAtributos(feriaSeleccionada);
+            boolean aceptar=controlador.initAtributos(feriaSeleccionada); //Recibe un boleano que verifica que se pueda editar la feria
             if(aceptar==true){
                 controlador.cambiarTitulo("Editar Feria");
                 Scene scene= new Scene(root);

@@ -42,6 +42,8 @@ public class MenuFXMLController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    //Si existen datos guardados, estos se cargaran en la app
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         if(soloUnaVez==true) {
@@ -65,8 +67,7 @@ public class MenuFXMLController implements Initializable {
         App.setRoot("/com/mycompany/proyectop2g/admAuspiciante");
     }
 
-  
-
+    //Al salir de la app se valida si se desea guardar los datos o no
     @FXML
     private void salirMenu(MouseEvent event){
         Alert alerta= new Alert(Alert.AlertType.CONFIRMATION);
