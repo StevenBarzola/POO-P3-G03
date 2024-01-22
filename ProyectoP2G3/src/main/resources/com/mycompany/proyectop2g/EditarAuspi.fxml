@@ -100,7 +100,7 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Label text="Email nuevo:" />
+                                    <Label styleClass="datos" text="Email nuevo:" />
                                     <TextField fx:id="email" maxWidth="-Infinity" styleClass="datos" GridPane.columnIndex="1" />
                                  </children>
                               </GridPane>
