@@ -210,7 +210,7 @@ public class EditarEmpController implements Initializable {
         EmailPanel.setVisible(false);
         DireccionPanel.setVisible(false);
         SitioWebPanel.setVisible(false);
-        descripcion.setVisible(false);
+        DescripcionPanel.setVisible(false);
         RedSocialPanel.setVisible(false);
         String c = campos.getValue();
         switch(c){
@@ -311,12 +311,12 @@ public class EditarEmpController implements Initializable {
                         }
                 );
                 break;
-            case "Descripcion Servicios":
-                DireccionPanel.setVisible(true);
-                direccion.setText(empEditar.getDireccion());
+            case "Descripcion servicios":
+                DescripcionPanel.setVisible(true);
+                descripcion.setText(empEditar.getDescripcionServicios());
                 actualizar.setOnAction(
                         e -> {
-                            if (direccion.getText()!=null ){ empEditar.setDireccion(direccion.getText()); 
+                            if (descripcion.getText()!=null ){ empEditar.setDescripcionServicios(descripcion.getText()); 
                             try {
                                 alertas_informacion();
                                 } catch (IOException ex) {
